@@ -227,7 +227,6 @@ bindsym $mod+Shift+Print exec "maim -u --format=png -s | xclip -selection clipbo
 new_window pixel 2
 
 # Autostart
-#exec .config/i3/autostart.sh
 exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon

@@ -40,6 +40,11 @@ if cHostname == "mu":
         format="{temp:.0f}°C",
         file="/sys/class/thermal/thermal_zone3/temp",)
 
+if cHostname == "kappa":
+    status.register("temp",
+        format="{temp:.0f}°C",
+        file="/sys/class/thermal/thermal_zone1/temp",)
+
 # The battery monitor has many formatting options, see README for details
 
 # This would look like this, when discharging (or charging)

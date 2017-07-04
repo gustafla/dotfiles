@@ -28,4 +28,6 @@ bindkey "^[[3~" delete-char
 bindkey "^?" backward-delete-char
 bindkey "^l" clear-screen
 
+alias ls="ls --color"
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -14,3 +14,15 @@ compinit
 
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
+
+bindkey "^j" beginning-of-line
+bindkey "^[[H" beginning-of-line
+bindkey "^k" end-of-line
+bindkey "^[[F" end-of-line
+bindkey "^D" delete-char-or-list
+bindkey "^H" backward-delete-char
+bindkey "^[3;5~" delete-char
+bindkey "^[[3~" delete-char
+bindkey "^?" backward-delete-char
+bindkey "^l" clear-screen
+

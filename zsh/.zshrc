@@ -12,6 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt CORRECT
+
 autoload -U colors && colors
 PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 
@@ -26,3 +28,4 @@ bindkey "^[[3~" delete-char
 bindkey "^?" backward-delete-char
 bindkey "^l" clear-screen
 
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

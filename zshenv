@@ -1,3 +1,5 @@
+export ZDOTDIR=".zsh/"
+
 export EDITOR="vim"
 export VISUAL="vim"
 export TERMINAL="uxterm"

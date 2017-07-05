@@ -30,4 +30,9 @@ bindkey "^l" clear-screen
 
 alias ls="ls --color"
 
+# Autorun stuff until I find a better way to ez preserve these.
+xset s off -dpms
+xset r rate 300 60
+setxkbmap
+
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

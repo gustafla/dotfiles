@@ -15,8 +15,6 @@ fi
 
 [[ -f ~/.screenlayout/default.sh ]] && ~/.screenlayout/default.sh
 
-xset s off -dpms
-xset r rate 300 60
-setxkbmap -option caps:escape
+~/.dotfiles/extraconf.sh
 
 exec i3

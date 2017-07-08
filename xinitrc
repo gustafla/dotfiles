@@ -19,13 +19,4 @@ xset s off -dpms
 xset r rate 300 60
 setxkbmap -option caps:escape
 
-#case "$1" in
-#        i3)
-#                exec "i3"
-#                ;;
-#        pcmanfm)
-#                exec "pcmanfm --desktop"
-#                ;;
-#esac
-#compton -GG --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc &
 exec i3

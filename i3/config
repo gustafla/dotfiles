@@ -157,8 +157,8 @@ bindsym $mod+r mode "resize"
 
 # session management
 mode "exit" {
-    bindsym p exec "systemctl poweroff"; mode "default"
-    bindsym b exec "systemctl reboot"; mode "default"
+    bindsym p exec "umount /mnt/nfs/*"; exec "systemctl poweroff"; mode "default"
+    bindsym b exec "umount /mnt/nfs/*"; exec "systemctl reboot"; mode "default"
     bindsym h exec "systemctl hibernate"; mode "default"
     bindsym s exec "systemctl suspend"; mode "default"
     bindsym l exec "i3lock"; mode "default"

@@ -179,7 +179,7 @@ mode "application" {
     bindsym t exec "telegram-desktop"
     bindsym g exec "gimp"
     bindsym q exec "quasselclient"
-    bindsym c exec "evolution"
+    bindsym c exec "thunderbird"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -199,6 +199,9 @@ mode "sysparm" {
     bindsym 2 exec "xbacklight -set 20"
     bindsym 5 exec "xbacklight -set 50"
     bindsym 9 exec "xbacklight -set 100"
+
+    bindsym u exec "setxkbmap us"
+    bindsym f exec "setxkbmap fi"
 
     bindsym Enter mode "default"
     bindsym Escape mode "default"

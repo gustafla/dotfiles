@@ -173,7 +173,7 @@ bindsym $mod+Shift+e mode "exit"
 
 mode "application" {
     bindsym v exec "virt-manager"
-    bindsym b exec "firefox"
+    bindsym b exec "firefox-nightly"
     bindsym f exec "thunar"
     bindsym l exec "lowriter"
     bindsym t exec "telegram-desktop"

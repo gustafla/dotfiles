@@ -180,6 +180,7 @@ mode "application" {
     bindsym g exec "gimp"
     bindsym q exec "quasselclient"
     bindsym c exec "thunderbird"
+    bindsym p exec "pavucontrol"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

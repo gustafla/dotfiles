@@ -159,9 +159,9 @@ bindsym $mod+r mode "resize"
 mode "exit" {
     bindsym p exec "umount /mnt/nfs/*"; exec "systemctl poweroff"; mode "default"
     bindsym b exec "umount /mnt/nfs/*"; exec "systemctl reboot"; mode "default"
-    bindsym h exec "systemctl hibernate"; mode "default"
-    bindsym s exec "systemctl suspend"; mode "default"
-    bindsym l exec "i3lock"; mode "default"
+    bindsym h exec "systemctl hibernate &"; mode "default"
+    bindsym s exec "systemctl suspend &"; mode "default"
+    bindsym l exec "i3lock &"; mode "default"
     bindsym r restart; mode "default"
     bindsym e exit; mode "default"
 
@@ -172,15 +172,15 @@ mode "exit" {
 bindsym $mod+Shift+e mode "exit"
 
 mode "application" {
-    bindsym v exec "virt-manager"
-    bindsym b exec "firefox-nightly"
-    bindsym f exec "thunar"
-    bindsym l exec "lowriter"
-    bindsym t exec "telegram-desktop"
-    bindsym g exec "gimp"
-    bindsym q exec "quasselclient"
-    bindsym c exec "thunderbird"
-    bindsym p exec "pavucontrol"
+    bindsym v exec "virt-manager &"
+    bindsym b exec "firefox-nightly &"
+    bindsym f exec "pcmanfm &"
+    bindsym l exec "lowriter &"
+    bindsym t exec "telegram-desktop &"
+    bindsym g exec "gimp &"
+    bindsym q exec "quasselclient &"
+    bindsym c exec "thunderbird &"
+    bindsym p exec "pavucontrol &"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -189,20 +189,20 @@ mode "application" {
 bindsym $mod+Shift+a mode "application"
 
 mode "sysparm" {
-    bindsym Down exec "xbacklight -dec 1"
-    bindsym Up exec "xbacklight -inc 1"
-    bindsym Right exec "pactl set-sink-volume 0 -- +2%"
-    bindsym Left exec "pactl set-sink-volume 0 -- -2%"
-    bindsym m exec "pactl set-sink-mute 0 toggle"
+    bindsym Down exec "xbacklight -dec 1 &"
+    bindsym Up exec "xbacklight -inc 1 &"
+    bindsym Right exec "pactl set-sink-volume 0 -- +2% &"
+    bindsym Left exec "pactl set-sink-volume 0 -- -2% &"
+    bindsym m exec "pactl set-sink-mute 0 toggle &"
 
-    bindsym 0 exec "xbacklight -set 0"
-    bindsym 1 exec "xbacklight -set 10"
-    bindsym 2 exec "xbacklight -set 20"
-    bindsym 5 exec "xbacklight -set 50"
-    bindsym 9 exec "xbacklight -set 100"
+    bindsym 0 exec "xbacklight -set 0 &"
+    bindsym 1 exec "xbacklight -set 10 &"
+    bindsym 2 exec "xbacklight -set 20 &"
+    bindsym 5 exec "xbacklight -set 50 &"
+    bindsym 9 exec "xbacklight -set 100 &"
 
-    bindsym u exec "setxkbmap us"
-    bindsym f exec "setxkbmap fi"
+    bindsym u exec "setxkbmap us &"
+    bindsym f exec "setxkbmap fi &"
 
     bindsym Enter mode "default"
     bindsym Escape mode "default"
@@ -215,18 +215,18 @@ bindsym $mod+Shift+s mode "sysparm"
 bar {
   status_command python ~/.config/i3/status.py
   colors {
-    separator #333333
-    background #2c001e
-    statusline #aea79f
-    focused_workspace #dd4814 #dd4814 #ffffff
-    active_workspace #902a07 #902a07 #aea79f
-    inactive_workspace #902a07 #902a07 #aea79f
-    urgent_workspace #77216f #77216f #ffffff
+    separator #AAAAAA
+    background #1f2326
+    statusline #FFFFFF
+    focused_workspace #9FCA56 #9FCA56 #151718
+    active_workspace #DCCD69 #DCCD69 #151718
+    inactive_workspace #1f2326 #1f2326 #AAAAAA
+    urgent_workspace #CE4045 #CE4045 #FFFFFF
   }
 }
 
-bindsym $mod+Print exec "maim -u --format=png | xclip -selection clipboard -t image/png -i"
-bindsym $mod+Shift+Print exec "maim -u --format=png -s | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Print exec "maim -u --format=png | xclip -selection clipboard -t image/png -i &"
+bindsym $mod+Shift+Print exec "maim -u --format=png -s | xclip -selection clipboard -t image/png -i &"
 
 new_window pixel 2
 
@@ -235,10 +235,7 @@ new_window pixel 2
 exec --no-startup-id nm-applet
 #exec --no-startup-id volumeicon
 
-# lol fix
-bindsym $mod+z exec ~/.dotfiles/extraconf.sh
-
-client.focused #dd4814 #dd4814 #ffffff #902a07
-client.focused_inactive #5e2750 #5e2750 #aea79f #5e2750
-client.unfocused #5e2750 #5e2750 #aea79f #5e2750
-client.urgent #77216f #77216f #ffffff #efb73e
+client.focused #4F99D3 #4F99D3 #151718 #9FCA56
+client.focused_inactive #9FCA56 #9FCA56 #151718 #A074C4
+client.unfocused #1f2326 #1f2326 #AAAAAA #A074C4
+client.urgent #CE4045 #CE4045 #FFFFFF #DCCD69

@@ -3,6 +3,11 @@ Xcursor.theme: pixelfun3
 xterm*reverseVideo: on
 xterm*selectToClipboard: on
 
+
+URxvt*reverseVideo: on
+URxvt*scrollBar: false
+URxvt*backgroundPixmap: Pictures/wallpaper/pixel2.png;style=tiled
+
 ! --- ~/.Xresources ------------------------------------------------------------
 ! ------------------------------------------------------------------------------
 ! --- generated with 4bit Terminal Color Scheme Designer -----------------------

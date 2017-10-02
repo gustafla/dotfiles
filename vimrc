@@ -173,3 +173,6 @@ inoremap ()     ()
 
 " Highlight GLSL files
 au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+
+" xterm
+:set t_RV=

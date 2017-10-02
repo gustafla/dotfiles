@@ -15,6 +15,6 @@ fi
 
 [[ -f ~/.screenlayout/default.sh ]] && ~/.screenlayout/default.sh
 
-~/.dotfiles/extraconf.sh
+#~/.dotfiles/extraconf.sh
 
 exec i3

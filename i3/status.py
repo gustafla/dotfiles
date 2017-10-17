@@ -35,12 +35,7 @@ status.register("mem",
 status.register("load")
 
 # Shows your CPU temperature, if you have a Intel CPU
-if cHostname == "mu":
-    status.register("temp",
-        format="{temp:.0f}°C",
-        file="/sys/class/thermal/thermal_zone3/temp",)
-
-if cHostname == "kappa":
+if cHostname == "nu":
     status.register("temp",
         format="{temp:.0f}°C",
         file="/sys/class/thermal/thermal_zone1/temp",)
@@ -56,7 +51,7 @@ if cHostname == "kappa":
 # goes below 5 percent while discharging. The block will also color RED.
 # If you don't have a desktop notification demon yet, take a look at dunst:
 #   http://www.knopwob.org/dunst/
-if cHostname == "kappa":
+if cHostname == "nu":
     status.register("battery",
         format="{status}/{consumption:.2f}W {percentage:.2f}% [{percentage_design:.2f}%] {remaining:%E%hh:%Mm}",
         alert=False,
@@ -92,15 +87,15 @@ if cHostname == "kappa":
 # (defaults of format_down and color_down)
 #
 # Note: the network module requires PyPI package netifaces
-if cHostname == "mu":
-    status.register("network",
-        interface="wired0",
-        format_up="{v4cidr}",
-        color_up=cGreen,
-        color_down="#D0A0A0")
+#if cHostname == "mu":
+#    status.register("network",
+#        interface="wired0",
+#        format_up="{v4cidr}",
+#        color_up=cGreen,
+#        color_down="#D0A0A0")
 
 # Note: requires both netifaces and basiciw (for essid and quality)
-if cHostname == "kappa":
+if cHostname == "nu":
     status.register("network",
         interface="wlp3s0",
         color_up=cGreen,

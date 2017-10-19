@@ -176,3 +176,6 @@ au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 
 " xterm
 :set t_RV=
+
+" latex
+:command Texcheck !pdflatex %; evince '%:r.pdf'

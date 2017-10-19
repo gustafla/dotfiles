@@ -233,7 +233,7 @@ new_window pixel 2
 # Autostart
 #exec --no-startup-id redshift-gtk
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
+#exec --no-startup-id blueman-applet
 #exec --no-startup-id volumeicon
 
 client.focused #4F99D3 #4F99D3 #151718 #9FCA56

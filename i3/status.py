@@ -97,7 +97,7 @@ if cHostname == "nu":
 # Note: requires both netifaces and basiciw (for essid and quality)
 if cHostname == "nu":
     status.register("network",
-        interface="wlp3s0",
+        interface="wlan0",
         color_up=cGreen,
         format_up="{essid} {quality:02.0f}% {v4cidr}",)
 

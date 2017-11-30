@@ -173,7 +173,7 @@ bindsym $mod+Shift+e mode "exit"
 
 mode "application" {
     bindsym v exec "virt-manager &"
-    bindsym b exec "waterfox &"
+    bindsym b exec "brave &"
     bindsym f exec "pcmanfm &"
     bindsym l exec "lowriter &"
     bindsym t exec "telegram-desktop &"
@@ -229,6 +229,8 @@ bindsym $mod+Print exec "maim -u --format=png | xclip -selection clipboard -t im
 bindsym $mod+Shift+Print exec "maim -u --format=png -s | xclip -selection clipboard -t image/png -i &"
 
 new_window pixel 2
+
+for_window [class="osbuddy"] floating enable
 
 # Autostart
 #exec --no-startup-id redshift-gtk

@@ -32,5 +32,6 @@ alias ls="ls --color"
 alias ll="ls --color -l"
 alias android-studio="LD_PRELOAD='/usr/lib/libstdc++.so.6 /usr/lib/libgcc_s.so.1 /usr/lib/libxcb.so.1 /usr/lib/libgpg-error.so' ~/android-studio/bin/studio.sh"
 alias rsync="rsync --info=progress2"
+alias osrs="/opt/runescape/runescape --prmfile=oldschool.prm"
 
 #source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -z "$XDG_VTNR" ]; then
+  exec /usr/bin/X $XSERVER_ARGS -nolisten tcp "$@"
+else
+  exec /usr/bin/X $XSERVER_ARGS -nolisten tcp "$@" vt$XDG_VTNR
+fi

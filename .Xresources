@@ -1,0 +1,46 @@
+Xcursor.theme: Adwaita
+Xcursor.size: 12
+
+URxvt.scrollBar: false
+URxvt.font: xft:Misc Lode
+URxvt*transparent: true
+URxvt*shading: 20
+URxvt.perl-ext-common: selection-to-clipboard 
+
+! special
+*.foreground:   #f6ecf7
+*.background:   #0c1532
+*.cursorColor:  #f6ecf7
+
+! black
+*.color0:       #0c1532
+*.color8:       #f6ecf7
+
+! red
+*.color1:       #ec8b7a
+*.color9:       #b85445
+
+! green
+*.color2:       #8196e9
+*.color10:      #3d62ae
+
+! yellow
+*.color3:       #649cc5
+*.color11:      #5480a4
+
+! blue
+*.color4:       #ebc4f9
+*.color12:      #a78ac2
+
+! magenta
+*.color5:       #bfa7f7
+*.color13:      #8172ba
+
+! cyan
+*.color6:       #9fa6f6
+*.color14:      #757ac2
+
+! white
+*.color7:       #ffffff
+*.color15:      #e5e5e5
+

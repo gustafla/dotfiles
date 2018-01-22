@@ -141,6 +141,8 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 mode "$mode_gaps" {
   bindsym o      mode "$mode_gaps_outer"
   bindsym i      mode "$mode_gaps_inner"
+  bindsym 0 exec "i3-msg gaps inner current set 0 && i3-msg gaps outer curren set 0 &"
+  bindsym Shift+0 exec "i3-msg gaps inner all set 0 && i3-msg gaps outer all set 0 &"
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }

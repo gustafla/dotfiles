@@ -3,7 +3,7 @@ set autowrite
 syntax on
 
 " Leader key
-:let mapleader = ","
+let mapleader = ","
 
 " 2 spaces
 set tabstop=2
@@ -17,13 +17,15 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" Make it obvious where 80 characters is
+" 80 characters is just fine
 set textwidth=80
-set colorcolumn=+1
 
 " Numbers
 set number
 set numberwidth=5
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -33,11 +35,11 @@ nnoremap <Down> :echoe "Use j"<CR>
 
 " Auto pairing
 inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
+inoremap {<CR>  {<CR><CR>}<Up><Tab>
 inoremap {{     {
 inoremap {}     {}
 inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
+inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
 
@@ -46,3 +48,10 @@ inoremap <Leader>soutl System.out.println();<Left><Left>
 inoremap <Leader>sout System.out.print();<Left><Left>
 inoremap <Leader>pint Integer.parseInt();<Left><Left>
 inoremap <Leader>pdou Double.parseDouble();<Left><Left>
+
+" CMake OoS build
+let $BUILD_NAME = fnamemodify(getcwd(), ':t')
+noremap <F5> :wa<CR>:!cd debug && cmake -DCMAKE_BUILD_TYPE=Debug .. && make -j $(( $(nproc) + 1 )) -l $(nproc) && ./${BUILD_NAME}<CR>
+
+" latex stuff
+noremap <Leader>lw :w<CR>:!pdflatex %<CR>

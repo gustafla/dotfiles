@@ -1,6 +1,5 @@
 " vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
-" deoplete
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -8,8 +7,13 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-let g:deoplete#enable_at_startup = 1
 call plug#end()
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+highlight Pmenu ctermbg=8
+highlight PmenuSel ctermbg=1
+highlight PmenuSbar ctermbg=0
 
 set noswapfile
 set autowrite

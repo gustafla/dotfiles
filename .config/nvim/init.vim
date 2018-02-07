@@ -1,3 +1,16 @@
+" vim-plug
+call plug#begin('~/.local/share/nvim/plugged')
+" deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+call plug#end()
+
 set noswapfile
 set autowrite
 syntax on
@@ -51,7 +64,7 @@ inoremap <Leader>pdou Double.parseDouble();<Left><Left>
 
 " CMake OoS build
 let $BUILD_NAME = fnamemodify(getcwd(), ':t')
-noremap <F5> :wa<CR>:!cd debug && cmake -DCMAKE_BUILD_TYPE=Debug .. && make -j $(( $(nproc) + 1 )) -l $(nproc) && ./${BUILD_NAME}<CR>
+noremap <F5> :wa<CR>:!cd debug && cmake -DCMAKE_BUILD_TYPE=Debug .. && make -j $(( $(nproc) + 1 )) -l $(nproc) && eval "./$BUILD_NAME"<CR>
 
 " latex stuff
 noremap <Leader>lw :w<CR>:!pdflatex %<CR>

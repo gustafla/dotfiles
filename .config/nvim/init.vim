@@ -7,6 +7,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+Plug 'Shougo/context_filetype.vim'
+Plug 'Shougo/echodoc.vim'
+Plug 'Rip-Rip/clang_complete'
 call plug#end()
 
 " deoplete
@@ -14,7 +17,14 @@ let g:deoplete#enable_at_startup = 1
 highlight Pmenu ctermbg=8
 highlight PmenuSel ctermbg=1
 highlight PmenuSbar ctermbg=0
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
+" echodoc
+set noshowmode
+
+" Misc
 set noswapfile
 set autowrite
 syntax on

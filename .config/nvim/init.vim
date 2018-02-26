@@ -10,6 +10,7 @@ endif
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/echodoc.vim'
 Plug 'Rip-Rip/clang_complete'
+Plug 'tikhomirov/vim-glsl'
 call plug#end()
 
 " deoplete

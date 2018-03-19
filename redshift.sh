@@ -1,6 +1,6 @@
 #!/bin/sh
 
-file=/tmp/redshift.${USER}.pid
+file=/tmp/redshift.${UID}.pid
 if [ -e $file ]; then
   kill `cat $file`
   rm $file

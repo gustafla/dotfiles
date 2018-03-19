@@ -10,4 +10,3 @@ fi
 
 # reset desktop background related stuff
 feh --bg-fill ~/.config/i3/bg
-killall -HUP urxvtd

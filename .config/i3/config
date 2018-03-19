@@ -87,10 +87,10 @@ bindsym $mod+Shift+b exec "urxvtc -e sudo reboot"
 
 # resize window (you can also use the mouse for that)
 # left & down shrink, up & right grow
-bindsym $mod+y resize shrink width 2 px or 2 ppt
-bindsym $mod+u resize shrink height 2 px or 2 ppt
-bindsym $mod+i resize grow height 2 px or 2 ppt
-bindsym $mod+o resize grow width 2 px or 2 ppt
+bindsym $mod+y resize shrink width 2 px or 1 ppt
+bindsym $mod+u resize shrink height 2 px or 1 ppt
+bindsym $mod+i resize grow height 2 px or 1 ppt
+bindsym $mod+o resize grow width 2 px or 1 ppt
 
 # screenshots
 bindsym $mod+p exec "maim -u --format=png -s | xclip -selection clipboard -t image/png &"

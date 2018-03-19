@@ -3,6 +3,9 @@
 # Set backlight
 xbacklight -set 12
 
+# Monitor detection
+~/.screenlayout/hotplug.sh
+
 # Read Xresources
 xrdb ~/.Xresources
 

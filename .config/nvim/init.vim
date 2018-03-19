@@ -49,8 +49,8 @@ set nojoinspaces
 set textwidth=80
 
 " Numbers
-set number
-set numberwidth=5
+"set number
+"set numberwidth=5
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>

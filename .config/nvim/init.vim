@@ -7,11 +7,25 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+"Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/echodoc.vim'
 Plug 'Rip-Rip/clang_complete'
 Plug 'tikhomirov/vim-glsl'
+Plug 'rust-lang/rust.vim'
 call plug#end()
+
+" rust
+let g:rustc_path = '/usr/bin/rustc'
+
+" syntastic
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " deoplete
 let g:deoplete#enable_at_startup = 1

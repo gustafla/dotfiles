@@ -47,9 +47,9 @@ syntax on
 " Leader key
 let mapleader = ","
 
-" 2 spaces
-set tabstop=2
-set shiftwidth=2
+" 4 spaces is most common
+set tabstop=4
+set shiftwidth=4
 set shiftround
 set expandtab
 

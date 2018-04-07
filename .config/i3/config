@@ -2,6 +2,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# start this manually, firefox doesn't always do it
+exec start-pulseaudio-x11
+
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font

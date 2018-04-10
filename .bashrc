@@ -16,7 +16,7 @@ PS1="\[\e[0;32m\]\w\[\e[0m\] \$ "
 set -o vi
 
 # Set path
-export PATH=$PATH:~/.local/bin:~/tmcbeans/bin
+export PATH=$PATH:~/.local/bin:~/tmcbeans/bin:~/.cargo/bin
 
 # Aliases
 alias vim="nvim"
@@ -25,7 +25,8 @@ alias vim="nvim"
 export XSERVER_ARGS="-ardelay 300 -arinterval 17"
 
 # Application vars
-export TERMINAL="urxvtc"
+#export TERMINAL="urxvtc"
+export TERMINAL="alacritty"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export PAGER="less"

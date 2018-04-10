@@ -84,9 +84,9 @@ bindsym $mod+n move workspace to output down
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # shut down the host
-bindsym $mod+Shift+p exec "urxvtc -e sudo shutdown -P now"
+bindsym $mod+Shift+p exec "alacritty -e sudo shutdown -P now"
 # reboot
-bindsym $mod+Shift+b exec "urxvtc -e sudo reboot"
+bindsym $mod+Shift+b exec "alacritty -e sudo reboot"
 
 # resize window (you can also use the mouse for that)
 # left & down shrink, up & right grow

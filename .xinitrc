@@ -10,7 +10,7 @@ xbacklight -set 12
 xrdb ~/.Xresources
 
 # Start urxvtd
-urxvtd --opendisplay --fork
+#urxvtd --opendisplay --fork
 
 # Start redshift
 ~/.dotfiles/redshift.sh

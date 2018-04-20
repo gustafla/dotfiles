@@ -17,8 +17,10 @@ xrdb ~/.Xresources
 # Start urxvtd
 #urxvtd --opendisplay --fork
 
-# Start redshift
-~/.dotfiles/redshift.sh
+# Start redshift if no egpu, amdgpu doesn't like redshift.
+if [ $EGPU -ne 1 ]; then
+    ~/.dotfiles/redshift.sh
+fi
 
 # Launch i3 with consolekit (for pulseaudio device permissions)
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session i3

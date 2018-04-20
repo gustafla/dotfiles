@@ -1,11 +1,16 @@
 #!/bin/sh
 
+# card0 is egpu if plugged
 read -r DP_STATUS</sys/class/drm/card0/card0-DP-1/status
 
-if [ "connected" = "$DP_STATUS" ]; then
-  /bin/sh $(dirname "$0")/dp.sh
+if [ $EGPU -eq 1 ]; then
+    /bin/sh $(dirname "$0")/egpu-hdmi.sh
 else
-  /bin/sh $(dirname "$0")/none.sh
+    if [ "connected" = "$DP_STATUS" ]; then
+        /bin/sh $(dirname "$0")/dp.sh
+    else
+        /bin/sh $(dirname "$0")/none.sh
+    fi
 fi
 
 # reset desktop background related stuff

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# set egpu output provider
+if [ $EGPU -eq 1 ]; then
+    xrandr --setprovideroutputsource 1 0
+fi
+
 # Set backlight
 xbacklight -set 12
 

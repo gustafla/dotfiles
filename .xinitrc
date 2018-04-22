@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # set egpu output provider
-if [ $EGPU -eq 1 ]; then
+if [ -e /dev/dri/by-path/pci-0000:04:00.0-card ]; then
     xrandr --setprovideroutputsource 1 0
 fi
 

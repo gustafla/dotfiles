@@ -4,7 +4,7 @@
 # anything or bad things will happen !
 
 # Set path
-export PATH=$PATH:~/.local/bin:~/tmcbeans/bin:~/.cargo/bin
+export PATH=$PATH:~/.local/bin:~/tmcbeans/bin:~/.cargo/bin:~/.npm/bin
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from

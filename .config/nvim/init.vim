@@ -13,6 +13,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'Rip-Rip/clang_complete'
 Plug 'tikhomirov/vim-glsl'
 Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " rust
@@ -35,6 +36,9 @@ highlight PmenuSbar ctermbg=0
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+
+" NERDTree
+noremap <C-n> :NERDTreeToggle<CR>
 
 " echodoc
 set noshowmode

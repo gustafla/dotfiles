@@ -21,8 +21,7 @@ PS1="\[\e[0;32m\]\w\[\e[0m\] \$ "
 set -o vi
 
 # Application vars
-#export TERMINAL="urxvtc"
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export PAGER="less"

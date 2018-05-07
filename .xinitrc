@@ -14,11 +14,11 @@ xbacklight -set 12
 # Read Xresources
 xrdb ~/.Xresources
 
-# Start urxvtd
-#urxvtd --opendisplay --fork
-
 # Launch redshift
 ~/.dotfiles/redshift.sh
 
-# Launch i3 with consolekit (for pulseaudio device permissions)
+# Launch dwm status updater script
+~/.dotfiles/status.sh &
+
+# Launch wm with consolekit (for pulseaudio device permissions)
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session dwm

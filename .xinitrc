@@ -14,9 +14,6 @@ xbacklight -set 12
 # Read Xresources
 xrdb ~/.Xresources
 
-# Launch redshift
-~/.dotfiles/redshift.sh
-
 # Launch dwm status updater script
 ~/.dotfiles/status.sh &
 

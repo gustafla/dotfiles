@@ -27,4 +27,4 @@ export EDITOR="nvim"
 export PAGER="less"
 
 # Aliases
-alias update="sudo emerge -uDU --keep-going --with-bdeps=y @world"
+alias update="sudo emerge --ask -uDU --keep-going --with-bdeps=y @world"

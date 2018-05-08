@@ -67,6 +67,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = redshiftcmd } },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | xclip -sel clip -t image/png") },
+	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
+	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

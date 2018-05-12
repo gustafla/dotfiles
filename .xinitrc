@@ -5,9 +5,6 @@ if [ -e /dev/dri/by-path/pci-0000:04:00.0-card ]; then
     xrandr --setprovideroutputsource 1 0
 fi
 
-# Set backlight
-#xbacklight -set 12
-
 # Monitor detection
 #~/.screenlayout/hotplug.sh
 

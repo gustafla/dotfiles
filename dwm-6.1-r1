@@ -1,7 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char *fonts[] = { "xos4 Terminus:pixelsize=10" };
+static const char *fonts[] = {
+	"xos4 Terminus:pixelsize=10"
+};
 static const char dmenufont[]       = "xos4 Terminus:pixelsize=14";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
@@ -22,10 +24,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class          instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",         NULL,       NULL,       0,            0,           -1 },
-	{ "MilkyTracker", NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",      NULL,       NULL,       0,            0,           -1 },
+	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+	{ "milkytracker", NULL,   NULL,       0,            1,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -69,7 +71,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
 	{ 0,                            VOLDOWN,   spawn,          SHCMD("pactl set-sink-volume 0 -5%") },
-	{ 0,                            VOLUP,     spawn,          SHCMD("pactl set-sink-volume 0 +5%") },
+        { 0,                            VOLUP,     spawn,          SHCMD("pactl set-sink-volume 0 +5%") },
 	{ 0,                            MUTE,      spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

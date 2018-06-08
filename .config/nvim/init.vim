@@ -17,6 +17,7 @@ Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " rust
+let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang-6.0.so.1'
 let g:rustc_path = '/usr/bin/rustc'
 
 " syntastic

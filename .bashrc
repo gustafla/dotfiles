@@ -3,6 +3,8 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
+complete -cf sudo
+
 # Set path
 export PATH=$PATH:~/.local/bin
 #:~/.cargo/bin:~/.npm/bin
@@ -28,5 +30,7 @@ export EDITOR="nvim"
 export PAGER="less"
 
 # Aliases
-alias update="sudo emerge --ask -uDU --keep-going --with-bdeps=y @world"
+#alias update="sudo emerge --ask -uDU --keep-going --with-bdeps=y @world"
+alias update="sudo apt -y update && sudo apt -y upgrade"
 alias shelli="ssh -p 443 luutifa.tunk.org"
+alias ls="ls --color=auto"

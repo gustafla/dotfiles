@@ -1,0 +1,68 @@
+# tlp
+app-laptop/tlp ~amd64
+sys-power/acpi_call ~amd64
+sys-power/linux-x86-power-tools ~amd64
+
+# suckless
+x11-terms/st ~amd64
+x11-wm/dwm ~amd64
+
+# neovim
+app-editors/neovim ~amd64
+dev-libs/msgpack ~amd64
+dev-python/msgpack ~amd64
+dev-python/neovim-python-client ~amd64
+
+# maim
+media-gfx/maim ~amd64
+x11-misc/slop ~amd64
+
+# firefox
+www-client/firefox ~amd64
+dev-lang/rust ~amd64
+dev-libs/nss ~amd64
+dev-util/cargo ~amd64
+virtual/rust ~amd64
+dev-libs/nspr ~amd64
+sys-devel/clang ~amd64
+sys-devel/clang-common ~amd64
+sys-libs/compiler-rt ~amd64
+sys-libs/compiler-rt-sanitizers ~amd64
+sys-devel/clang-runtime ~amd64
+sys-libs/libomp ~amd64
+
+# telegram-desktop-bin
+net-im/telegram-desktop-bin ~amd64
+
+# openarena
+games-fps/openarena ~amd64
+
+# milkytracker
+media-sound/milkytracker ~amd64
+
+# citra
+sys-devel/gcc ~amd64
+
+# Linux
+sys-kernel/gentoo-sources ~amd64
+
+# Newer 3D driver stack
+media-libs/mesa ~amd64
+media-libs/vulkan-loader ~amd64
+dev-util/glslang ~amd64
+dev-util/spirv-tools ~amd64
+dev-util/spirv-headers ~amd64
+sys-devel/llvm ~amd64
+x11-libs/libdrm ~amd64
+x11-drivers/xf86-video-amdgpu ~amd64
+x11-apps/radeontop ~amd64
+x11-drivers/xf86-video-ati ~amd64
+
+# Pulsemixer
+media-sound/pulsemixer *amd64
+
+# BB 
+app-misc/bb ~amd64
+
+# Emulators stuff
+*/*::abendbrot ~amd64

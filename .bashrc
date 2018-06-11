@@ -3,7 +3,6 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
-
 # Set path
 export PATH=$PATH:~/.local/bin
 #:~/.cargo/bin:~/.npm/bin
@@ -16,7 +15,12 @@ alias ls="ls --color=auto"
 # prompt
 PS1="\[\e[0;32m\]\w\[\e[0m\] \$ "
 
-# complete sudo
+# completion
+_yay() {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(yay -Pc)" -- $cur) )
+}
+complete -F _yay yay
 complete -cf sudo
 
 # vi mode

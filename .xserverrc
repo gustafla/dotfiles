@@ -2,11 +2,6 @@
 
 XSERVER_ARGS="-ardelay 300 -arinterval 17"
 
-# if this GPU exists, use my config file for it
-if [ -e /dev/dri/by-path/pci-0000:04:00.0-card ]; then
-    XSERVER_ARGS="$XSERVER_ARGS -config xorg-egpu.conf"
-fi
-
 XSERVER_ARGS="$XSERVER_ARGS -nolisten tcp $@"
 
 if [ ! -z "$XDG_VTNR" ]; then

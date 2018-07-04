@@ -65,7 +65,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.dotfiles/redshift.sh") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | tee ~/Pictures/Screeshots/`date +%s`.png | xclip -sel clip -t image/png") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
 	{ 0,                            VOLDOWN,   spawn,          SHCMD("pactl set-sink-volume 0 -5%") },

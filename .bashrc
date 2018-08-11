@@ -13,7 +13,8 @@ export PATH=$PATH:~/.local/bin
 alias ls="ls --color=auto"
 
 # prompt
-PS1="\[\e[0;32m\]\w\[\e[0m\] \$ "
+source /usr/share/git/git-prompt.sh
+PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 
 # completion
 _yay() {

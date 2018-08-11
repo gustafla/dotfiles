@@ -35,6 +35,7 @@ export PAGER="less"
 
 # Aliases
 #alias update="sudo emerge --ask -uDU --keep-going --with-bdeps=y @world"
+alias vim="nvim"
 alias shelli="ssh -p 443 luutifa.tunk.org"
 alias pacorphans="pacman -Qtdq"
 alias yay="yay --sudoloop --editmenu --nodiffmenu"

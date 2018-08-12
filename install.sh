@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories=". .config/nvim"
+directories=". .config .config/nvim"
 
 # make the script work from any working directory
 cd $(dirname $0)

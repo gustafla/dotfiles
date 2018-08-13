@@ -10,7 +10,13 @@ settings:
   colors.statusbar.url.success.https.fg:
     global: '#a0f0a0'
   content.javascript.enabled:
-    global: true
+    '*.bom.gov.au/*': true
+    '*.suomi.fi/*': true
+    '*.duckduckgo.com/*': true
+    '*.nordnet.fi/*': true
+    '*.nordea.fi/*': true
+    '*.youtube.com/*': true
+    global: false
   content.plugins:
     global: true
   fonts.completion.category:

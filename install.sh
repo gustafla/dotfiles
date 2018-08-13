@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories=". .config .config/nvim"
+directories=". .config .config/nvim .config/qutebrowser"
 
 # make the script work from any working directory
 cd $(dirname $0)

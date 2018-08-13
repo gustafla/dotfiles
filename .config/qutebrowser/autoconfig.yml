@@ -10,11 +10,13 @@ settings:
   colors.statusbar.url.success.https.fg:
     global: '#a0f0a0'
   content.javascript.enabled:
+    '*.4chan.org/*': true
     '*.bom.gov.au/*': true
-    '*.suomi.fi/*': true
     '*.duckduckgo.com/*': true
-    '*.nordnet.fi/*': true
+    '*.github.com/*': true
     '*.nordea.fi/*': true
+    '*.nordnet.fi/*': true
+    '*.suomi.fi/*': true
     '*.youtube.com/*': true
     global: false
   content.plugins:
@@ -45,6 +47,9 @@ settings:
     global: 10px monospace
   fonts.tabs:
     global: 10px monospace
+  url.open_base_url:
+    global: false
   url.searchengines:
     global:
       DEFAULT: https://duckduckgo.com/?q={}
+      y: https://youtube.com/results?search_query={}

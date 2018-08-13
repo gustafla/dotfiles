@@ -1,10 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
+#define FONT "xos4 Terminus:pixelsize=10"
+
 /* appearance */
-static const char *fonts[] = {
-	"xos4 Terminus:pixelsize=10"
-};
-static const char dmenufont[]       = "xos4 Terminus:pixelsize=14";
+static const char *fonts[] = {FONT};
+static const char dmenufont[]       = FONT;
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -53,7 +53,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+#define DMENU_ARGS "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor
+static const char *dmenucmd[] = { "dmenu_run", DMENU_ARGS, NULL };
+static const char *passmenucmd[] = { "passmenu", DMENU_ARGS, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 #define MUTE    0x1008ff12
@@ -63,6 +65,7 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = passmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.dotfiles/redshift.sh") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },

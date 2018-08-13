@@ -10,6 +10,7 @@ settings:
   colors.statusbar.url.success.https.fg:
     global: '#a0f0a0'
   content.javascript.enabled:
+    'https://luutifa.tunk.org:32443/*': true
     '*.4chan.org/*': true
     '*.bom.gov.au/*': true
     '*.duckduckgo.com/*': true

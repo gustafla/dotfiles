@@ -12,18 +12,24 @@ settings:
   content.javascript.enabled:
     '*.4chan.org/*': true
     '*.bom.gov.au/*': true
+    '*.docs.gl/*': true
     '*.duckduckgo.com/*': true
     '*.github.com/*': true
+    '*.google.com/maps/*': true
     '*.helsinki.fi/*': true
+    '*.kela.fi/*': true
     '*.moi.fi/*': true
     '*.nordea.fi/*': true
     '*.nordnet.fi/*': true
     '*.suomi.fi/*': true
     '*.youtube.com/*': true
     global: false
+    https://docs.google.com/*: true
     https://luutifa.tunk.org:32443/*: true
   content.plugins:
     global: true
+  content.ssl_strict:
+    https://luutifa.tunk.org:32443/*: false
   fonts.completion.category:
     global: bold 10px monospace
   fonts.completion.entry:
@@ -50,6 +56,10 @@ settings:
     global: 10px monospace
   fonts.tabs:
     global: 10px monospace
+  tabs.mode_on_change:
+    global: normal
+  tabs.position:
+    global: top
   url.open_base_url:
     global: false
   url.searchengines:

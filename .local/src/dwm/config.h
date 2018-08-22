@@ -67,7 +67,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = passmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_q,      spawn,          {.v = (const char*[]){ "qutebrowser", NULL } } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = (const char*[]){ "chromium", NULL } } },
 	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.dotfiles/redshift.sh") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },

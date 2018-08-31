@@ -56,7 +56,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 #define DMENU_ARGS "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor
 static const char *dmenucmd[] = { "dmenu_run", DMENU_ARGS, NULL };
 static const char *passmenucmd[] = { "passmenu", DMENU_ARGS, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 #define MUTE    0x1008ff12
 #define VOLDOWN 0x1008ff11

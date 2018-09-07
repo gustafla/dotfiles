@@ -21,10 +21,8 @@ inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
 
-" echodoc
-set noshowmode
-
 " Misc
+set noshowmode
 set noswapfile
 set autowrite
 syntax on

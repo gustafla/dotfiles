@@ -4,7 +4,7 @@
 # anything or bad things will happen !
 
 # Set path
-export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.local/bin:~/tmcbeans/bin
 #:~/.cargo/bin:~/.npm/bin
 
 # If not running interactively, don't do anything
@@ -28,7 +28,7 @@ complete -cf sudo
 set -o vi
 
 # Application vars
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export PAGER="less"

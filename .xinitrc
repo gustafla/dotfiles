@@ -7,4 +7,4 @@ xrdb ~/.Xresources
 ~/.dotfiles/status.sh &
 
 # Launch wm with consolekit (for pulseaudio device permissions)
-exec dwm
+exec i3

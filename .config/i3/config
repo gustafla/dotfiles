@@ -16,7 +16,7 @@ set $mod Mod1
 font pango:xos4 Terminus 10px
 
 # disable title bars and borders
-new_window pixel 0
+default_border none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -28,10 +28,10 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=11"
+bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=14"
 
 # start passmenu (a password manager)
-bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=11"
+bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=14"
 
 # start applications
 set $mode_launcher Launch: [b]rowser [t]elegram [n]etbeans [v]lc
@@ -129,9 +129,27 @@ bindsym $mod+Shift+p exec "systemctl poweroff"
 # reboot
 bindsym $mod+Control+Shift+p exec "systemctl reboot"
 
+# colors
+# class                 border  bground text    indicator child_border
+client.focused          #FFFFFF #FFFFFF #000000 #FFFFFF   #FFFFFF
+client.focused_inactive #000000 #000000 #FFFFFF #000000   #000000
+client.unfocused        #000000 #000000 #A4A4A4 #000000   #000000
+client.urgent           #FFFFFF #000000 #FFFFFF #FFFFFF   #A4A4A4
+client.placeholder      #000000 #000000 #FFFFFF #000000   #000000
+
+client.background       #FFFFFF
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         position top
         status_command i3status
+
+        colors {
+                focused_workspace  #FFFFFF #FFFFFF #000000
+                active_workspace   #000000 #000000 #FFFFFF
+                inactive_workspace #000000 #000000 #A4A4A4
+                urgent_workspace   #FFFFFF #000000 #FFFFFF
+                binding_mode       #FFFFFF #000000 #FFFFFF
+        }
 }

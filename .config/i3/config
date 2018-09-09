@@ -28,10 +28,22 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=10"
+bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=11"
 
 # start passmenu (a password manager)
-bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=10"
+bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=11"
+
+# start applications
+set $mode_launcher Launch: [b]rowser [t]elegram [n]etbeans [v]lc
+mode "$mode_launcher" {
+    bindsym b exec chromium
+    bindsym t exec telegram-desktop
+    bindsym n exec tmcbeans
+    bindsym v exec vlc
+
+    bindsym Escape mode "default"
+}
+bindsym $mod+a mode "$mode_launcher"
 
 # change focus
 bindsym $mod+h focus left
@@ -44,6 +56,12 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+
+# resize focused window
+bindsym $mod+Control+Shift+h resize shrink width 2 px or 2 ppt
+bindsym $mod+Control+Shift+j resize grow height 2 px or 2 ppt
+bindsym $mod+Control+Shift+k resize shrink height 2 px or 2 ppt
+bindsym $mod+Control+Shift+l resize grow width 2 px or 2 ppt
 
 # split in horizontal orientation
 bindsym $mod+g split h
@@ -110,12 +128,6 @@ bindsym $mod+Control+Shift+q exit
 bindsym $mod+Shift+p exec "systemctl poweroff"
 # reboot
 bindsym $mod+Control+Shift+p exec "systemctl reboot"
-
-# resize
-bindsym $mod+Control+Shift+h resize shrink width 2 px or 2 ppt
-bindsym $mod+Control+Shift+j resize grow height 2 px or 2 ppt
-bindsym $mod+Control+Shift+k resize shrink height 2 px or 2 ppt
-bindsym $mod+Control+Shift+l resize grow width 2 px or 2 ppt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

@@ -34,7 +34,7 @@ bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=14"
 bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=14"
 
 # start applications
-set $mode_launcher Launch: [b]rowser [t]elegram [n]etbeans [v]lc
+set $mode_launcher [b]rowser [t]elegram [n]etbeans [v]lc
 mode "$mode_launcher" {
     bindsym b exec chromium
     bindsym t exec telegram-desktop
@@ -153,3 +153,6 @@ bar {
                 binding_mode       #FFFFFF #000000 #FFFFFF
         }
 }
+
+# lock after launch
+exec i3lock

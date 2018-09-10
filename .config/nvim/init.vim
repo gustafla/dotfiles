@@ -67,3 +67,8 @@ inoremap (      ()<Left>
 inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
+
+" Latex build
+autocmd BufNewFile,BufRead *.tex noremap <F5> :wa<CR>:!pdflatex % && xdg-open %:t:r.pdf<CR>
+" Make build
+autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile noremap <F5> :wa<CR>:!make debug<CR>

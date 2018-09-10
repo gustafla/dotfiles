@@ -125,9 +125,9 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+Shift+q exit
 # power off
-bindsym $mod+Shift+p exec "systemctl poweroff"
+bindsym $mod+Control+Shift+p exec "systemctl poweroff"
 # reboot
-bindsym $mod+Control+Shift+p exec "systemctl reboot"
+bindsym $mod+Control+Shift+b exec "systemctl reboot"
 
 # brightness and volume
 bindsym $mod+Down exec "xbacklight -dec 1"

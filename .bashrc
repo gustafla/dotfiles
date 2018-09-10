@@ -17,11 +17,11 @@ source /usr/share/git/git-prompt.sh
 PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 
 # completion
-_yay() {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$(yay -Pc)" -- $cur) )
-}
-complete -F _yay yay
+#_yay() {
+#    local cur=${COMP_WORDS[COMP_CWORD]}
+#    COMPREPLY=( $(compgen -W "$(yay -Pc)" -- $cur) )
+#}
+#complete -F _yay yay
 complete -cf sudo
 
 # vi mode

@@ -34,12 +34,13 @@ bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=14"
 bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=14"
 
 # start applications
-set $mode_launcher [b]rowser [t]elegram [n]etbeans [v]lc
+set $mode_launcher [b]rowser [t]elegram [n]etbeans [v]lc [a]randr
 mode "$mode_launcher" {
     bindsym b exec chromium
     bindsym t exec telegram-desktop
     bindsym n exec tmcbeans
     bindsym v exec vlc
+    bindsym a exec arandr
 
     bindsym Escape mode "default"
 }

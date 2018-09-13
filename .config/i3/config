@@ -33,6 +33,9 @@ bindsym $mod+d exec dmenu_run -fn "xos4 Terminus:pixelsize=14"
 # start passmenu (a password manager)
 bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=14"
 
+# take a screenshot
+bindsym $mod+p exec "maim -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png"
+
 # start applications
 set $mode_launcher [b]rowser [t]elegram [n]etbeans [v]lc [a]randr
 mode "$mode_launcher" {

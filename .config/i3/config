@@ -63,8 +63,8 @@ bindsym $mod+Shift+l move right
 
 # resize focused window
 bindsym $mod+Control+Shift+h resize shrink width 1 px or 1 ppt
-bindsym $mod+Control+Shift+j resize grow height 1 px or 1 ppt
-bindsym $mod+Control+Shift+k resize shrink height 1 px or 1 ppt
+bindsym $mod+Control+Shift+j resize shrink height 1 px or 1 ppt
+bindsym $mod+Control+Shift+k resize grow height 1 px or 1 ppt
 bindsym $mod+Control+Shift+l resize grow width 1 px or 1 ppt
 
 # split in horizontal orientation

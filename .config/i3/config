@@ -172,5 +172,6 @@ bar {
         }
 }
 
-# lock after launch
+# startup
+exec --no-startup-id redshift-gtk
 exec i3lock

@@ -14,5 +14,5 @@ x-scheme-handler/about=chromium.desktop
 x-scheme-handler/unknown=chromium.desktop
 x-scheme-handler/webcal=chromium.desktop
 x-scheme-handler/mailto=chromium.desktop
-application/pdf=chromium.desktop
-application/x-pdf=chromium.desktop
+application/pdf=mupdf.desktop
+application/x-pdf=mupdf.desktop

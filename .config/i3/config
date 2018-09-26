@@ -50,10 +50,10 @@ mode "$mode_launcher" {
 bindsym $mod+a mode "$mode_launcher"
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+h exec "~/.config/i3/move-cursor-window-center focus left"
+bindsym $mod+j exec "~/.config/i3/move-cursor-window-center focus down"
+bindsym $mod+k exec "~/.config/i3/move-cursor-window-center focus up"
+bindsym $mod+l exec "~/.config/i3/move-cursor-window-center focus right"
 
 # resize focused window
 bindsym $mod+Shift+h resize shrink width 1 px or 1 ppt

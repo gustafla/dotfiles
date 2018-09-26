@@ -4,8 +4,7 @@
 # anything or bad things will happen !
 
 # Set path
-export PATH=$PATH:~/.local/bin:~/tmcbeans/bin
-#:~/.cargo/bin:~/.npm/bin
+export PATH=$PATH:~/.local/bin:~/.cargo/bin
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -17,12 +16,8 @@ source /usr/share/git/git-prompt.sh
 PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 
 # completion
-#_yay() {
-#    local cur=${COMP_WORDS[COMP_CWORD]}
-#    COMPREPLY=( $(compgen -W "$(yay -Pc)" -- $cur) )
-#}
-#complete -F _yay yay
 complete -cf sudo
+source /home/luutifa/.tmc-autocomplete.sh || true
 
 # vi mode
 set -o vi
@@ -38,4 +33,3 @@ export PAGER="less"
 alias vim="nvim"
 alias shelli="ssh -p 443 luutifa.tunk.org"
 alias pacorphans="pacman -Qtdq"
-alias yay="yay --sudoloop --editmenu --nodiffmenu"

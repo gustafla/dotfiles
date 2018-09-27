@@ -39,7 +39,7 @@ bindsym $mod+p exec "maim -u -s -f png | tee ~/Pictures/Screenshots/$(date +%s).
 # start applications
 set $mode_launcher [b]rowser [t]elegram [n]etbeans [v]lc [a]randr
 mode "$mode_launcher" {
-    bindsym b exec chromium
+    bindsym b exec firefox
     bindsym t exec telegram-desktop
     bindsym n exec tmcbeans
     bindsym v exec vlc

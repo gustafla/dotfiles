@@ -37,11 +37,10 @@ bindsym $mod+s exec passmenu -fn "xos4 Terminus:pixelsize=14"
 bindsym $mod+p exec "maim -u -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png"
 
 # start applications
-set $mode_launcher [b]rowser [t]elegram [v]lc [a]randr
+set $mode_launcher [b]rowser [t]elegram [a]randr
 mode "$mode_launcher" {
     bindsym b exec firefox
     bindsym t exec telegram-desktop
-    bindsym v exec vlc
     bindsym a exec arandr
 
     bindsym Escape mode "default"

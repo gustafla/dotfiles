@@ -168,4 +168,3 @@ bar {
 # startup
 exec --no-startup-id redshift-gtk
 exec --no-startup-id unclutter -idle 2 -grab
-exec i3lock

@@ -69,8 +69,14 @@ inoremap ((     (
 inoremap ()     ()
 
 " Latex build
-autocmd BufNewFile,BufRead *.tex noremap <F5> :wa<CR>:!pdflatex % && pkill -HUP mupdf \|\| true<CR>
-autocmd BufNewFile,BufRead *.tex noremap <F6> :!mupdf %:t:r.pdf &<CR>
+autocmd BufNewFile,BufRead *.tex command Build :wa|:!pdflatex % && pkill -HUP mupdf || true
+autocmd BufNewFile,BufRead *.tex command Run :!mupdf %:t:r.pdf &
 " Make build
-autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile noremap <F5> :wa<CR>:!make debug<CR>
-autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile noremap <F6> :!make run<CR>
+autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile command Build :wa|:!make debug
+autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile command Run :!make run
+" Cargo build
+autocmd BufNewFile,BufRead *.rs command Build :wa|:!cargo build
+autocmd BufNewFile,BufRead *.rs command Run :!cargo run
+
+command B :Build
+command R :Run

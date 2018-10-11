@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories=". .config .config/nvim .config/alacritty .config/i3 .config/i3status .config/trizen .config/mpv"
+directories=". .local/share/applications .config .config/nvim .config/alacritty .config/i3 .config/i3status .config/trizen .config/mpv"
 
 # make the script work from any working directory
 cd $(dirname $0)

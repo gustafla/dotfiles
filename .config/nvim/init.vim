@@ -2,12 +2,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tikhomirov/vim-glsl'
-Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree'
 call plug#end()
-
-" rust
-let g:rustc_path = '/usr/bin/rustc'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1

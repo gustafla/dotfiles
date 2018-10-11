@@ -30,7 +30,7 @@ bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -fn $dmenufont
-bindsym $mod+Shift+d exec xdg-open $(find ~ -type f -not -path '*/\.*' | dmenu -fn $dmenufont) &
+bindsym $mod+Shift+d exec xdg-open "$(find ~ -type f -not -path '*/\.*' | dmenu -fn $dmenufont)" &
 
 # start passmenu (a password manager)
 bindsym $mod+s exec passmenu -fn $dmenufont

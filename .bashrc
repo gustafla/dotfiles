@@ -9,6 +9,10 @@ export PATH=$PATH:~/.local/bin:~/.cargo/bin
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Configure pinentry to use the correct TTY
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
 alias ls="ls --color=auto"
 
 # prompt

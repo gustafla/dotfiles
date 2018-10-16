@@ -3,15 +3,8 @@
 # that can't tolerate any output.  So make sure this doesn't display
 # anything or bad things will happen !
 
-# Set path
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
-# Configure pinentry to use the correct TTY
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null
 
 alias ls="ls --color=auto"
 
@@ -25,12 +18,6 @@ source /home/luutifa/.tmc-autocomplete.sh || true
 
 # vi mode
 set -o vi
-
-# Application vars
-export TERMINAL="alacritty"
-export VISUAL="nvim"
-export EDITOR="nvim"
-export PAGER="less"
 
 # Aliases
 #alias update="sudo emerge --ask -uDU --keep-going --with-bdeps=y @world"

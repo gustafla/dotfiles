@@ -1,3 +1,2 @@
 redshift-gtk &
 xbanish &
-compton --inactive-dim 0.2 --no-fading-openclose -CGb

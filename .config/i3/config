@@ -17,7 +17,7 @@ font pango:xos4 Terminus 10px
 set $dmenufont "xos4 Terminus:pixelsize=14"
 
 # disable title bars and borders
-default_border pixel 0
+default_border pixel 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

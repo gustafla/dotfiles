@@ -17,7 +17,7 @@ font pango:xos4 Terminus 10px
 set $dmenufont "xos4 Terminus:pixelsize=14"
 
 # disable title bars and borders
-default_border none
+default_border pixel 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -40,10 +40,10 @@ bindsym $mod+Shift+s exec passmenu --type -fn $dmenufont
 bindsym $mod+p exec "maim -u -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png"
 
 # change focus
-bindsym $mod+h exec "~/.config/i3/move-cursor-window-center focus left"
-bindsym $mod+j exec "~/.config/i3/move-cursor-window-center focus down"
-bindsym $mod+k exec "~/.config/i3/move-cursor-window-center focus up"
-bindsym $mod+l exec "~/.config/i3/move-cursor-window-center focus right"
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # resize focused window
 bindsym $mod+Shift+h resize shrink width 1 px or 1 ppt
@@ -78,18 +78,18 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # switch to workspace
-bindsym $mod+1 exec "~/.config/i3/move-cursor-window-center workspace 1"
-bindsym $mod+2 exec "~/.config/i3/move-cursor-window-center workspace 2"
-bindsym $mod+3 exec "~/.config/i3/move-cursor-window-center workspace 3"
-bindsym $mod+4 exec "~/.config/i3/move-cursor-window-center workspace 4"
-bindsym $mod+5 exec "~/.config/i3/move-cursor-window-center workspace 5"
-bindsym $mod+6 exec "~/.config/i3/move-cursor-window-center workspace 6"
-bindsym $mod+7 exec "~/.config/i3/move-cursor-window-center workspace 7"
-bindsym $mod+8 exec "~/.config/i3/move-cursor-window-center workspace 8"
-bindsym $mod+9 exec "~/.config/i3/move-cursor-window-center workspace 9"
-bindsym $mod+0 exec "~/.config/i3/move-cursor-window-center workspace 10"
-bindsym $mod+comma exec "~/.config/i3/move-cursor-window-center workspace prev"
-bindsym $mod+period exec "~/.config/i3/move-cursor-window-center workspace next"
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+comma workspace prev
+bindsym $mod+period workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -155,7 +155,3 @@ bar {
                 binding_mode       #FFFFFF #000000 #FFFFFF
         }
 }
-
-# startup
-#exec --no-startup-id redshift-gtk
-#exec --no-startup-id unclutter -idle 2 -grab

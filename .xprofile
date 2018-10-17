@@ -1,2 +1,3 @@
 redshift-gtk &
-unclutter -idle 2 -grab &
+xbanish &
+compton --inactive-dim 0.2 --no-fading-openclose -CGb

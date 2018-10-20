@@ -159,4 +159,5 @@ bar {
 for_window [class="feh"] floating enable
 for_window [class="x64"] floating enable
 for_window [class="dosbox"] floating enable
+for_window [class="milkytracker"] floating enable
 floating_maximum_size 1680 x 1050

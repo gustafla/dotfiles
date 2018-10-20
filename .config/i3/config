@@ -155,3 +155,6 @@ bar {
                 binding_mode       #FFFFFF #000000 #FFFFFF
         }
 }
+
+for_window [class="feh"] floating enable
+floating_maximum_size 1680 x 1050

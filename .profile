@@ -11,6 +11,9 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 export PAGER="less"
 
+# Qt5 style
+export QT_QPA_PLATFORMTHEME="gtk3"
+
 # wlc/wlroots keyboard configuration
 export XKB_DEFAULT_LAYOUT="us,fi"
 export XKB_DEFAULT_OPTIONS="caps:escape,grp:shifts_toggle"

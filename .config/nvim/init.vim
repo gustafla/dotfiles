@@ -54,6 +54,9 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
+" Disable command window which I often open accidentally
+nnoremap q: <Nop>
+
 " Auto pairing
 inoremap {      {}<Left>
 inoremap {<CR>  {<CR><CR>}<Up><Tab>

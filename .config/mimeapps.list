@@ -16,8 +16,8 @@ x-scheme-handler/webcal=chromium.desktop
 x-scheme-handler/mailto=chromium.desktop
 application/pdf=zathura.desktop
 application/x-pdf=zathura.desktop
-image/png
-image/jpeg
+image/jpeg=feh.desktop
+image/png=feh.desktop
 text/english=editor.desktop
 text/plain=editor.desktop
 text/x-makefile=editor.desktop
@@ -36,3 +36,4 @@ text/x-c=editor.desktop
 text/x-c++=editor.desktop
 text/x-rs=editor.desktop
 text/x-rust=editor.desktop
+application/java-archive=jar.desktop

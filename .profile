@@ -14,6 +14,9 @@ export PAGER="less"
 # Qt5 style
 export QT_QPA_PLATFORMTHEME="gtk3"
 
+# Java font AA
+export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
 # wlc/wlroots keyboard configuration
 export XKB_DEFAULT_LAYOUT="us,fi"
 export XKB_DEFAULT_OPTIONS="caps:escape,grp:shifts_toggle"

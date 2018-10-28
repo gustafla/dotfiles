@@ -14,7 +14,6 @@ PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 
 # completion
 complete -cf sudo
-source /home/luutifa/.tmc-autocomplete.sh || true
 
 # vi mode
 set -o vi
@@ -24,3 +23,4 @@ set -o vi
 alias vim="nvim"
 alias shelli="ssh -p 443 luutifa.tunk.org"
 alias pacorphans="pacman -Qtd"
+alias tmc="java -cp ~/.local/share/tmc-cli fi.helsinki.cs.tmc.cli.Application"

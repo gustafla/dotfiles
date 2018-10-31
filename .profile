@@ -1,5 +1,5 @@
 # Set path
-export PATH=$PATH:~/.local/bin:~/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
 
 # Configure pinentry to use the correct TTY
 export GPG_TTY=$(tty)

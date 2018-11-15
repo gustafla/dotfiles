@@ -20,7 +20,6 @@ set -o vi
 
 # Aliases
 #alias update="sudo emerge --ask -uDU --keep-going --with-bdeps=y @world"
-alias vim="nvim"
 alias shelli="ssh -p 443 luutifa.tunk.org"
 alias pacorphans="pacman -Qtd"
 alias tmc="java -cp ~/.local/share/tmc-cli fi.helsinki.cs.tmc.cli.Application"

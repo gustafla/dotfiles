@@ -1,18 +1,9 @@
 " vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
+Plug 'ajh17/VimCompletesMe'
 call plug#end()
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-highlight Pmenu ctermbg=8
-highlight PmenuSel ctermbg=1
-highlight PmenuSbar ctermbg=0
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>

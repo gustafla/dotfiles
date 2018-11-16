@@ -36,3 +36,7 @@ esac
 export PS1='\[\e[0;32m\]\w\[\e[0m\] \$ '
 set -o vi
 alias tmc="java -cp ~/.local/share/tmc-cli fi.helsinki.cs.tmc.cli.Application"
+
+if [[ "`tty`" = "/dev/tty1" ]]; then
+    exec startx
+fi

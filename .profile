@@ -27,6 +27,12 @@ export XKB_DEFAULT_OPTIONS="caps:escape,grp:shifts_toggle"
 #export CLUTTER_BACKEND=wayland
 #export SDL_VIDEODRIVER=wayland
 
-export PS1="\[\e[0;32m\]\w\[\e[0m\] \$ "
+# stop if uninteractive
+case $- in
+    *i*) ;;
+    *) return ;;
+esac
+
+export PS1='\[\e[0;32m\]\w\[\e[0m\] \$ '
 set -o vi
 alias tmc="java -cp ~/.local/share/tmc-cli fi.helsinki.cs.tmc.cli.Application"

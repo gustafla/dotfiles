@@ -1,10 +1,15 @@
 #!/bin/sh
 
 while [ 1 ]; do
+    nbat=`find /sys/class/power_supply -maxdepth 1 -name "BAT*" | wc -l`
+    let bat=0
+    for d in /sys/class/power_supply/BAT*; do
+        let bat=$bat+`cat $d/capacity`
+    done
+    let bat=$bat/$nbat
+
     STR=""
-    BAT="`cat /sys/class/power_supply/BAT0/power_now`"
-    STR="$STR | `echo "scale=1;$BAT/1000000"|bc`W"
-    STR="$STR | `cat /sys/class/power_supply/BAT0/capacity`%"
+    STR="$STR | $bat%"
     STR="$STR | `date`"
     xsetroot -name "$STR"
     sleep 10

@@ -1,12 +1,12 @@
 # Set path
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # Configure pinentry to use the correct TTY
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye > /dev/null
+#export GPG_TTY=`tty`
+#gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Application vars
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export PAGER="less"

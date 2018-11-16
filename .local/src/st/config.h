@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "xos4 Terminus:pixelsize=10";
+static char *font = "Terminus:pixelsize=10";
 static int borderpx = 0;
 
 /*
@@ -175,7 +175,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	//{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 };
 
 /*

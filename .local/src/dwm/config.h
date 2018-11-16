@@ -1,20 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
-#define FONT "xos4 Terminus:pixelsize=10"
+#define FONT "Terminus:pixelsize=10"
 
 /* appearance */
-static const char *fonts[] = {FONT};
-static const char dmenufont[]       = FONT;
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const char *fonts[]          = { FONT };
+static const char dmenufont[]       = FONT;
+static const char col_gray1[]       = "#222222";
+static const char col_gray2[]       = "#444444";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -25,7 +29,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "milkytracker", NULL,   NULL,       0,            1,           -1 }
+	{ "milkytracker", NULL,   NULL,       0,            1,           -1 },
+	{ "mpv",      NULL,       NULL,       0,            1,           -1 },
+	{ "feh",      NULL,       NULL,       0,            1,           -1 }
 };
 
 /* layout(s) */
@@ -53,10 +59,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-#define DMENU_ARGS "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor
+#define DMENU_ARGS "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4
 static const char *dmenucmd[] = { "dmenu_run", DMENU_ARGS, NULL };
 static const char *passmenucmd[] = { "passmenu", DMENU_ARGS, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #define MUTE    0x1008ff12
 #define VOLDOWN 0x1008ff11
@@ -67,9 +73,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_s,      spawn,          {.v = passmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_q,      spawn,          {.v = (const char*[]){ "chromium", NULL } } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = (const char*[]){ "telegram-desktop", NULL } } },
-	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.dotfiles/redshift.sh") },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
@@ -77,11 +80,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Up,     spawn,          SHCMD("xbacklight -inc 5") },
 	{ MODKEY|ShiftMask|ControlMask, XK_Down,   spawn,          SHCMD("xbacklight -set 0") },
 	{ MODKEY|ShiftMask|ControlMask, XK_Up,     spawn,          SHCMD("xbacklight -set 100") },
-	{ 0,                            VOLDOWN,   spawn,          SHCMD("pactl set-sink-volume 0 -5%") },
-	{ 0,                            VOLUP,     spawn,          SHCMD("pactl set-sink-volume 0 +5%") },
-	{ 0,                            MUTE,      spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
-	{ MODKEY|ShiftMask|ControlMask, XK_b,      spawn,          SHCMD("systemctl reboot")},
-	{ MODKEY|ShiftMask|ControlMask, XK_p,      spawn,          SHCMD("systemctl poweroff")},
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -116,7 +114,7 @@ static Key keys[] = {
 };
 
 /* button definitions */
-/* click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },

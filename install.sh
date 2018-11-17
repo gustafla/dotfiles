@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories=". .vice .local/share/applications .config .config/nvim .config/mpv"
+directories=". .vice .local/share/applications .config .config/gtk-3.0 .config/nvim .config/mpv"
 
 # make the script work from any working directory
 cd $(dirname $0)

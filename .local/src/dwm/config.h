@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define FONT "Terminus:pixelsize=10"
+#define FONT "xos4 Terminus:pixelsize=10"
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */

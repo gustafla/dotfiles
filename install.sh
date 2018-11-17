@@ -7,7 +7,7 @@ cd $(dirname $0)
 
 # create necessary directories
 for d in $directories; do
-    mkdir -p ~/$d
+    mkdir -p $HOME/$d
 done
 
 # find relevant config files

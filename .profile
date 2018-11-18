@@ -6,7 +6,6 @@ export GPG_TTY=`tty`
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Application vars
-export TERMINAL=st
 export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=less

@@ -31,7 +31,9 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "milkytracker", NULL,   NULL,       0,            1,           -1 },
 	{ "mpv",      NULL,       NULL,       0,            1,           -1 },
-	{ "feh",      NULL,       NULL,       0,            1,           -1 }
+	{ "feh",      NULL,       NULL,       0,            1,           -1 },
+	{ "x64",      NULL,       NULL,       0,            1,           -1 },
+	{ "dosbox",   NULL,       NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
@@ -61,7 +63,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 #define DMENU_ARGS "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4
 static const char *dmenucmd[] = { "dmenu_run", DMENU_ARGS, NULL };
-static const char *passmenucmd[] = { "passmenu", DMENU_ARGS, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 #define MUTE    0x1008ff12
@@ -71,9 +72,9 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = passmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("zathura \"$(find ~ -type f -name '*.pdf' | dmenu -fn " FONT ")\" &") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -u -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("xbacklight -dec 5") },

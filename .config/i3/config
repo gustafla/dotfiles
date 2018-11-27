@@ -37,7 +37,7 @@ bindsym $mod+s exec passmenu -fn $dmenufont
 bindsym $mod+Shift+s exec passmenu --type -fn $dmenufont
 
 # take a screenshot
-bindsym $mod+p exec "maim -u -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png"
+bindsym $mod+p exec "maim -u -s -f png | tee ~/pictures/screenshots/$(date +%s).png | xclip -sel clip -t image/png"
 
 # change focus
 bindsym $mod+h focus left
@@ -113,10 +113,6 @@ bindsym $mod+Control+Shift+period move workspace to output right
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+Shift+q exit
-# power off
-bindsym $mod+Control+Shift+p exec "systemctl poweroff"
-# reboot
-bindsym $mod+Control+Shift+b exec "systemctl reboot"
 
 # brightness and volume
 bindsym $mod+Down exec "xbacklight -dec 1"

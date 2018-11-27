@@ -74,7 +74,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("zathura \"$(find ~ -type f -name '*.pdf' | dmenu -fn " FONT ")\" &") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -u -s -f png | tee ~/Pictures/Screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("maim -u -s -f png | tee ~/pictures/screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
 	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("xbacklight -dec 5") },

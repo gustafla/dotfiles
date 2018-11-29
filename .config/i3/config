@@ -34,7 +34,6 @@ bindsym $mod+Shift+d exec xdg-open "$(find ~ -type f -not -path '*/\.*' | dmenu 
 
 # start passmenu (a password manager)
 bindsym $mod+s exec passmenu -fn $dmenufont
-bindsym $mod+Shift+s exec passmenu --type -fn $dmenufont
 
 # take a screenshot
 bindsym $mod+p exec "maim -u -s -f png | tee ~/pictures/screenshots/$(date +%s).png | xclip -sel clip -t image/png"

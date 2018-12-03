@@ -69,7 +69,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("zathura \"$(find ~ -type f -name '*.pdf' | dmenu -fn 'xos4 Terminus:pixelsize=10')\" &") },
-	{ MODKEY|ShiftMask|ControlMask, XK_p,      spawn,          SHCMD("passmenu") },
+	{ MODKEY|ShiftMask|ControlMask, XK_p,      spawn,          SHCMD("passmenu -fn 'xos4 Terminus:pixelsize=10'") },
 	{ MODKEY,                       XK_o,      spawn,          SHCMD("maim -u -s -f png | tee ~/pictures/screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },

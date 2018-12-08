@@ -1,6 +1,7 @@
 [Desktop Entry]
+Type=Application
 Name=Edit in terminal
-Exec=i3-sensible-terminal -e i3-sensible-editor %F
+Exec=st -e nvim %F
 Keywords=Text;editor;
 Categories=Utility;TextEditor;
 StartupNotify=false

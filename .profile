@@ -9,8 +9,8 @@ export PAGER=less
 # Qt5 style
 export QT_QPA_PLATFORMTHEME=gtk3
 
-# Java font AA
-export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+# Refer bibliography db
+export REFER=$HOME/.refer-database
 
 # wlc/wlroots keyboard configuration
 export XKB_DEFAULT_LAYOUT='us,fi'

@@ -6,9 +6,6 @@ export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=less
 
-# Qt5 style
-export QT_QPA_PLATFORMTHEME=gtk3
-
 # Refer bibliography db
 export REFER=$HOME/.refer-database
 

@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
 Plug 'ajh17/VimCompletesMe'
+Plug 'vim-scripts/a.vim'
 call plug#end()
 
 " NERDTree
@@ -38,6 +39,9 @@ set textwidth=80
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
+
+" Shortcut for a.vim
+nnoremap <leader>a :A<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>

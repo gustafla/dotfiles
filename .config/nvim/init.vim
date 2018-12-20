@@ -68,7 +68,7 @@ autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile command Run :!make run
 autocmd BufNewFile,BufRead *.rs command Build :wa|:!cargo build
 autocmd BufNewFile,BufRead *.rs command Run :!cargo run
 " Groff ms build
-autocmd BufNewFile,BufRead *.ms command Build :wa|:!groff -ms -R -T pdf % > %:t:r.pdf
+autocmd BufNewFile,BufRead *.ms command Build :wa|:!groff -m latin9 -m ms -R -T pdf % > %:t:r.pdf
 autocmd BufNewFile,BufRead *.ms command Run :!xdg-open %:t:r.pdf &
 
 command B :Build

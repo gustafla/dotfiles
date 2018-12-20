@@ -58,18 +58,5 @@ inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
 
-" Latex build
-autocmd BufNewFile,BufRead *.tex command Build :wa|:!pdflatex %
-autocmd BufNewFile,BufRead *.tex command Run :!xdg-open %:t:r.pdf &
-" Make build
-autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile command Build :wa|:!make debug
-autocmd BufNewFile,BufRead *.c,*.cpp,*.h,Makefile command Run :!make run
-" Cargo build
-autocmd BufNewFile,BufRead *.rs command Build :wa|:!cargo build
-autocmd BufNewFile,BufRead *.rs command Run :!cargo run
-" Groff ms build
-autocmd BufNewFile,BufRead *.ms command Build :wa|:!groff -m latin9 -m ms -R -T pdf % > %:t:r.pdf
-autocmd BufNewFile,BufRead *.ms command Run :!xdg-open %:t:r.pdf &
-
 command B :Build
 command R :Run

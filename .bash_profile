@@ -19,9 +19,10 @@ export XKB_DEFAULT_OPTIONS='caps:escape,grp:shifts_toggle'
 #export CLUTTER_BACKEND=wayland
 #export SDL_VIDEODRIVER=wayland
 
-# hack ash to read my configs
-export ENV=$HOME/.bashrc
+if [[ -f ~/.bashrc ]]; then
+	. ~/.bashrc
+fi
 
-if [[ "`tty`" = "/dev/tty1" ]]; then
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
 fi

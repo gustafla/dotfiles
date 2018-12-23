@@ -57,6 +57,3 @@ inoremap (      ()<Left>
 inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
-
-command B :Build
-command R :Run

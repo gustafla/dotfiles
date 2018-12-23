@@ -23,5 +23,5 @@ export XKB_DEFAULT_OPTIONS='caps:escape,grp:shifts_toggle'
 export ENV=$HOME/.bashrc
 
 if [[ "`tty`" = "/dev/tty1" ]]; then
-    exec startx
+	exec startx
 fi

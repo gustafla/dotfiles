@@ -7,7 +7,7 @@ cd $(dirname $0)
 
 # create necessary directories
 for d in $directories; do
-    mkdir -p $HOME/$d
+	mkdir -p $HOME/$d
 done
 
 # find relevant config files
@@ -15,8 +15,8 @@ files=$(find $directories -maxdepth 1 -type f -not -name "*.sh")
 
 # symlink config files to home
 for f in $files; do
-    f_fixed=${f/"./"/}
-    ln -s $PWD/$f_fixed ~/$f_fixed
+	f_fixed=${f/"./"/}
+	ln -s $PWD/$f_fixed ~/$f_fixed
 done
 
 # install vim-plug

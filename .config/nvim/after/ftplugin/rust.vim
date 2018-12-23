@@ -1,2 +1,2 @@
-command -buffer Build :wa|:!cargo build
-command -buffer Run :!cargo run
+nnoremap <leader>m :!cargo build<CR>
+nnoremap <leader>n :!cargo run<CR>

@@ -1,2 +1,2 @@
-command -buffer Build :wa|:!make debug
-command -buffer Run :!make run
+nnoremap <leader>m :!make debug<CR>
+nnoremap <leader>n :!make run<CR>

@@ -12,20 +12,19 @@ noremap <C-n> :NERDTreeToggle<CR>
 " Misc
 set noshowmode
 set noswapfile
-set autowrite
+set autowriteall
+set autoread
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set noexpandtab
 syntax on
 
 " Leader key
 let mapleader = ","
 
-" 4 spaces is most common
-set tabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-
 " Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:\ \ ,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -37,11 +36,8 @@ set textwidth=80
 "set number
 "set numberwidth=5
 
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
 " Shortcut for a.vim
-nnoremap <leader>a :A<CR>
+nnoremap <leader><leader> :A<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>

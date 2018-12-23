@@ -1,2 +1,2 @@
-command -buffer Build :wa|:!pdflatex %
-command -buffer Run :!xdg-open %:t:r.pdf &
+nnoremap <leader>m :!pdflatex %<CR>
+nnoremap <leader>n :!xdg-open %:t:r.pdf &<CR>

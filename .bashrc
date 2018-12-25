@@ -4,7 +4,8 @@ case $- in
 	*) return ;;
 esac
 
-PS1='\[\e[0;32m\]\w\[\e[0m\] \$ '
+source /usr/share/git/git-prompt.sh
+PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 
 set -o vi
 

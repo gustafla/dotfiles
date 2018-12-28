@@ -10,7 +10,7 @@ while [ 1 ]; do
 	
 	STR=""
 	STR="$STR | $bat%"
-	STR="$STR | `date`"
+	STR="$STR | `date +%F\ %T`"
 	xsetroot -name "$STR"
 	sleep 10
 done

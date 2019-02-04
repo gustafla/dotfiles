@@ -60,9 +60,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
-#define MUTE    0x1008ff12
-#define VOLDOWN 0x1008ff11
-#define VOLUP   0x1008ff13
+#include <XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -71,15 +69,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("xdg-open \"$(find ~ -type f -name '*.pdf' | dmenu -fn 'xos4 Terminus:pixelsize=10')\" &") },
 	{ MODKEY|ShiftMask|ControlMask, XK_p,      spawn,          SHCMD("passmenu -fn 'xos4 Terminus:pixelsize=10'") },
 	{ MODKEY,                       XK_o,      spawn,          SHCMD("maim -u -s -f png | tee ~/pictures/screenshots/$(date +%s).png | xclip -sel clip -t image/png") },
-	{ MODKEY,                       XK_Down,   spawn,          SHCMD("xbacklight -dec 1") },
-	{ MODKEY,                       XK_Up,     spawn,          SHCMD("xbacklight -inc 1") },
-	{ MODKEY|ShiftMask,             XK_Down,   spawn,          SHCMD("xbacklight -dec 5") },
-	{ MODKEY|ShiftMask,             XK_Up,     spawn,          SHCMD("xbacklight -inc 5") },
-	{ MODKEY|ShiftMask|ControlMask, XK_Down,   spawn,          SHCMD("xbacklight -set 0") },
-	{ MODKEY|ShiftMask|ControlMask, XK_Up,     spawn,          SHCMD("xbacklight -set 100") },
-	{ 0,                            MUTE,      spawn,          SHCMD("amixer -q sset Master toggle") },
-	{ 0,                            VOLDOWN,   spawn,          SHCMD("amixer -q sset Master 1%-") },
-	{ 0,                            VOLUP,     spawn,          SHCMD("amixer -q sset Master 1%+") },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5") },
+	{ 0,                            XF86XK_MonBrightnessUp, spawn, SHCMD("light -A 5") },
+	{ 0,                            XF86XK_AudioMute, spawn,   SHCMD("amixer -q sset Master toggle") },
+	{ 0,                            XF86XK_AudioLowerVolume, spawn, SHCMD("amixer -q sset Master 1%-") },
+	{ 0,                            XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer -q sset Master 1%+") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

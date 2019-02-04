@@ -12,7 +12,7 @@ set -o vi
 cd() {
 	command cd $1
 	ls --color=auto
-	ls --color=auto src/ 2>/dev/null
+	ls -R --color=auto src/ 2>/dev/null
 }
 
 if [[ -f ~/.bash_aliases ]]; then

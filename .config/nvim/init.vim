@@ -4,6 +4,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
 Plug 'ajh17/VimCompletesMe'
 Plug 'vim-scripts/a.vim'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 
 " NERDTree
@@ -57,3 +58,9 @@ inoremap (      ()<Left>
 inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
+
+" Racer navigation
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)

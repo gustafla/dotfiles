@@ -1,0 +1,11 @@
+# Ferris by Diggsey
+# https://jsfiddle.net/Diggsey/3pdgh52r/embedded/result/
+
+$the_cow = <<EOF;
+	$thoughts
+	$thoughts
+        _~^~^~_
+    \) /  o o  \ (/
+      '_   ¬   _'
+      | '-----' |
+EOF

@@ -1,5 +1,6 @@
-# Set path
+# Set paths
 export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export COWPATH=$HOME/.local/share/cows
 
 # Application vars
 export VISUAL=nvim

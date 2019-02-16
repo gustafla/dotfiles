@@ -18,3 +18,5 @@ cd() {
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
+
+echo What shall we write today? | cowsay -f ferris

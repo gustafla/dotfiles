@@ -19,4 +19,8 @@ if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
 
-echo -e "What shall we \033[33;1mimpl\033[0m today?" | cowsay -f ferris
+echo -e "What shall we \033[33;1mimpl\033[0m today?
+        \033[31;1m_~^~^~_
+    \) /  \033[37;1mo o\033[31;1m  \ (/
+      '_   \033[37;1m¬\033[31;1m   _'
+      | '-----' |\033[0m"

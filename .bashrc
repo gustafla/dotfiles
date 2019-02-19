@@ -15,6 +15,12 @@ cd() {
 	ls -R --color=auto src/ 2>/dev/null
 }
 
+synkki() {
+	local rsync_command="rsync -vrte 'ssh -p 443'"
+	eval "$rsync_command $1 $2"
+	eval "$rsync_command $2 $1"
+}
+
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi

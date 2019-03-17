@@ -30,6 +30,7 @@ ethernet _first_ {
 
 battery all {
 	format = "\t%status %consumption %percentage %remaining"
+	format_down = ""
 }
 
 tztime local {

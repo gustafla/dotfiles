@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories=". .vice .gnupg .local/share/applications .config .config/gtk-3.0 .config/fontconfig .config/nvim .config/nvim/after/ftplugin .config/mpv .config/sway .config/i3status .config/termite"
+directories=". .vice .gnupg .local/share/applications .config .config/gtk-3.0 .config/fontconfig .config/nvim .config/nvim/after/ftplugin .config/mpv .config/sway .config/i3status"
 
 # make the script work from any working directory
 cd $(dirname $0)

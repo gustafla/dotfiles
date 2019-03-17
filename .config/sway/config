@@ -51,6 +51,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Keyboard
 input * xkb_layout "us,fi"
 input * xkb_options "caps:escape,grp:shifts_toggle"
+input * repeat_delay 250
+input * repeat_rate 45
 # Example configuration:
 #
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {
@@ -166,6 +168,14 @@ input * xkb_options "caps:escape,grp:shifts_toggle"
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+#
+# Volume and brightness keys
+#
+	bindsym XF86AudioRaiseVolume exec amixer -q sset Master 1%+
+	bindsym XF86AudioLowerVolume exec amixer -q sset Master 1%-
+	bindsym XF86AudioMute exec amixer -q sset Master toggle
+	bindsym XF86MonBrightnessDown exec light -U 5
+	bindsym XF86MonBrightnessUp exec light -A 5
 #
 # Resizing containers:
 #

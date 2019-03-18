@@ -16,6 +16,9 @@ export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
 export GDK_BACKEND=wayland
 
+# sway cursor size
+export XCURSOR_SIZE=12
+
 if [[ -f ~/.bashrc ]]; then
 	. ~/.bashrc
 fi

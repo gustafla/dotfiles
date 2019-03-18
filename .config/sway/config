@@ -2,6 +2,7 @@
 #
 default_floating_border pixel 1
 default_border none
+for_window [title=".*mpv$"] floating enable
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
@@ -49,10 +50,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 ### Input configuration
 #
 # Keyboard
-input * xkb_layout "us,fi"
-input * xkb_options "caps:escape,grp:shifts_toggle"
-input * repeat_delay 250
-input * repeat_rate 45
+input * {
+	xkb_layout "us,fi"
+	xkb_options "caps:escape,grp:shifts_toggle"
+	repeat_delay 250
+	repeat_rate 50
+}
 # Example configuration:
 #
 #   input "2:14:SynPS/2_Synaptics_TouchPad" {

@@ -1,3 +1,5 @@
 [user]
 	email = luutifa@jkry.org
 	name = Lauri Gustafsson
+[push]
+	default = matching

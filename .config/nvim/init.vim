@@ -40,6 +40,11 @@ set textwidth=80
 " Shortcut for a.vim
 nnoremap <leader><leader> :A<CR>
 
+" Wayland copy and paste
+nnoremap <leader>c :w !wl-copy<CR>
+vnoremap <leader>c :'<,'>w !wl-copy<CR>
+nnoremap <leader>p :r !wl-paste<CR>
+
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>

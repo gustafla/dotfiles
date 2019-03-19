@@ -9,6 +9,10 @@ export PAGER=less
 # Refer bibliography db
 export REFER=$HOME/.refer-database
 
+# fix netbeans
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
+
 # configure libraries to use wayland
 export QT_QPA_PLATFORM=wayland-egl
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1

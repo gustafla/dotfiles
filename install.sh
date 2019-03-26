@@ -16,7 +16,7 @@ files=$(find $directories -maxdepth 1 -type f -not -name "*.sh")
 # symlink config files to home
 for f in $files; do
 	f_fixed=${f/"./"/}
-	ln -s $PWD/$f_fixed ~/$f_fixed
+	ln -s -f $PWD/$f_fixed ~/$f_fixed
 done
 
 # install vim-plug

@@ -1,5 +1,6 @@
 # Set paths
-export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib64"
 
 # Application vars
 export VISUAL=nvim
@@ -7,7 +8,7 @@ export EDITOR=nvim
 export PAGER=less
 
 # Refer bibliography db
-export REFER=$HOME/.refer-database
+export REFER="$HOME/.refer-database"
 
 # fix netbeans
 export _JAVA_AWT_WM_NONREPARENTING=1

@@ -24,11 +24,3 @@ synkki() {
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
-
-# Ferris by Diggsey
-# https://jsfiddle.net/Diggsey/3pdgh52r/embedded/result/
-echo -e "What shall we \033[33;1mimpl\033[0m today?
-        \033[31;1m_~^~^~_
-    \) /  \033[37;1mo o\033[31;1m  \ (/
-      '_   \033[37;1m¬\033[31;1m   _'
-      | '-----' |\033[0m"

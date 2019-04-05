@@ -3,6 +3,7 @@
 default_floating_border pixel 1
 default_border none
 for_window [title=".*mpv$"] floating enable
+for_window [app_id="org.gnupg.pinentry-qt"] floating enable
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.

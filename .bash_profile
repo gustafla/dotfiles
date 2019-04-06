@@ -14,12 +14,13 @@ export REFER="$HOME/.refer-database"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
 
-# configure libraries to use wayland
+# configure libraries and applications to use wayland
 export QT_QPA_PLATFORM=wayland-egl
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
 export GDK_BACKEND=wayland
+export KITTY_ENABLE_WAYLAND=1
 
 # sway cursor size and style
 export XCURSOR_THEME=Neutral

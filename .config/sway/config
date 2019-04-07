@@ -21,7 +21,8 @@ set $right l
 set $term kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bemenu-run --fn 'monospace'
+set $menu bemenu-run
+set $menuargs --fn 'monospace'
 
 ### Output configuration
 #
@@ -80,7 +81,10 @@ input * {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec $menu $menuargs
+
+	# start passmenu
+	bindsym $mod+Shift+d exec passmenu $menuargs
 
 	# take a screenshot
 	bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy

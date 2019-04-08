@@ -32,4 +32,7 @@ fi
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec sway
+else
+	# swap caps lock and escape
+	echo -e 'keycode 1 = Caps_Lock\nkeycode 58 = Escape' | loadkeys -
 fi

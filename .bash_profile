@@ -22,6 +22,9 @@ export SDL_VIDEODRIVER=wayland
 export GDK_BACKEND=wayland
 export KITTY_ENABLE_WAYLAND=1
 
+# pinentry-qt doesn't work unless DISPLAY is set to something
+export DISPLAY=wayland
+
 # sway cursor size and style
 export XCURSOR_THEME=Neutral
 export XCURSOR_SIZE=16
@@ -30,7 +33,7 @@ if [[ -f ~/.bashrc ]]; then
 	. ~/.bashrc
 fi
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ $XDG_VTNR -eq 1 ]]; then
 	exec sway
 else
 	# swap caps lock and escape

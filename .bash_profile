@@ -1,6 +1,5 @@
 # Set paths
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.local/lib64"
 
 # Application vars
 export VISUAL=nvim

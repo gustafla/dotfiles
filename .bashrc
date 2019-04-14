@@ -24,3 +24,6 @@ synkki() {
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
+
+# disable .bash_history
+set +o history

@@ -21,9 +21,10 @@ synkki() {
 	eval "$rsync_command $2 $1"
 }
 
+# disable .bash_history and don't record duplicates
+unset HISTFILE
+export HISTCONTROL=ignoredups
+
 if [[ -f ~/.bash_aliases ]]; then
 	. ~/.bash_aliases
 fi
-
-# disable .bash_history
-set +o history

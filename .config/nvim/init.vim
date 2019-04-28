@@ -2,10 +2,21 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
-Plug 'ajh17/VimCompletesMe'
+Plug 'vim-syntastic/syntastic'
+Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/a.vim'
-Plug 'racer-rust/vim-racer'
 call plug#end()
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_c_auto_refresh_includes=1
+let g:syntastic_c_config_file='.syntastic_c_config'
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
@@ -13,8 +24,6 @@ noremap <C-n> :NERDTreeToggle<CR>
 " Misc
 set noshowmode
 set noswapfile
-set autowriteall
-set autoread
 set tabstop=4
 set shiftwidth=4
 set shiftround
@@ -63,9 +72,3 @@ inoremap (      ()<Left>
 inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
-
-" Racer navigation
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)

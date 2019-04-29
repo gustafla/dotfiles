@@ -26,14 +26,13 @@ export XCURSOR_THEME=Neutral
 export XCURSOR_SIZE=16
 
 if [[ -f ~/.bashrc ]]; then
-	. ~/.bashrc
+    . ~/.bashrc
 fi
 
 if [[ $XDG_VTNR -eq 1 ]]; then
-	# pinentry-qt doesn't work unless DISPLAY is set to something
-	export DISPLAY=wayland
-	exec sway
+    export DISPLAY=wauland
+    exec sway
 else
-	# swap caps lock and escape
-	echo -e 'keycode 1 = Caps_Lock\nkeycode 58 = Escape' | loadkeys -
+    # swap caps lock and escape
+    echo -e 'keycode 1 = Caps_Lock\nkeycode 58 = Escape' | loadkeys -
 fi

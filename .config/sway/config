@@ -54,10 +54,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Keyboard
 input * {
-	xkb_layout "us,fi"
-	xkb_options "caps:escape,grp:shifts_toggle"
-	repeat_delay 250
-	repeat_rate 50
+    xkb_layout "us,fi"
+    xkb_options "caps:escape,grp:shifts_toggle"
+    repeat_delay 250
+    repeat_rate 50
 }
 # Example configuration:
 #
@@ -84,11 +84,11 @@ input * {
     # start your launcher
     bindsym $mod+d exec $menu $menuargs
 
-	# start passmenu
-	bindsym $mod+Shift+d exec passmenu $menuargs
+    # start passmenu
+    bindsym $mod+Shift+d exec DISPLAY=wayland passmenu $menuargs
 
-	# take a screenshot
-	bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy
+    # take a screenshot
+    bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -183,11 +183,11 @@ input * {
 #
 # Volume and brightness keys
 #
-	bindsym XF86AudioRaiseVolume exec amixer -q sset Master 1%+
-	bindsym XF86AudioLowerVolume exec amixer -q sset Master 1%-
-	bindsym XF86AudioMute exec amixer -q sset Master toggle
-	bindsym XF86MonBrightnessDown exec light -U 5
-	bindsym XF86MonBrightnessUp exec light -A 5
+    bindsym XF86AudioRaiseVolume exec amixer -q sset Master 1%+
+    bindsym XF86AudioLowerVolume exec amixer -q sset Master 1%-
+    bindsym XF86AudioMute exec amixer -q sset Master toggle
+    bindsym XF86MonBrightnessDown exec light -U 5
+    bindsym XF86MonBrightnessUp exec light -A 5
 #
 # Resizing containers:
 #

@@ -46,6 +46,7 @@ set nojoinspaces
 " 80 characters default
 set textwidth=80
 set colorcolumn=80
+hi ColorColumn ctermbg=8
 
 " Line numbers
 set number relativenumber

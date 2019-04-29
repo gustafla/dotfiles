@@ -7,10 +7,13 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/a.vim'
 call plug#end()
 
-" Syntastic
+" Status line
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set statusline+=%=
+set statusline+=\ width\ %{strwidth(getline('.'))}\ characters
+
+" Syntastic
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
@@ -26,21 +29,23 @@ set noshowmode
 set noswapfile
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set shiftround
-set noexpandtab
+set expandtab
 syntax on
 
 " Leader key
 let mapleader = ","
 
 " Display extra whitespace
-set list listchars=tab:\ \ ,trail:·,nbsp:·
+set list listchars=tab:>·,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" 80 characters is just fine
+" 80 characters default
 set textwidth=80
+set colorcolumn=80
 
 " Line numbers
 "set number

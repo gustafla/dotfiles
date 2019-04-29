@@ -11,7 +11,7 @@ call plug#end()
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%=
-set statusline+=\ width\ %{strwidth(getline('.'))}\ characters
+set statusline+=%{strwidth(getline('.'))}\ characters
 
 " Syntastic
 let g:syntastic_always_populate_loc_list=1

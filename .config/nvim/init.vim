@@ -48,8 +48,9 @@ set textwidth=80
 set colorcolumn=80
 
 " Line numbers
-"set number
-"set numberwidth=5
+set number relativenumber
+set nu rnu
+hi LineNr ctermfg=8
 
 " Shortcut for a.vim
 nnoremap <leader><leader> :A<CR>

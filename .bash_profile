@@ -30,7 +30,6 @@ if [[ -f ~/.bashrc ]]; then
 fi
 
 if [[ $XDG_VTNR -eq 1 ]]; then
-    export DISPLAY=wauland
     exec sway
 else
     # swap caps lock and escape

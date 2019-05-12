@@ -1,1 +1,1 @@
-media-video/ffmpeg x265 x264 opus mp3 vorbis openssl
+media-video/ffmpeg -alsa -pulseaudio amr jpeg2k modplug mp3 opus theora truetype vorbis

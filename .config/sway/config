@@ -229,3 +229,4 @@ bar {
 }
 
 include /etc/sway/config.d/*
+include output

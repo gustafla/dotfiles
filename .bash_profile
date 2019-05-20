@@ -1,5 +1,6 @@
 # Set paths
 export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
 
 # Application vars
 export VISUAL=nvim

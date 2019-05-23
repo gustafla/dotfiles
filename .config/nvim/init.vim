@@ -79,3 +79,7 @@ inoremap (      ()<Left>
 inoremap (<CR>  (<CR><CR>)<Up><Tab>
 inoremap ((     (
 inoremap ()     ()
+
+" Default behavior for building and running
+nnoremap <leader>m :!make<CR>
+nnoremap <leader>n :!make run<CR>

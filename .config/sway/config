@@ -88,7 +88,7 @@ input * {
     bindsym $mod+Shift+d exec DISPLAY=wayland passmenu $menuargs
 
     # take a screenshot
-    bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy
+    bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png
 
     # lock the session
     bindsym $mod+Escape exec swaylock

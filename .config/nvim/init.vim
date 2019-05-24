@@ -43,8 +43,8 @@ set list listchars=tab:>·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" 80 characters default
-set textwidth=80
+" 79 characters default
+set textwidth=79
 set colorcolumn=80
 hi ColorColumn ctermbg=8
 

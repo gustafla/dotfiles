@@ -24,7 +24,7 @@ export KITTY_ENABLE_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
 
 # sway cursor size and style
-export XCURSOR_THEME=Neutral
+export XCURSOR_THEME=Adwaita
 export XCURSOR_SIZE=16
 
 if [[ -f ~/.bashrc ]]; then

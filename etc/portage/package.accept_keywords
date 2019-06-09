@@ -1,5 +1,6 @@
 # mesa
 media-libs/mesa ~amd64
+sys-kernel/gentoo-sources ~amd64
 # neovim
 app-editors/neovim ~amd64
 dev-libs/msgpack ~amd64

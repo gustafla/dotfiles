@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+function get_tag {
+    metaflac --show-tag=$1 "$2" | cut -d '=' -f 2
+}
+
+for f in "$@"; do
+    DISCNUMBER=$(get_tag DISCNUMBER "$f")
+    TRACKNUMBER=$(get_tag TRACKNUMBER "$f")
+    ARTIST=$(get_tag ARTIST "$f")
+    ALBUM=$(get_tag ALBUM "$f")
+    TITLE=$(get_tag TITLE "$f")
+
+    if [ -z "$TITLE" ]; then
+        echo "$f has no TITLE, skipping"
+        continue
+    fi
+
+    NEWNAME=""
+
+    for t in "$DISCNUMBER" "$TRACKNUMBER" "$ARTIST" "$ALBUM"; do
+        if [ -n "$t" ]; then
+            NEWNAME+="$t - "
+        fi
+    done
+
+    NEWNAME+="$TITLE.flac"
+    mv "$f" "$NEWNAME"
+done

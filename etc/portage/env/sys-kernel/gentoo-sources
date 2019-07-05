@@ -1,0 +1,15 @@
+post_pkg_postinst() {
+    CURRENT_KV=$(uname -r)
+    MACHINE=$(uname -m)
+    if [[ -f "${EROOT}/etc/kernels/kernel-config-${MACHINE}-${CURRENT_KV}" ]]; then
+        genkernel --kernel-config="${EROOT}/etc/kernels/kernel-config-${MACHINE}-${CURRENT_KV}" bzImage initramfs
+    elif [[ -f "${EROOT}/usr/src/linux-${CURRENT_KV}/.config" ]]; then
+        genkernel --kernel-config="${EROOT}/usr/src/linux-${CURRENT_KV}/.config" bzImage initramfs
+    elif [[ -f /proc/config.gz ]]; then
+        zcat /proc/config.gz >> "${EROOT}/tmp/genkernel.config"
+        genkernel --kernel-config="${EROOT}/tmp/genkernel.config" bzImage initramfs
+        rm "${EROOT}/tmp/genkernel.config"
+    else
+        echo FAILED TO FIND A KERNEL CONFIG
+    fi
+}

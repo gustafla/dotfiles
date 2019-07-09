@@ -1,1 +1,1 @@
-sys-kernel/genkernel -firmware
+sys-kernel/genkernel -firmware cryptsetup

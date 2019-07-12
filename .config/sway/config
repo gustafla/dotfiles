@@ -1,13 +1,16 @@
 # Default config for sway
 #
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Window aesthetics and rules
+#
 default_floating_border pixel 1
 default_border none
 for_window [title=".*mpv$"] floating enable
 for_window [title="^\-$"] floating enable
 for_window [app_id="org.gnupg.pinentry-qt"] floating enable
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
 
 ### Variables
 #
@@ -22,8 +25,7 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bemenu-run
-set $menuargs --fn 'monospace'
+set $menu bash -c 'compgen -ac' | bemenu --fn 'monospace' | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -82,7 +84,7 @@ input * {
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d exec $menu $menuargs
+    bindsym $mod+d exec $menu
 
     # start passmenu
     bindsym $mod+Shift+d exec DISPLAY=wayland passmenu $menuargs

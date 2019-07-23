@@ -3,7 +3,7 @@
 directories=". .vice .gnupg .icons/default .local/bin \
 .local/share/applications .config .config/gtk-3.0 .config/fontconfig \
 .config/nvim .config/nvim/after/ftplugin .config/mpv .config/sway \
-.config/i3status .config/alacritty"
+.config/i3status .config/alacritty .config/lxterminal"
 
 # make the script work from any working directory
 cd $(dirname $0)

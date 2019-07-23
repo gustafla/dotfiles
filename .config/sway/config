@@ -82,7 +82,7 @@ input * {
     bindsym $mod+d exec $menu
 
     # start passmenu
-    bindsym $mod+Shift+d exec DISPLAY=wayland passmenu $menuargs
+    bindsym $mod+Shift+d exec DISPLAY=wayland passmenu --fn 'monospace'
 
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png

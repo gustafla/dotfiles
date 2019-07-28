@@ -31,6 +31,7 @@ set $menu bash -c 'compgen -ac' | bemenu --fn 'Terminus (TTF)' | xargs swaymsg e
 
 ### Output configuration
 #
+output * bg #000000 solid_color
 # Load from config/output
 include output
 

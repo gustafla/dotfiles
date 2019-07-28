@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ~/.password-store/
-selected=$(find . -type f -not -path '*/.git/*' -printf '%P\n' | bemenu $@)
+selected=$(find . -type f -not -path '*/.git/*' -printf '%P\n' | bemenu "$@")
 [ -z "$selected" ] && exit
 old="$(wl-paste)"
 pass ${selected%%.gpg} | wl-copy

@@ -11,6 +11,7 @@ default_border none
 for_window [title=".*mpv$"] floating enable
 for_window [title="^\-$"] floating enable
 for_window [app_id="org.gnupg.pinentry-qt"] floating enable
+font Terminus (TTF)
 
 ### Variables
 #
@@ -26,7 +27,7 @@ set $term alacritty
 include term_override
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bash -c 'compgen -ac' | bemenu --fn 'monospace' | xargs swaymsg exec --
+set $menu bash -c 'compgen -ac' | bemenu --fn 'Terminus (TTF)' | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -82,7 +83,7 @@ input * {
     bindsym $mod+d exec $menu
 
     # start passmenu
-    bindsym $mod+Shift+d exec DISPLAY=wayland passmenu --fn 'monospace'
+    bindsym $mod+Shift+d exec DISPLAY=wayland passmenu --fn 'Terminus (TTF)'
 
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png

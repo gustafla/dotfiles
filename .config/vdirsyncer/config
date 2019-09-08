@@ -1,0 +1,20 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+[pair my_calendar]
+a = "my_calendar_local"
+b = "my_calendar_remote"
+collections = ["from a", "from b"]
+
+[storage my_calendar_local]
+type = "filesystem"
+path = "~/.calendars/"
+fileext = ".ics"
+
+[storage my_calendar_remote]
+type = "caldav"
+url = "https://gustafla.space:5232/gustafla/"
+username = "gustafla"
+password.fetch = ["command", "/usr/bin/pass", "show", "gustafla.space:5232/gustafla"]
+verify_fingerprint = "3B:07:B6:54:1F:F6:DC:A8:2C:09:50:2D:91:FE:DB:4F:C3:1D:35:C7"
+verify = false

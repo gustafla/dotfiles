@@ -25,6 +25,8 @@ let g:syntastic_c_config_file='.syntastic_c_config'
 noremap <C-n> :NERDTreeToggle<CR>
 
 " Misc
+set exrc
+set secure
 set noshowmode
 set noswapfile
 set tabstop=4

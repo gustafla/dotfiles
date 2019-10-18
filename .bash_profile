@@ -32,8 +32,6 @@ if [[ -f ~/.bashrc ]]; then
 fi
 
 if [[ $XDG_VTNR -eq 1 ]]; then
-    # why do I have to do this?
-    sleep 2
     exec sway
 else
     # swap caps lock and escape

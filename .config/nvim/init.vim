@@ -4,6 +4,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 Plug 'vim-scripts/a.vim'
 call plug#end()
 

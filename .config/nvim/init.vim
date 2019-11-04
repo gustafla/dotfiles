@@ -21,6 +21,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_c_auto_refresh_includes=1
 let g:syntastic_c_config_file='.syntastic_c_config'
+let g:syntastic_java_javac_config_file_enabled = 1
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>

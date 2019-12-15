@@ -6,6 +6,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'vim-scripts/a.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 " Status line
@@ -21,7 +22,10 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
 let g:syntastic_c_auto_refresh_includes=1
 let g:syntastic_c_config_file='.syntastic_c_config'
-let g:syntastic_java_javac_config_file_enabled = 1
+let g:syntastic_java_javac_config_file_enabled=1
+
+" Deoplete
+let g:deoplete#enable_at_startup=1
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>

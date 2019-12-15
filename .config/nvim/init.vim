@@ -3,10 +3,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
+" Install rust for this
 Plug 'rust-lang/rust.vim'
+" Install rust-racer for this
 Plug 'racer-rust/vim-racer'
 Plug 'vim-scripts/a.vim'
+" Install python-pynvim for this
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+" Install python-jedi for this
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'wokalski/autocomplete-flow'
 call plug#end()
 
 " Status line
@@ -24,8 +32,9 @@ let g:syntastic_c_auto_refresh_includes=1
 let g:syntastic_c_config_file='.syntastic_c_config'
 let g:syntastic_java_javac_config_file_enabled=1
 
-" Deoplete
+" Shougo's plugins
 let g:deoplete#enable_at_startup=1
+let g:neosnippet#enable_completed_snippet=1
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>

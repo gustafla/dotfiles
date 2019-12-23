@@ -1,1 +1,0 @@
-media-sound/pulseaudio alsa -alsa-plugin -asyncns -glib -ssl -tcpd -webrtc-aec -caps -libressl -ipv6 -orc

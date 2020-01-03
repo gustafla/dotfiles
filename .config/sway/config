@@ -5,6 +5,11 @@
 # Read `man 5 sway` for a complete reference.
 
 set $font 'monospace 10'
+set $menuargs --fn $font \
+--nb=#ffffff --nf=#000000 \
+--tb=#ffffff --tf=#000000 \
+--fb=#d0d0d0 --ff=#000000 \
+--hb=#b0b0b0 --hf=#000000
 
 ### Window aesthetics and rules
 #
@@ -29,7 +34,7 @@ set $term alacritty
 include term_override
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bash -c 'compgen -ac' | bemenu --fn $font | xargs swaymsg exec --
+set $menu bash -c 'compgen -ac' | bemenu $menuargs | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -81,7 +86,7 @@ input * {
     bindsym $mod+d exec $menu
 
     # start passmenu
-    bindsym $mod+Shift+d exec passmenu --fn $font
+    bindsym $mod+Shift+d exec passmenu $menuargs
 
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png
@@ -225,9 +230,11 @@ bar {
     status_command i3status
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #323232 #323232 #5c5c5c
+        statusline #000000
+        background #ffffff
+        inactive_workspace #ffffff #ffffff #000000
+        active_workspace #7f7f7f #7f7f7f #000000
+        focused_workspace #000000 #000000 #ffffff
     }
 }
 

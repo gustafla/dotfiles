@@ -37,3 +37,6 @@ text/x-rs=editor.desktop;
 text/x-rust=editor.desktop;
 application/java-archive=jar.desktop;
 text/html=firefox-bin.desktop;
+
+[Added Associations]
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;

@@ -19,7 +19,6 @@ export QT_QPA_PLATFORM=wayland-egl
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
-export GDK_BACKEND=wayland
 export KITTY_ENABLE_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
 
@@ -31,8 +30,9 @@ if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi
 
-if [[ $XDG_VTNR -eq 1 ]]; then
-    exec sway
+if [ "$XDG_SESSION_TYPE" = "tty" ] && [ $XDG_VTNR -eq 1 ]; then
+    export XDG_SESSION_TYPE=wayland
+    exec dbus-run-session sway
 else
     # swap caps lock and escape
     echo -e 'keycode 1 = Caps_Lock\nkeycode 58 = Escape' | loadkeys -

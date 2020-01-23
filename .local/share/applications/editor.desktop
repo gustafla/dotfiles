@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Edit in terminal
-Exec=st -e nvim %F
+Exec=alacritty -e nvim %F
 Keywords=Text;editor;
 Categories=Utility;TextEditor;
 StartupNotify=false

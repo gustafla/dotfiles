@@ -15,13 +15,8 @@ Plug 'Shougo/neosnippet-snippets'
 " Install python-jedi for this
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'wokalski/autocomplete-flow'
+Plug 'vim-airline/vim-airline'
 call plug#end()
-
-" Status line
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%=
-set statusline+=%{strwidth(getline('.'))}\ characters
 
 " Syntastic
 let g:syntastic_always_populate_loc_list=1

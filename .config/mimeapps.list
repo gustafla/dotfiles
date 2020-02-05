@@ -34,3 +34,5 @@ text/x-rs=editor.desktop;
 text/x-rust=editor.desktop;
 application/java-archive=jar.desktop;
 text/html=firefox.desktop;
+image/jpeg=eog.desktop;
+image/png=eog.desktop;

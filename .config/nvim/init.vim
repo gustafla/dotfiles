@@ -43,6 +43,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
 
+" Shortcut for a.vim
+nnoremap <leader><leader> :A<CR>
+
 " Misc
 set exrc
 set secure
@@ -68,14 +71,6 @@ set nojoinspaces
 set textwidth=79
 set colorcolumn=80
 hi ColorColumn ctermbg=8
-
-" Line numbers
-set number relativenumber
-set nu rnu
-hi LineNr ctermfg=8
-
-" Shortcut for a.vim
-nnoremap <leader><leader> :A<CR>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>

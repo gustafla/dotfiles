@@ -18,6 +18,9 @@ Plug 'wokalski/autocomplete-flow'
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
+" Disable airline extras
+:let g:airline_extensions = ['syntastic']
+
 " Syntastic
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1

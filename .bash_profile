@@ -21,6 +21,8 @@ export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
 export KITTY_ENABLE_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
+export ECORE_EVAS_ENGINE=wayland_egl
+export ELM_ENGINE=wayland_egl
 
 # sway cursor size and style
 export XCURSOR_THEME=Adwaita

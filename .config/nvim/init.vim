@@ -3,6 +3,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
+" Install ctags for this
+Plug 'majutsushi/tagbar'
 " Install rust for this
 Plug 'rust-lang/rust.vim'
 " Install rust-racer for this
@@ -40,6 +42,9 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Tagbar
+noremap <C-a> :TagbarToggle<CR>
 
 " NERDTree
 noremap <C-n> :NERDTreeToggle<CR>

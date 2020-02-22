@@ -13,6 +13,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Install python-jedi for this
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Disable airline extras

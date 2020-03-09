@@ -28,6 +28,7 @@ let g:syntastic_java_javac_config_file_enabled=1
 
 " Shougo's plugins
 let g:deoplete#enable_at_startup=1
+let g:racer_experimental_completer=1
 
 " Tagbar
 noremap <C-a> :TagbarToggle<CR>

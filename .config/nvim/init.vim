@@ -6,8 +6,11 @@ Plug 'vim-syntastic/syntastic'
 Plug 'majutsushi/tagbar'
 " Install rust for this
 Plug 'rust-lang/rust.vim'
-" Install rust-racer for this
-Plug 'racer-rust/vim-racer'
+" Install rust-analyzer and other language servers for this
+Plug 'autozimu/LanguageClient-neovim', {
+            \ 'branch': 'next',
+            \ 'do': 'bash install.sh',
+            \ }
 " Install python-pynvim for this
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Install python-jedi for this
@@ -16,9 +19,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-" Disable airline extras
-:let g:airline_extensions = ['syntastic']
-
 " Syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
@@ -26,12 +26,19 @@ let g:syntastic_c_auto_refresh_includes=1
 let g:syntastic_c_config_file='.syntastic_c_config'
 let g:syntastic_java_javac_config_file_enabled=1
 
-" Shougo's plugins
-let g:deoplete#enable_at_startup=1
-let g:racer_experimental_completer=1
-
 " Tagbar
 noremap <C-a> :TagbarToggle<CR>
+
+" Language Client
+let g:LanguageClient_serverCommands = {
+            \ 'rust': ['rust-analyzer'],
+            \ }
+
+" Deoplete
+let g:deoplete#enable_at_startup=1
+
+" Disable airline extras
+:let g:airline_extensions = ['syntastic']
 
 " Netrw
 noremap <C-n> :e .<CR>

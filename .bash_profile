@@ -1,5 +1,5 @@
 # Set paths
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
 
 # Application vars

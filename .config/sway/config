@@ -15,8 +15,14 @@ set $menuargs --fn $font \
 #
 default_floating_border pixel 1
 default_border none
-for_window [title=".*mpv$"] floating enable
-for_window [title="^\-$"] floating enable
+for_window [app_id="mehustin"] floating enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id=".*"] max_render_time 2
+for_window [app_id="Alacritty"] max_render_time 1
+for_window [app_id="firefox"] max_render_time 1
+for_window [app_id="telegramdesktop"] max_render_time 1
+for_window [app_id="rocket"] max_render_time 1
+for_window [app_id="gcr-prompter"] max_render_time 1
 font $font
 
 ### Variables
@@ -33,7 +39,7 @@ set $term alacritty
 include term_override
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu bash -c 'compgen -ac' | bemenu $menuargs | xargs swaymsg exec --
+set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 
 ### Output configuration
 #

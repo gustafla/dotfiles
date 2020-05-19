@@ -19,15 +19,6 @@ for_window [app_id="mehustin"] floating enable
 for_window [app_id="mpv"] floating enable
 font $font
 
-### Extra latency optimization (also set output max_render_time)
-include render_time
-for_window [app_id=".*"] max_render_time $render_time2
-for_window [app_id="Alacritty"] max_render_time $render_time1
-for_window [app_id="firefox"] max_render_time $render_time1
-for_window [app_id="telegramdesktop"] max_render_time $render_time1
-for_window [app_id="rocket"] max_render_time $render_time1
-for_window [app_id="gcr-prompter"] max_render_time $render_time1
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.

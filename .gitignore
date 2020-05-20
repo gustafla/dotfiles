@@ -35,4 +35,5 @@
 !.local/src/st/config.h
 !.local/src/wterm/include/config.h
 !.npmrc
+!.pam_environment
 !.vice/sdl-vicerc

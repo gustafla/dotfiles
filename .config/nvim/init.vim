@@ -5,9 +5,9 @@ Plug 'vim-syntastic/syntastic'
 " Install ctags for this
 Plug 'majutsushi/tagbar'
 " Install rust for this
-" Note for myself: install cargo-update, cargo-bloat, cargo-edit (pacman),
-" cargo-audit (pacman) and cargo-tree (pacman) for Rust development. Also ugdb,
-" bat, tokei and ripgrep
+" Note for myself: install cargo-bloat (aur), cargo-edit (pacman),
+" cargo-audit (pacman) and cargo-tree (pacman) for Rust development.
+" Also ugdb (aur), bat, tokei and ripgrep.
 Plug 'rust-lang/rust.vim'
 " Install rust-analyzer and other language servers for this
 Plug 'autozimu/LanguageClient-neovim', {

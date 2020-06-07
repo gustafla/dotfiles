@@ -3,3 +3,5 @@
 	name = Lauri Gustafsson
 [push]
 	default = matching
+[pull]
+	rebase = true

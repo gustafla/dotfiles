@@ -6,6 +6,7 @@
 !.bash_profile
 !.bashrc
 !.config/alacritty/alacritty.yml
+!.config/cmus/rc
 !.config/fontconfig/fonts.conf
 !.config/gtk-3.0/settings.ini
 !.config/i3/config

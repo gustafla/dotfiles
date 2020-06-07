@@ -27,6 +27,7 @@
 !.gnupg/gpg-agent.conf
 !.gtkrc-2.0
 !.icons/default/index.theme
+!.local/bin/encode_music.sh
 !.local/bin/flacrename
 !.local/bin/passmenu
 !.local/share/applications/editor.desktop

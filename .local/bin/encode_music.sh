@@ -1,13 +1,12 @@
 #!/bin/bash
 
-[ $# -ne 4 ] && [ $# -ne 5 ] && \
-    echo "Usage: $0 bitrate src_dir dst_dir (extra_ffmpeg_flags)" && \
+[ $# -ne 3 ] && \
+    echo "Usage: $0 bitrate src_dir dst_dir" && \
     exit 1
 
 bitrate="$1"
 src_dir="$2"
 dst_dir="$(pwd)/$3"
-fflags="$4"
 
 cd "$src_dir"
 find . -type d -exec mkdir -p "$dst_dir/{}" \;
@@ -34,5 +33,5 @@ rsync -vrt \
 echo Starting encoding
 find . -type f -regex '.*\.\(flac\|wav\)' | \
     parallel \
-    ffmpeg $fflags -i {} -codec:a libopus \
+    ffmpeg -i {} -codec:a libopus \
     -b:a $bitrate -sample_fmt s16 "$dst_dir/{.}.opus"

@@ -33,5 +33,5 @@ rsync -vrt \
 echo Starting encoding
 find . -type f -regex '.*\.\(flac\|wav\)' | \
     parallel \
-    ffmpeg -i {} -codec:a libopus \
+    ffmpeg -n -i {} -codec:a libopus \
     -b:a $bitrate -sample_fmt s16 "$dst_dir/{.}.opus"

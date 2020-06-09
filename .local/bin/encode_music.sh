@@ -16,6 +16,10 @@ rsync -vrt \
 	--exclude='*.cue' \
 	--exclude='*.png' \
 	--exclude='*.jpg' \
+	--exclude='*.JPG' \
+	--exclude='*.jpeg' \
+	--exclude='*.tiff' \
+	--exclude='*.tif' \
 	--exclude='*.txt' \
 	--exclude='*.log' \
 	--exclude='*.accurip' \

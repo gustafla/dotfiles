@@ -18,6 +18,7 @@
 !.config/mimeapps.list
 !.config/mpv/mpv.conf
 !.config/nvim/**
+!.config/pulse/daemon.conf
 !.config/redshift.conf
 !.config/sway/config
 !.config/trizen/trizen.conf

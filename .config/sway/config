@@ -91,7 +91,11 @@ input * {
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png
 
     # suspend the machine
-    bindsym $mod+Escape exec systemctl suspend
+    mode "suspend (esc = no, return = yes)" {
+        bindsym Return mode "default"; exec systemctl suspend
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+Escape mode "suspend (esc = no, return = yes)"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

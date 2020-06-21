@@ -10,12 +10,7 @@ PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 set -o vi
 
 cd() {
-    if [ -z "$1" ]; then
-        command cd
-    else
-        command cd "$1"
-    fi
-    ls --color=auto
+    command cd "${1:-$HOME}" && exa -l
 }
 
 synkki() {

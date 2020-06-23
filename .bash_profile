@@ -6,6 +6,7 @@ export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
 export VISUAL=nvim
 export EDITOR=nvim
 export PAGER=bat
+export BAT_STYLE=changes
 
 # Fix netbeans
 export _JAVA_AWT_WM_NONREPARENTING=1

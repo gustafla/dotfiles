@@ -1,19 +1,12 @@
 " vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
-Plug 'vim-syntastic/syntastic'
-" Install ctags for this
-Plug 'majutsushi/tagbar'
+Plug 'neomake/neomake'
 " Install rust for this
 " Note for myself: install cargo-bloat (aur), cargo-edit (pacman),
 " cargo-audit (pacman) and cargo-tree (pacman) for Rust development.
 " Also bat, exa, fd, ripgrep, tokei and ugdb (aur).
 Plug 'rust-lang/rust.vim'
-" Install rust-analyzer and other language servers for this
-Plug 'autozimu/LanguageClient-neovim', {
-            \ 'branch': 'next',
-            \ 'do': 'bash install.sh',
-            \ }
 " Install python-pynvim for this
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Install python-jedi for this
@@ -22,26 +15,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-" Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_c_auto_refresh_includes=1
-let g:syntastic_c_config_file='.syntastic_c_config'
-let g:syntastic_java_javac_config_file_enabled=1
-
-" Tagbar
-noremap <C-a> :TagbarToggle<CR>
-
-" Language Client
-let g:LanguageClient_serverCommands = {
-            \ 'rust': ['rust-analyzer'],
-            \ }
+" Neomake
+call neomake#configure#automake('w')
+let g:neomake_c_enabled_makers=['makeprg']
+hi NeomakeErrorSign ctermfg=black ctermbg=red
+hi NeomakeWarningSign ctermfg=black ctermbg=yellow
+hi NeomakeVirtualtextWarning ctermfg=lightgray
 
 " Deoplete
 let g:deoplete#enable_at_startup=1
 
 " Disable airline extras
-:let g:airline_extensions = ['syntastic']
+:let g:airline_extensions=['neomake']
 
 " Netrw
 noremap <C-n> :e .<CR>
@@ -59,7 +44,7 @@ set expandtab
 syntax on
 
 " Leader key
-let mapleader = ","
+let mapleader=","
 
 " Display extra whitespace
 set list listchars=tab:>·,trail:·,nbsp:·

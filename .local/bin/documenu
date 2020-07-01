@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xdg-open $(fd --no-ignore --one-file-system '\.(pdf|xlsx|txt)$' "$HOME" | bemenu "$@")

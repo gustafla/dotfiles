@@ -85,7 +85,10 @@ input * {
     bindsym $mod+d exec $menu
 
     # start passmenu
-    bindsym $mod+Shift+d exec passmenu $menuargs
+    bindsym $mod+bracketleft exec passmenu $menuargs
+
+    # find a document and open it
+    bindsym $mod+bracketright exec documenu $menuargs
 
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png

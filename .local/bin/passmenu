@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 cd ~/.password-store/
 selected=$(find . -type f -not -path '*/.git/*' -printf '%P\n' | bemenu "$@")
 [ -z "$selected" ] && exit

@@ -4,9 +4,10 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'neomake/neomake'
 " Install rust for this
 " Note for myself: install cargo-bloat (aur), cargo-edit (pacman),
-" cargo-audit (pacman) and cargo-tree (pacman) for Rust development.
+" cargo-audit (pacman) and rust-racer (pacman) for Rust development.
 " Also bat, exa, fd, ripgrep, tokei and ugdb (aur).
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 " Install python-pynvim for this
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Install python-jedi for this

@@ -17,20 +17,19 @@ Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Neomake
-call neomake#configure#automake('w')
+call neomake#configure#automake('rw')
 let g:neomake_c_enabled_makers=['makeprg']
+let g:neomake_place_signs=0
 hi NeomakeErrorSign ctermfg=black ctermbg=red
 hi NeomakeWarningSign ctermfg=black ctermbg=yellow
 hi NeomakeVirtualtextWarning ctermfg=lightgray
+nnoremap <C-n> :NeomakeNextLoclist<CR>
 
 " Deoplete
 let g:deoplete#enable_at_startup=1
 
 " Disable airline extras
 :let g:airline_extensions=['neomake']
-
-" Netrw
-noremap <C-n> :e .<CR>
 
 " Misc
 set exrc

@@ -32,6 +32,7 @@ let g:deoplete#enable_at_startup=1
 :let g:airline_extensions=['neomake']
 
 " Misc
+set shellredir=>
 set exrc
 set secure
 set noshowmode

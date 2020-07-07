@@ -87,6 +87,7 @@ inoremap ""     "
 inoremap '      ''<Left>
 inoremap ''     '
 
-" Default behavior for building and running
+" Default behavior for building, running and formatting
 nnoremap <leader>m :!make<CR>
 nnoremap <leader>n :!make run<CR>
+nnoremap <leader>f gg=G``

@@ -1,7 +1,7 @@
 " vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
-Plug 'neomake/neomake'
+Plug 'gustafla/neomake'
 " Install rust for this
 " Note for myself: install cargo-bloat (aur), cargo-edit (pacman),
 " cargo-audit (pacman) and rust-racer (pacman) for Rust development.

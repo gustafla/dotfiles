@@ -1,7 +1,7 @@
 " vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
-Plug 'gustafla/neomake'
+Plug 'dense-analysis/ale'
 " Install rust for this
 " Note for myself: install cargo-bloat (aur), cargo-edit (pacman),
 " cargo-audit (pacman) and rust-racer (pacman) for Rust development.
@@ -16,22 +16,34 @@ Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
-" Neomake
-call neomake#configure#automake('rw')
-let g:neomake_c_enabled_makers=['makeprg']
-let g:neomake_place_signs=0
-hi NeomakeErrorSign ctermfg=black ctermbg=red
-hi NeomakeWarningSign ctermfg=black ctermbg=yellow
-hi NeomakeVirtualtextWarning ctermfg=lightgray
-nnoremap <C-n> :NeomakeNextLoclist<CR>
+" Leader key
+let mapleader=","
+
+" ALE
+let g:ale_disable_lsp=1
+let g:ale_lint_on_text_changed='never'
+let g:ale_lint_on_insert_leave=0
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'rust': ['rustfmt'],
+\   'c': ['clang-format'],
+\   'cpp': ['clang-format'],
+\   'html': ['tidy'],
+\   'python': ['black'],
+\   'sh': ['shfmt'],
+\}
+nnoremap <C-n> :ALENext<CR>
+nnoremap <leader>f :ALEFix<CR>
+nnoremap <leader>lo :lopen<CR>
 
 " Deoplete
 let g:deoplete#enable_at_startup=1
 
 " Disable airline extras
-:let g:airline_extensions=['neomake']
+:let g:airline_extensions=['ale']
 
 " Misc
+set scl=no
 set shellredir=>
 set exrc
 set secure
@@ -43,9 +55,6 @@ set softtabstop=4
 set shiftround
 set expandtab
 syntax on
-
-" Leader key
-let mapleader=","
 
 " Display extra whitespace
 set list listchars=tab:>·,trail:·,nbsp:·
@@ -88,7 +97,6 @@ inoremap ""     "
 inoremap '      ''<Left>
 inoremap ''     '
 
-" Default behavior for building, running and formatting
+" Default behavior for building and running
 nnoremap <leader>m :!make<CR>
 nnoremap <leader>n :!make run<CR>
-nnoremap <leader>f gg=G``

@@ -75,10 +75,10 @@ set colorcolumn=80
 hi ColorColumn ctermbg=8
 
 " Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+map <Left> <nop>
+map <Right> <nop>
+map <Up> <nop>
+map <Down> <nop>
 
 " Disable command window which I often open accidentally
 nnoremap q: <Nop>

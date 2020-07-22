@@ -51,8 +51,9 @@ let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
 let g:deoplete#sources#rust#disable_keymap=1
 
-" Disable airline extras
+" Airline
 :let g:airline_extensions=['ale']
+:let g:airline_section_z='%l/%L'
 
 " Misc
 set scl=no

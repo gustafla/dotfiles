@@ -7,9 +7,10 @@ Plug 'dense-analysis/ale'
 " cargo-audit (pacman) and rust-racer (pacman) for Rust development.
 " Also bat, exa, fd, ripgrep, tokei and ugdb (aur).
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 " Install python-pynvim for this
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Install rust-src (aur) for this
+Plug 'sebastianmarkow/deoplete-rust'
 " Install python-jedi for this
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'vim-airline/vim-airline'
@@ -23,6 +24,7 @@ let mapleader=","
 let g:ale_disable_lsp=1
 let g:ale_lint_on_text_changed='never'
 let g:ale_lint_on_insert_leave=0
+let g:ale_lint_on_enter=0
 let g:ale_rust_cargo_use_clippy=1
 let g:ale_c_clangtidy_checks=['*']
 let g:ale_cpp_clangtidy_checks=['*']
@@ -45,6 +47,9 @@ nnoremap <leader>lo :lopen<CR>
 
 " Deoplete
 let g:deoplete#enable_at_startup=1
+let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
+let g:deoplete#sources#rust#disable_keymap=1
 
 " Disable airline extras
 :let g:airline_extensions=['ale']

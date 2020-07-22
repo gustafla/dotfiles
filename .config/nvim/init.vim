@@ -13,6 +13,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sebastianmarkow/deoplete-rust'
 " Install python-jedi for this
 Plug 'deoplete-plugins/deoplete-jedi'
+" Install clang for this
+Plug 'deoplete-plugins/deoplete-clang'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()

@@ -52,10 +52,11 @@ let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
 let g:deoplete#sources#rust#disable_keymap=1
 
 " Airline
-:let g:airline_extensions=['ale']
-:let g:airline_section_z='%l/%L'
+let g:airline_extensions=['ale']
+let g:airline_section_z='%l/%L'
 
 " Misc
+let g:python3_host_prog='/usr/bin/python3'
 set scl=no
 set shellredir=>
 set exrc

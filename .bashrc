@@ -1,4 +1,4 @@
-# stop if uninteractive
+# Stop if uninteractive
 case $- in
     *i*) ;;
     *) return ;;
@@ -13,16 +13,11 @@ cd() {
     command cd "${1:-$HOME}" && exa -l
 }
 
-synkki() {
-    local rsync_command="rsync -vrte 'ssh -p 443'"
-    eval "$rsync_command $1 $2"
-    eval "$rsync_command $2 $1"
-}
-
-# disable .bash_history and don't record duplicates
+# Disable .bash_history and don't record duplicates
 unset HISTFILE
 export HISTCONTROL=ignoredups
 
+# Load aliases
 if [[ -f ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi

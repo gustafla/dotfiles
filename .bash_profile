@@ -32,10 +32,19 @@ if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi
 
+# Start ssh-agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+# Start a graphical shell
 if [ "$XDG_SESSION_TYPE" = "tty" ] && [ $XDG_VTNR -eq 1 ]; then
     export XDG_SESSION_TYPE=wayland
     exec dbus-run-session sway
 else
-    # swap caps lock and escape
+    # Swap caps lock and escape (needs setuid on loadkeys)
     echo -e 'keycode 1 = Caps_Lock\nkeycode 58 = Escape' | loadkeys -
 fi

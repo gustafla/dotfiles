@@ -32,6 +32,7 @@
 !.local/bin/documenu
 !.local/bin/encode_music.sh
 !.local/bin/passmenu
+!.local/bin/system_setup.sh
 !.local/share/applications/editor.desktop
 !.local/share/applications/jar.desktop
 !.local/src/dwm/config.h

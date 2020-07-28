@@ -1,41 +1,64 @@
 #!/bin/bash
 set -e
 
-echo Setting locale
+function msg {
+    echo "$(tput bold)$(tput setaf 2)$@$(tput sgr 0)"
+}
+
+case $SUDO_USER in
+    root|"")
+        echo This script should be run with sudo as a regular user
+        exit 1
+        ;;
+    *)
+esac
+
+msg Setting locale
 echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
 locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
-echo Installing packages
+msg Installing packages
 pacman -Syu \
-    systemd-networkd iwd \
+    iwd \
     systemd-swap \
+    fwupd \
     sway swaylock alacritty \
     neovim \
-    base-devel
+    base-devel \
+    wget \
+    jq
 
-echo Installing yay-bin
-mkdir -p $HOME/.local/src
-pushd $HOME/.local/src
-git clone https://aur.archlinux.org/yay-bin.git
-pushd yay-bin
-makepkg -csi
-popd
-popd
+if ! command -v yay &> /dev/null; then
+    msg Installing yay-bin
+    sudo -H -u $SUDO_USER bash -c '\
+        mkdir -p $HOME/.local/src && \
+        cd $HOME/.local/src && \
+        git clone https://aur.archlinux.org/yay-bin.git && \
+        cd yay-bin && makepkg -csi'
+fi
 
-echo Installing neovim symlinks
-yay -S neovim-symlinks
+msg Installing topgrade
+sudo -H -u $SUDO_USER bash -c 'REL=\
+$(curl https://api.github.com/repos/r-darwish/topgrade/releases/latest | \
+jq -r .tag_name) && P="topgrade-$REL-$(uname -m)-unknown-linux-gnu.tar.gz" && \
+cd $HOME/.local/bin && wget \
+https://github.com/r-darwish/topgrade/releases/download/$REL/$P && \
+tar -xzf $P && rm $P'
 
-echo Enabling services
+msg Installing neovim symlinks
+sudo -u $SUDO_USER yay -S neovim-symlinks
+
+msg Enabling services
 systemctl enable systemd-networkd.service
 systemctl enable systemd-resolved.service
 systemctl enable iwd.service
 systemctl enable systemd-swap.service
 
-echo Linking resolv.conf to systemd-resolved
+msg Linking resolv.conf to systemd-resolved
 ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
-echo Configuring systemd-networkd
+msg Configuring systemd-networkd
 mkdir -p /etc/systemd/network
 cat > /etc/systemd/network/ethernet.network <<EOF
 [Match]
@@ -60,7 +83,7 @@ DHCP=yes
 RouteMetric=20
 EOF
 
-echo Fixing systemd-networkd-wait-online with override
+msg Fixing systemd-networkd-wait-online with override
 mkdir -p /etc/systemd/system/systemd-networkd-wait-online.service.d
 cat > /etc/systemd/system/systemd-networkd-wait-online.service.d/override.conf <<EOF
 [Service]
@@ -68,17 +91,26 @@ ExecStart=
 ExecStart=/usr/lib/systemd/systemd-networkd-wait-online --any
 EOF
 
-echo Setting SUID on loadkeys
+msg Setting SUID on loadkeys
 chmod +s /usr/bin/loadkeys
 
-if [ -d /sys/class/power_supply/BAT0 ]; then
-    echo Battery detected, installing TLP
+msg Setting up getty@tty1 autologin for $SUDO_USER
+mkdir -p /etc/systemd/system/getty@tty1.service.d
+cat > /etc/systemd/system/getty@tty1.service.d/override.conf <<EOF
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I \$TERM
+EOF
+
+if [[ -d /sys/class/power_supply/BAT0 ]]; then
+    msg Battery detected, installing TLP
     pacman -S tlp
     systemctl enable tlp.service
-    echo Remember to check tlp-stat and /etc/tlp.conf
 fi
 
-echo Remember to configure /etc/systemd/swap.conf
-echo Remember to configure /etc/pacman.d/mirrorlist
-echo Remember to configure users and sudoers
-echo Remember to install systemd-boot-pacman-hook AUR
+msg Remember to configure /etc/systemd/swap.conf
+msg Remember to configure /etc/pacman.d/mirrorlist
+msg Remember to install systemd-boot-pacman-hook AUR
+if [[ -d /sys/class/power_supply/BAT0 ]]; then
+    msg Remember to check tlp-stat and /etc/tlp.conf
+fi

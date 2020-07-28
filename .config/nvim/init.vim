@@ -3,13 +3,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
 Plug 'dense-analysis/ale'
 " Install rust for this
-" Note for myself: install cargo-bloat (aur), cargo-edit (pacman),
-" cargo-audit (pacman) and rust-racer (pacman) for Rust development.
-" Also bat, exa, fd, ripgrep, tokei and ugdb (aur).
+" Note for myself: install cargo-bloat (aur), cargo-edit and cargo-audit.
+" Also ugdb (aur).
 Plug 'rust-lang/rust.vim'
 " Install python-pynvim for this
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Install rust-src (aur) for this
+" Install rust-src (aur) and rust-racer for this
 Plug 'sebastianmarkow/deoplete-rust'
 " Install python-jedi for this
 Plug 'deoplete-plugins/deoplete-jedi'

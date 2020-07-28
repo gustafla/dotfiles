@@ -7,7 +7,7 @@ function msg {
 
 case $SUDO_USER in
     root|"")
-        echo This script should be run with sudo as a regular user
+        msg This script should be run with sudo as a regular user
         exit 1
         ;;
     *)
@@ -20,14 +20,12 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
 msg Installing packages
 pacman -Syu \
-    iwd \
-    systemd-swap \
-    fwupd \
-    sway swaylock alacritty \
-    neovim \
-    base-devel \
-    wget \
-    jq
+    iwd systemd-swap fwupd pulseaudio pulseaudio-alsa pulsemixer \
+    sway swaylock swayidle alacritty bemenu bemenu-wlroots dex xdg-utils pass \
+    grim slurp wl-clipboard \
+    base-devel clang rust rust-racer exa fd ripgrep tokei neovim \
+    python-pynvim python-jedi python-black \
+    wget jq git
 
 if ! command -v yay &> /dev/null; then
     msg Installing yay-bin
@@ -38,6 +36,9 @@ if ! command -v yay &> /dev/null; then
         cd yay-bin && makepkg -csi'
 fi
 
+msg Installing AUR packages
+sudo -u $SUDO_USER yay -S neovim-symlinks rust-src
+
 msg Installing topgrade
 sudo -H -u $SUDO_USER bash -c 'REL=\
 $(curl https://api.github.com/repos/r-darwish/topgrade/releases/latest | \
@@ -45,9 +46,6 @@ jq -r .tag_name) && P="topgrade-$REL-$(uname -m)-unknown-linux-gnu.tar.gz" && \
 cd $HOME/.local/bin && wget \
 https://github.com/r-darwish/topgrade/releases/download/$REL/$P && \
 tar -xzf $P && rm $P'
-
-msg Installing neovim symlinks
-sudo -u $SUDO_USER yay -S neovim-symlinks
 
 msg Enabling services
 systemctl enable systemd-networkd.service
@@ -110,7 +108,8 @@ fi
 
 msg Remember to configure /etc/systemd/swap.conf
 msg Remember to configure /etc/pacman.d/mirrorlist
-msg Remember to install systemd-boot-pacman-hook AUR
+msg Remember to configure /etc/makepkg.conf
+msg Remember to install systemd-boot-pacman-hook AUR if using systemd-boot
 if [[ -d /sys/class/power_supply/BAT0 ]]; then
     msg Remember to check tlp-stat and /etc/tlp.conf
 fi

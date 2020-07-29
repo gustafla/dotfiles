@@ -33,6 +33,11 @@ rsync -vrt \
 	--exclude='*.mp4' \
 	--exclude='*.mkv' \
 	--exclude='*.avi' \
+	--exclude='*.7z' \
+	--exclude='*.tar*' \
+	--exclude='*.tgz' \
+	--exclude='*.zip' \
+	--exclude='*.rar' \
 	. "$dst_dir"
 echo Starting encoding
 find . -type f -regex '.*\.\(flac\|wav\)' | \

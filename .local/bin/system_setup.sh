@@ -100,6 +100,17 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --autologin $SUDO_USER --noclear %I \$TERM
 EOF
 
+msg Disabling fallback in mkinitcpio preset for linux
+cat > /etc/mkinitcpio.d/linux.preset <<EOF
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux"
+
+PRESETS=('default')
+
+default_image="/boot/initramfs-linux.img"
+EOF
+rm -f /boot/*fallback*
+
 if [[ -d /sys/class/power_supply/BAT0 ]]; then
     msg Battery detected, installing TLP
     pacman -S tlp

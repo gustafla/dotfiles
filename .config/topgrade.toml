@@ -1,0 +1,6 @@
+# Additional git repositories to pull
+[git]
+repos = [
+    "~/code/*/",
+    "~/.password-store/"
+]

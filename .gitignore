@@ -21,7 +21,7 @@
 !.config/pulse/daemon.conf
 !.config/redshift.conf
 !.config/sway/config
-!.config/trizen/trizen.conf
+!.config/topgrade.toml
 !.config/user-dirs.dirs
 !.config/vdirsyncer/config
 !.gitconfig

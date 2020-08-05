@@ -22,7 +22,8 @@ msg Installing packages
 pacman -Syu \
     iwd systemd-swap fwupd pulseaudio pulseaudio-alsa pulsemixer \
     sway swaylock swayidle alacritty bemenu bemenu-wlroots dex xdg-utils pass \
-    grim slurp wl-clipboard \
+    grim slurp wl-clipboard kanshi \
+    terminus-font-otb noto-fonts noto-fonts-cjk noto-fonts-emoji \
     base-devel clang rust rust-racer exa fd ripgrep tokei neovim \
     python-pynvim python-jedi python-black \
     wget jq git

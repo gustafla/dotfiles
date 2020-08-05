@@ -1,6 +1,7 @@
 " vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tikhomirov/vim-glsl'
+Plug 'igankevich/mesonic'
 Plug 'dense-analysis/ale'
 " Install rust for this
 " Note for myself: install cargo-bloat (aur), cargo-edit and cargo-audit.

@@ -16,7 +16,6 @@ Plug 'deoplete-plugins/deoplete-jedi'
 " Install clang for this
 Plug 'deoplete-plugins/deoplete-clang'
 Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 " Leader key
@@ -116,3 +115,6 @@ inoremap ''     '
 " Default behavior for building and running
 nnoremap <leader>m :!make<CR>
 nnoremap <leader>n :!make run<CR>
+
+" Toggle :Lexplorer
+nnoremap <C-p> :20Lex<CR>

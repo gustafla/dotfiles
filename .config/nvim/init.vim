@@ -1,3 +1,12 @@
+" Plugins
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'tikhomirov/vim-glsl'
+Plug 'igankevich/mesonic'
+Plug 'dense-analysis/ale'
+Plug 'racer-rust/vim-racer'
+call plug#end()
+
 " Leader key
 let mapleader=","
 

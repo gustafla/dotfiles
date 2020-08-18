@@ -26,11 +26,8 @@ nnoremap <C-n> :ALENext<CR>
 nnoremap <leader>f :ALEFix<CR>
 nnoremap <leader>lo :lopen<CR>
 
-" Deoplete
-let g:deoplete#enable_at_startup=1
-let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/usr/src/rust/src'
-let g:deoplete#sources#rust#disable_keymap=1
+" Omnifunc and completers
+let g:racer_experimental_completer=1
 
 " Airline
 let g:airline_extensions=['ale']
@@ -49,6 +46,7 @@ set shiftwidth=4
 set softtabstop=4
 set shiftround
 set expandtab
+set hidden
 syntax on
 
 " Display extra whitespace

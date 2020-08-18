@@ -25,7 +25,6 @@ pacman -Syu \
     grim slurp wl-clipboard kanshi \
     terminus-font-otb noto-fonts noto-fonts-cjk noto-fonts-emoji \
     base-devel clang rust rust-racer exa fd ripgrep tokei neovim \
-    python-pynvim python-jedi python-black \
     wget jq git
 
 if ! command -v yay &> /dev/null; then
@@ -38,7 +37,7 @@ if ! command -v yay &> /dev/null; then
 fi
 
 msg Installing AUR packages
-sudo -u $SUDO_USER yay -S neovim-symlinks rust-src
+sudo -u $SUDO_USER yay -S neovim-symlinks
 
 msg Installing topgrade
 sudo -H -u $SUDO_USER bash -c 'REL=\

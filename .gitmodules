@@ -1,0 +1,24 @@
+[submodule ".local/share/nvim/site/pack/git-plugins/start/ale"]
+	path = .local/share/nvim/site/pack/git-plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/vim-glsl"]
+	path = .local/share/nvim/site/pack/git-plugins/start/vim-glsl
+	url = https://github.com/tikhomirov/vim-glsl.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/mesonic"]
+	path = .local/share/nvim/site/pack/git-plugins/start/mesonic
+	url = https://github.com/igankevich/mesonic.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/deoplete.nvim"]
+	path = .local/share/nvim/site/pack/git-plugins/start/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/deoplete-rust"]
+	path = .local/share/nvim/site/pack/git-plugins/start/deoplete-rust
+	url = https://github.com/sebastianmarkow/deoplete-rust.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/deoplete-jedi"]
+	path = .local/share/nvim/site/pack/git-plugins/start/deoplete-jedi
+	url = https://github.com/deoplete-plugins/deoplete-jedi.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/deoplete-clang"]
+	path = .local/share/nvim/site/pack/git-plugins/start/deoplete-clang
+	url = https://github.com/deoplete-plugins/deoplete-clang.git
+[submodule ".local/share/nvim/site/pack/git-plugins/start/vim-airline"]
+	path = .local/share/nvim/site/pack/git-plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git

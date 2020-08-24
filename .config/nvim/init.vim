@@ -38,7 +38,6 @@ nnoremap <leader>lo :lopen<CR>
 " Omnifunc and completers
 let g:racer_experimental_completer=1
 inoremap <leader><leader> <C-x><C-o>
-inoremap <leader>p <C-x><C-f>
 
 " Airline
 let g:airline_extensions=['ale']

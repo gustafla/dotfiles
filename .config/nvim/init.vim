@@ -5,6 +5,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'igankevich/mesonic'
 Plug 'dense-analysis/ale'
 Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " Leader key

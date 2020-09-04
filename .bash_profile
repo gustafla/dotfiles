@@ -40,6 +40,9 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
+# Mount my SFTP server if the machine has no battery
+[[ ! -d "/sys/class/power_supply/BAT0" ]] && ! findmnt ~/elite && mount ~/elite
+
 # Start a graphical shell
 if [ "$XDG_SESSION_TYPE" = "tty" ] && [ $XDG_VTNR -eq 1 ]; then
     export XDG_SESSION_TYPE=wayland

@@ -41,7 +41,7 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 # Mount my SFTP server if the machine has no battery
-[[ ! -d "/sys/class/power_supply/BAT0" ]] && ! findmnt ~/elite && mount ~/elite
+[[ ! -d "/sys/class/power_supply/BAT0" ]] && ! findmnt ~/elite && /usr/lib/systemd/systemd-networkd-wait-online --any --timeout 20 && mount ~/elite
 
 # Start a graphical shell
 if [ "$XDG_SESSION_TYPE" = "tty" ] && [ $XDG_VTNR -eq 1 ]; then

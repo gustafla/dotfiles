@@ -1,0 +1,8 @@
+[Unit]
+Description=sway output wallpaper rotate service
+
+[Service]
+ExecStart=%h/.config/sway/bg.sh
+
+[Install]
+WantedBy=multi-user.target

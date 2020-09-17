@@ -41,6 +41,14 @@ rsync -vrt \
 	. "$dst_dir"
 echo Starting encoding
 find . -type f -regex '.*\.\(flac\|wav\)' | \
-    parallel \
-    ffmpeg -n -i {} -codec:a libopus \
-    -b:a $bitrate -sample_fmt s16 "$dst_dir/{.}.opus"
+parallel \
+ffmpeg -n -i {} \
+-codec:a libopus \
+-b:a $bitrate \
+-filter:a aresample=48000:\
+resampler=soxr:\
+precision=28:\
+osf=s16:\
+dither_method=triangular \
+-ar 48000 \
+"$dst_dir/{.}.opus"

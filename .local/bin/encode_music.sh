@@ -1,12 +1,12 @@
 #!/bin/bash
 
-[ $# -ne 3 ] && \
-    echo "Usage: $0 bitrate src_dir dst_dir" && \
+[ $# -ne 2 ] && \
+    echo "Usage: $0 src_dir dst_dir" && \
     exit 1
 
-bitrate="$1"
-src_dir="$2"
-dst_dir="$(pwd)/$3"
+bitrate="128K"
+src_dir="$1"
+dst_dir="$(pwd)/$2"
 
 cd "$src_dir"
 find . -type d -exec mkdir -p "$dst_dir/{}" \;

@@ -48,7 +48,6 @@ ffmpeg -n -i {} \
 -filter:a aresample=48000:\
 resampler=soxr:\
 precision=28:\
-osf=s16:\
 dither_method=triangular \
 -ar 48000 \
 "$dst_dir/{.}.opus"

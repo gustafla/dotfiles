@@ -51,3 +51,5 @@ precision=28:\
 dither_method=triangular \
 -ar 48000 \
 "$dst_dir/{.}.opus"
+
+notify-send "$(basename $0) finished" "$(du -sh "$dst_dir")"

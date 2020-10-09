@@ -38,6 +38,10 @@ rsync -vrt \
 	--exclude='*.tgz' \
 	--exclude='*.zip' \
 	--exclude='*.rar' \
+	--exclude='*.it' \
+	--exclude='*.mod' \
+	--exclude='*.xm' \
+	--exclude='*.s3m' \
 	. "$dst_dir"
 echo Starting encoding
 find . -type f -regex '.*\.\(flac\|wav\)' | \

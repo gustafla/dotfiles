@@ -3,45 +3,61 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
 Plug 'igankevich/mesonic'
-Plug 'dense-analysis/ale'
-Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
 call plug#end()
 
 " Leader key
 let mapleader=","
 
-" ALE
-let g:ale_disable_lsp=1
-let g:ale_lint_on_text_changed='never'
-let g:ale_lint_on_insert_leave=0
-let g:ale_lint_on_enter=1
-let g:ale_rust_cargo_use_clippy=1
-let g:ale_c_clangtidy_checks=['*']
-let g:ale_cpp_clangtidy_checks=['*']
-let g:ale_linters = {
-\   'c': ['clangtidy'],
-\   'cpp': ['clangtidy'],
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'rust': ['rustfmt'],
-\   'c': ['clang-format'],
-\   'cpp': ['clang-format'],
-\   'html': ['tidy'],
-\   'python': ['black'],
-\   'sh': ['shfmt'],
-\}
-nnoremap <C-n> :ALENext<CR>
-nnoremap <leader>f :ALEFix<CR>
-nnoremap <leader>lo :lopen<CR>
+" Set completeopt to have a better completion experience
+" :help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
 
-" Omnifunc and completers
-let g:racer_experimental_completer=1
-inoremap <leader><leader> <C-x><C-o>
+" Avoid showing extra messages when using completion
+set shortmess+=c
+
+" Configure LSP
+" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+lua <<EOF
+local nvim_lsp = require'nvim_lsp'
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+    require'diagnostic'.on_attach(client)
+end
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+EOF
+
+" Visualize diagnostics
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
+" Don't show diagnostics while in insert mode
+let g:diagnostic_insert_delay = 1
+
+" Set updatetime for CursorHold
+" 300ms of no cursor movement to trigger CursorHold
+set updatetime=300
+" Show diagnostic popup on cursor hold
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+
+" Various lsp mappings
+nnoremap <silent> <leader>cp <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> <leader>cn <cmd>NextDiagnosticCycle<cr>
+nnoremap <silent> <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>d  <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>h  <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>i  <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <leader>s  <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <leader>t  <cmd>lua vim.lsp.buf.type_definition()<CR>
 
 " Airline
-let g:airline_extensions=['ale']
+let g:airline_extensions=[]
 let g:airline_section_z='%l/%L'
 
 " Misc
@@ -106,4 +122,4 @@ nnoremap <leader>m :!make<CR>
 nnoremap <leader>n :!make run<CR>
 
 " Toggle :Lexplorer
-nnoremap <C-p> :20Lex<CR>
+nnoremap <silent> <C-p> :20Lex<CR>

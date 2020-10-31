@@ -24,7 +24,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 " Configure LSP
-" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+" https://github.com/neovim/nvim-lspconfig
 lua <<EOF
 local nvim_lsp = require'nvim_lsp'
 local on_attach = function(client)
@@ -32,6 +32,8 @@ local on_attach = function(client)
     require'diagnostic'.on_attach(client)
 end
 nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.jdtls.setup({ on_attach=on_attach })
+nvim_lsp.pyls.setup({ on_attach=on_attach })
 EOF
 
 " Visualize diagnostics

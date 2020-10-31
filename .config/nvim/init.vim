@@ -8,6 +8,7 @@ Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
 call plug#end()
 
 " Leader key
@@ -47,6 +48,8 @@ let g:diagnostic_insert_delay = 1
 set updatetime=300
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+" Show inlay hints in Rust projects
+autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{prefix='       > ', aligned=true}
 
 " Various lsp mappings
 nnoremap <silent> <leader>cp <cmd>PrevDiagnosticCycle<cr>

@@ -29,12 +29,20 @@ set shortmess+=c
 " https://github.com/neovim/nvim-lspconfig
 lua <<EOF
 local nvim_lsp = require'nvim_lsp'
+local util = require'nvim_lsp/util'
+
 local on_attach = function(client)
     require'completion'.on_attach(client)
     require'diagnostic'.on_attach(client)
 end
+
 nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
-nvim_lsp.jdtls.setup({ on_attach=on_attach })
+nvim_lsp.jdtls.setup{
+    on_attach=on_attach;
+    init_options={
+        workspace=util.path.join{vim.loop.os_homedir(), '.cache/jdtls'};
+    }
+}
 nvim_lsp.pyls.setup({ on_attach=on_attach })
 nvim_lsp.clangd.setup({ on_attach=on_attach })
 EOF

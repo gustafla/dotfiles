@@ -59,7 +59,8 @@ set updatetime=300
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
 " Show inlay hints in Rust projects
-autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{prefix='       > ', aligned=true}
+autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua
+            \ require'lsp_extensions'.inlay_hints{ aligned=true }
 
 " Various lsp mappings
 nnoremap <silent> <leader>cp <cmd>PrevDiagnosticCycle<cr>

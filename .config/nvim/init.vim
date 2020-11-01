@@ -36,15 +36,25 @@ local on_attach = function(client)
     require'diagnostic'.on_attach(client)
 end
 
-nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
-nvim_lsp.jdtls.setup{
-    on_attach=on_attach;
-    init_options={
-        workspace=util.path.join{vim.loop.os_homedir(), '.cache/jdtls'};
+nvim_lsp.rust_analyzer.setup{on_attach = on_attach}
+nvim_lsp.pyls.setup{on_attach = on_attach}
+nvim_lsp.clangd.setup{on_attach = on_attach}
+nvim_lsp.texlab.setup{
+    on_attach = on_attach;
+    settings = {
+        latex = {
+            build = {
+                onSave = true;
+            }
+        }
     }
 }
-nvim_lsp.pyls.setup({ on_attach=on_attach })
-nvim_lsp.clangd.setup({ on_attach=on_attach })
+nvim_lsp.jdtls.setup{
+    on_attach = on_attach;
+    init_options = {
+        workspace = util.path.join{vim.loop.os_homedir(), ".cache/jdtls"};
+    }
+}
 EOF
 
 " Visualize diagnostics

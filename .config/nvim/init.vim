@@ -39,6 +39,7 @@ end
 nvim_lsp.rust_analyzer.setup{on_attach = on_attach}
 nvim_lsp.pyls.setup{on_attach = on_attach}
 nvim_lsp.clangd.setup{on_attach = on_attach}
+nvim_lsp.r_language_server.setup{on_attach = on_attach}
 nvim_lsp.texlab.setup{
     on_attach = on_attach;
     settings = {

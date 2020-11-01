@@ -28,6 +28,9 @@ export XCURSOR_SIZE=16
 # Rust libraries debugging vars
 export RUST_BACKTRACE=1
 
+# R libraries path
+export R_LIBS_USER="$HOME/.local/share/R_libs"
+
 if [[ -f ~/.bashrc ]]; then
     . ~/.bashrc
 fi

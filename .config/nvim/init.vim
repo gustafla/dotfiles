@@ -4,6 +4,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
 Plug 'igankevich/mesonic'
 Plug 'rust-lang/rust.vim'
+Plug 'AndrewRadev/sideways.vim'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -128,3 +130,7 @@ nnoremap <leader>n :!make run<CR>
 
 " Toggle :Lexplorer
 nnoremap <silent> <C-p> :20Lex<CR>
+
+" Sideways
+noremap <silent> <C-h> :SidewaysLeft<CR>
+noremap <silent> <C-l> :SidewaysRight<CR>

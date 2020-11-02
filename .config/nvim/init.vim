@@ -15,6 +15,13 @@ call plug#end()
 " Leader key
 let mapleader=","
 
+" Configure completion-nvim
+let g:completion_chain_complete_list = [
+    \{'complete_items': ['lsp', 'path']},
+    \{'mode': '<c-p>'},
+    \{'mode': '<c-n>'}
+\]
+
 " Set completeopt to have a better completion experience
 " :help completeopt
 " menuone: popup even when there's only one match
@@ -57,6 +64,9 @@ nvim_lsp.jdtls.setup{
     }
 }
 EOF
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
 
 " Visualize diagnostics
 let g:diagnostic_enable_virtual_text = 1

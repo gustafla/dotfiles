@@ -35,19 +35,19 @@ set shortmess+=c
 " Configure LSP
 " https://github.com/neovim/nvim-lspconfig
 lua <<EOF
-local nvim_lsp = require'nvim_lsp'
-local util = require'nvim_lsp/util'
+local lspconfig = require'lspconfig'
+local util = require'lspconfig/util'
 
 local on_attach = function(client)
     require'completion'.on_attach(client)
     require'diagnostic'.on_attach(client)
 end
 
-nvim_lsp.rust_analyzer.setup{on_attach = on_attach}
-nvim_lsp.pyls.setup{on_attach = on_attach}
-nvim_lsp.clangd.setup{on_attach = on_attach}
-nvim_lsp.r_language_server.setup{on_attach = on_attach}
-nvim_lsp.texlab.setup{
+lspconfig.rust_analyzer.setup{on_attach = on_attach}
+lspconfig.pyls.setup{on_attach = on_attach}
+lspconfig.clangd.setup{on_attach = on_attach}
+lspconfig.r_language_server.setup{on_attach = on_attach}
+lspconfig.texlab.setup{
     on_attach = on_attach;
     settings = {
         latex = {
@@ -57,7 +57,7 @@ nvim_lsp.texlab.setup{
         }
     }
 }
-nvim_lsp.jdtls.setup{
+lspconfig.jdtls.setup{
     on_attach = on_attach;
     init_options = {
         workspace = util.path.join{vim.loop.os_homedir(), ".cache/jdtls"};

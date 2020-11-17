@@ -59,7 +59,7 @@ exec dex -a
 # Keyboard
 input * {
     xkb_layout "us,fi"
-    xkb_options "caps:escape,grp:shifts_toggle"
+    xkb_options "caps:escape,grp:lwin_toggle"
     repeat_delay 250
     repeat_rate 50
 }

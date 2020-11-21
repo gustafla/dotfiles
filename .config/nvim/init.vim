@@ -8,7 +8,6 @@ Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 call plug#end()
 
@@ -38,17 +37,11 @@ lua <<EOF
 local lspconfig = require'lspconfig'
 local util = require'lspconfig/util'
 
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-    require'diagnostic'.on_attach(client)
-end
-
-lspconfig.rust_analyzer.setup{on_attach = on_attach}
-lspconfig.pyls.setup{on_attach = on_attach}
-lspconfig.clangd.setup{on_attach = on_attach}
-lspconfig.r_language_server.setup{on_attach = on_attach}
+lspconfig.rust_analyzer.setup{}
+lspconfig.pyls.setup{}
+lspconfig.clangd.setup{}
+lspconfig.r_language_server.setup{}
 lspconfig.texlab.setup{
-    on_attach = on_attach;
     settings = {
         latex = {
             build = {
@@ -58,21 +51,20 @@ lspconfig.texlab.setup{
     }
 }
 lspconfig.jdtls.setup{
-    on_attach = on_attach;
     init_options = {
         workspace = util.path.join{vim.loop.os_homedir(), ".cache/jdtls"};
     }
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    update_in_insert = false,
+  }
+)
 EOF
 
 " Use completion-nvim in every buffer
 autocmd BufEnter * lua require'completion'.on_attach()
-
-" Visualize diagnostics
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_trimmed_virtual_text = '40'
-" Don't show diagnostics while in insert mode
-let g:diagnostic_insert_delay = 1
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
@@ -84,8 +76,9 @@ autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua
             \ require'lsp_extensions'.inlay_hints{ aligned=true }
 
 " Various lsp mappings
-nnoremap <silent> <leader>cp <cmd>PrevDiagnosticCycle<cr>
-nnoremap <silent> <leader>cn <cmd>NextDiagnosticCycle<cr>
+nnoremap <silent> <leader>cp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> <leader>cn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <leader>cl <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap <silent> <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>d  <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <leader>h  <cmd>lua vim.lsp.buf.hover()<CR>

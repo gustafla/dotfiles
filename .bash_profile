@@ -28,6 +28,9 @@ export XCURSOR_SIZE=16
 # Rust libraries debugging vars
 export RUST_BACKTRACE=1
 
+# Git ceiling directories
+export GIT_CEILING_DIRECTORIES="$HOME/code"
+
 # R libraries path
 export R_LIBS_USER="$HOME/.local/share/R_libs"
 

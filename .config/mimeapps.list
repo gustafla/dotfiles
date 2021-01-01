@@ -36,3 +36,4 @@ application/java-archive=jar.desktop;
 text/html=firefox.desktop;
 image/jpeg=org.gnome.eog.desktop;
 image/png=org.gnome.eog.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-SO3FW0.desktop

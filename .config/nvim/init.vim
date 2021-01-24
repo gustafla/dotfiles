@@ -94,8 +94,6 @@ let g:airline_section_z='%l/%L'
 let g:python3_host_prog='/usr/bin/python3'
 set scl=no
 set shellredir=>
-set exrc
-set secure
 set noshowmode
 set noswapfile
 set tabstop=4

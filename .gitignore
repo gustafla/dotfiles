@@ -27,7 +27,7 @@
 !.config/topgrade.toml
 !.config/user-dirs.dirs
 !.config/vdirsyncer/config
-!.gitconfig
+!.gitconfig*
 !.gitignore
 !.gnupg/gpg-agent.conf
 !.gtkrc-2.0

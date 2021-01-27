@@ -1,7 +1,9 @@
 [user]
-	email = me@gustafla.space
-	name = Lauri Gustafsson
+    email = me@gustafla.space
+    name = Lauri Gustafsson
 [push]
-	default = matching
+    default = matching
 [pull]
-	rebase = false
+    rebase = false
+[includeIf "gitdir:~/tuxera/"]
+    path = .gitconfig_tuxera

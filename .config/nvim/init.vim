@@ -9,6 +9,9 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'romgrk/nvim-treesitter-context'
 call plug#end()
 
 " Leader key
@@ -31,12 +34,13 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
-" Configure LSP
+" Configure LSP and treesitter
 " https://github.com/neovim/nvim-lspconfig
 lua <<EOF
 local lspconfig = require'lspconfig'
 local util = require'lspconfig/util'
 
+-- LSP Servers ----------------------------------------------------------------
 lspconfig.rust_analyzer.setup{}
 lspconfig.pyls.setup{}
 lspconfig.clangd.setup{}
@@ -45,22 +49,41 @@ lspconfig.texlab.setup{
     settings = {
         latex = {
             build = {
-                onSave = true;
-            }
-        }
-    }
+                onSave = true,
+            },
+        },
+    },
 }
 lspconfig.jdtls.setup{
     init_options = {
-        workspace = util.path.join{vim.loop.os_homedir(), ".cache/jdtls"};
-    }
+        workspace = util.path.join{vim.loop.os_homedir(), ".cache/jdtls"},
+    },
 }
 
+-- LSP Settings ---------------------------------------------------------------
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    update_in_insert = false,
-  }
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = false,
+    }
 )
+
+-- Treesitter settings --------------------------------------------------------
+require'nvim-treesitter.configs'.setup{
+    highlight = {
+        enable = true,
+    },
+    refactor = {
+        highlight_definitions = {
+            enable = true,
+        },
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = "grr",
+            },
+        },
+    },
+}
 EOF
 
 " Use completion-nvim in every buffer

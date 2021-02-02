@@ -1,11 +1,17 @@
 " Plugins
 call plug#begin(stdpath('data') . '/plugged')
+" Color schemes
+Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
+" Misc
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
 Plug 'igankevich/mesonic'
 Plug 'rust-lang/rust.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'tpope/vim-fugitive'
+" LSP and treesitter
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
@@ -125,7 +131,13 @@ set softtabstop=4
 set shiftround
 set expandtab
 set hidden
+set termguicolors
 syntax on
+if strftime("%H") < 16
+  colorscheme ayu
+else
+  colorscheme gruvbox
+endif
 
 " Display extra whitespace
 set list listchars=tab:>·,trail:·,nbsp:·

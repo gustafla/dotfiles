@@ -3,6 +3,13 @@ call plug#begin(stdpath('data') . '/plugged')
 " Color schemes
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
+" LSP and treesitter
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'romgrk/nvim-treesitter-context'
 " Misc
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
@@ -11,13 +18,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'tpope/vim-fugitive'
-" LSP and treesitter
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
-Plug 'romgrk/nvim-treesitter-context'
 call plug#end()
 
 " Leader key
@@ -119,25 +119,40 @@ nnoremap <silent> <leader>t  <cmd>lua vim.lsp.buf.type_definition()<CR>
 let g:airline_extensions=[]
 let g:airline_section_z='%l/%L'
 
-" Misc
+" Use syntax highlighting
+syntax on
+
+" Use system python even in venv
 let g:python3_host_prog='/usr/bin/python3'
+
+" No sign column
 set scl=no
-set shellredir=>
-set noshowmode
+
+" No swap files
 set noswapfile
+
+" 4 spaces as tab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set shiftround
 set expandtab
+
+" Allow to abandon a buffer when editing another one
 set hidden
+
+" Enable custom colors in terminals.
+" Some plugins look ugly without a popular color scheme
 set termguicolors
-syntax on
-if strftime("%H") < 16
+" Colors. Ayu in the day, gruvbox in the night
+let hour = strftime("%H")
+if hour < 16 && hour > 6
   colorscheme ayu
 else
   colorscheme gruvbox
 endif
+" I want to see my wallpaper trough the terminal
+hi Normal ctermbg=NONE guibg=NONE
 
 " Display extra whitespace
 set list listchars=tab:>·,trail:·,nbsp:·

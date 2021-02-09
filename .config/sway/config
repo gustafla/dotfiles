@@ -80,7 +80,7 @@ input * {
 # Basics:
 #
     # start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+Return exec eval 'wd="$(<$XDG_RUNTIME_DIR/last_working_directory)"; $term --working-directory "${wd:-$HOME}"'
 
     # kill focused window
     bindsym $mod+Shift+q kill

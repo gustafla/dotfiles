@@ -11,7 +11,14 @@ set -o vi
 
 cd() {
     command cd "${1:-$HOME}" && exa -l
+    echo "$PWD" > $XDG_RUNTIME_DIR/last_working_directory
 }
+
+at_exit() {
+    echo "$PWD" > $XDG_RUNTIME_DIR/last_working_directory
+}
+
+trap at_exit EXIT
 
 # Disable .bash_history and don't record duplicates
 unset HISTFILE

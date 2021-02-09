@@ -75,9 +75,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 -- Treesitter settings --------------------------------------------------------
 require'nvim-treesitter.configs'.setup{
-    highlight = {
-        enable = true,
-    },
     refactor = {
         highlight_definitions = {
             enable = true,

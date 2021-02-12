@@ -1,3 +1,5 @@
+disable = ["cargo"]
+
 # Additional git repositories to pull
 [git]
 repos = [

@@ -49,6 +49,7 @@ fi
 # Start a graphical shell
 if [ "$XDG_SESSION_TYPE" = "tty" ] && [ $XDG_VTNR -eq 1 ]; then
     export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
     exec dbus-run-session sway
 else
     # Swap caps lock and escape (needs setuid on loadkeys)

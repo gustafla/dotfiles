@@ -3,13 +3,10 @@ call plug#begin(stdpath('data') . '/plugged')
 " Color schemes
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
-" LSP and treesitter
+" LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
-Plug 'romgrk/nvim-treesitter-context'
 " Misc
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
@@ -40,7 +37,7 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
-" Configure LSP and treesitter
+" Configure LSP
 " https://github.com/neovim/nvim-lspconfig
 lua <<EOF
 local lspconfig = require'lspconfig'
@@ -72,21 +69,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         update_in_insert = false,
     }
 )
-
--- Treesitter settings --------------------------------------------------------
-require'nvim-treesitter.configs'.setup{
-    refactor = {
-        highlight_definitions = {
-            enable = true,
-        },
-        smart_rename = {
-            enable = true,
-            keymaps = {
-                smart_rename = "grr",
-            },
-        },
-    },
-}
 EOF
 
 " Use completion-nvim in every buffer

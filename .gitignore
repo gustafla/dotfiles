@@ -18,7 +18,7 @@
 !.config/mimeapps.list
 !.config/mpv/mpv.conf
 !.config/nvim/**
-!.config/pulse/daemon.conf
+!.config/PulseEffects/**
 !.config/redshift.conf
 !.config/sway/bg.sh
 !.config/sway/config

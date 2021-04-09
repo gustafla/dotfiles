@@ -20,6 +20,7 @@ export KITTY_ENABLE_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
 export ECORE_EVAS_ENGINE=wayland_egl
 export ELM_ENGINE=wayland_egl
+export BEMENU_BACKEND=wayland
 
 # Sway cursor size and style
 export XCURSOR_THEME=Adwaita

@@ -8,6 +8,7 @@
 !.config/alacritty/alacritty.yml
 !.config/cmus/rc
 !.config/fontconfig/fonts.conf
+!.config/foot/foot.ini
 !.config/gtk-3.0/settings.ini
 !.config/i3/config
 !.config/i3/move-cursor-window-center

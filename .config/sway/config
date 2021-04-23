@@ -9,7 +9,8 @@ set $menuargs --fn $font \
 --nb=#ffffff --nf=#000000 \
 --tb=#ffffff --tf=#000000 \
 --fb=#d0d0d0 --ff=#000000 \
---hb=#b0b0b0 --hf=#000000
+--hb=#b0b0b0 --hf=#000000 \
+--monitor=all
 
 ### Window aesthetics and rules
 #
@@ -30,8 +31,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
-include term_override
+set $term footclient
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
@@ -46,6 +46,9 @@ exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f'
 
 ### Receive and display notifications with mako
 exec mako
+
+### Run foot terminal server
+exec foot --server
 
 ### XDG Autostart using dex
 exec dex -a

@@ -50,6 +50,9 @@ exec mako
 ### Run foot terminal server
 exec foot --server
 
+### Run gammastep for nighttime eye comfort
+exec gammastep -l 60.2:25 -t 6500:3000
+
 ### XDG Autostart using dex
 exec dex -a
 

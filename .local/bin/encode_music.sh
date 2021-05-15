@@ -12,7 +12,7 @@ dst_dir="$PWD/$2"
 cd "$src_dir"
 
 # Copy lossy files and directory structure
-rsync -r --include '*/' \
+rsync -rt --include '*/' \
 --include '*.aac' \
 --include '*.m4a' \
 --include '*.mp3' \

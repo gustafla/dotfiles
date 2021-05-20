@@ -41,6 +41,9 @@ set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 # Load from config/output
 include output
 
+### Set wallpaper
+exec_always ~/.config/sway/bg.sh
+
 ### Handle session locking with swayidle
 exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f'
 

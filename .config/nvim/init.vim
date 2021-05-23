@@ -2,7 +2,6 @@
 call plug#begin(stdpath('data') . '/plugged')
 " Color schemes
 Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -122,14 +121,9 @@ set hidden
 
 " Enable custom colors in terminals.
 " Some plugins look ugly without a popular color scheme
+set background=light
 set termguicolors
-" Colors. Ayu in the day, gruvbox in the night
-let hour = strftime("%H")
-if hour < 16 && hour > 6
-  colorscheme ayu
-else
-  colorscheme gruvbox
-endif
+colorscheme gruvbox
 " I want to see my wallpaper trough the terminal
 hi Normal ctermbg=NONE guibg=NONE
 

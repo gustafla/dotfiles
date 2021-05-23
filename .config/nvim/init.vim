@@ -124,7 +124,6 @@ set hidden
 set background=light
 set termguicolors
 colorscheme gruvbox
-" I want to see my wallpaper trough the terminal
 hi Normal ctermbg=NONE guibg=NONE
 
 " Display extra whitespace

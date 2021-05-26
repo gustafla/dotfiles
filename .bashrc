@@ -28,3 +28,12 @@ export HISTCONTROL=ignoredups
 if [[ -f ~/.bash_aliases ]]; then
     . ~/.bash_aliases
 fi
+
+# Print work todos on work time
+case $(date +%a) in
+    Fri | Sat | Sun)
+        ;;
+    *)
+        [[ $(date +%H) -lt 17 ]] && todo list work
+        ;;
+esac

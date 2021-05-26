@@ -1,23 +1,22 @@
 [general]
-status_path = "~/.vdirsyncer/status/"
+status_path = "~/.local/share/vdirsyncer/status/"
 
-[pair my_calendar]
-a = "my_calendar_local"
-b = "my_calendar_remote"
+[pair my_calendars]
+a = "my_calendars_local"
+b = "my_calendars_remote"
 collections = ["from a", "from b"]
+metadata = ["color", "displayname"]
 
-[storage my_calendar_local]
+[storage my_calendars_local]
 type = "filesystem"
-path = "~/.calendars/"
+path = "~/.local/share/calendars/"
 fileext = ".ics"
 
-[storage my_calendar_remote]
+[storage my_calendars_remote]
 type = "caldav"
-url = "https://gustafla.space:5232/gustafla/"
+url = "https://gustafla.space/radicale/"
 username = "gustafla"
 password.fetch = ["command", "/usr/bin/pass", "show", "gustafla.space:5232/gustafla"]
-verify_fingerprint = "3B:07:B6:54:1F:F6:DC:A8:2C:09:50:2D:91:FE:DB:4F:C3:1D:35:C7"
-verify = false
 
 [pair tko_aly]
 a = "tko_aly_local"
@@ -26,7 +25,7 @@ collections = null
 
 [storage tko_aly_local]
 type = "filesystem"
-path = "~/.calendars/tko_aly/"
+path = "~/.local/share/calendars/tko_aly/"
 fileext = ".ics"
 
 [storage tko_aly_remote]
@@ -40,7 +39,7 @@ collections = null
 
 [storage opintoni_local]
 type = "filesystem"
-path = "~/.calendars/opintoni/"
+path = "~/.local/share/calendars/opintoni/"
 fileext = ".ics"
 
 [storage opintoni_remote]

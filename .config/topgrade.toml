@@ -7,3 +7,6 @@ repos = [
     "~/.password-store/",
     "~/misc/gitolite-admin/"
 ]
+
+[commands]
+"Vdirsyncer" = "vdirsyncer sync"

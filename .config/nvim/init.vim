@@ -1,7 +1,8 @@
 " Plugins
 call plug#begin(stdpath('data') . '/plugged')
 " Color schemes
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
+Plug 'vim-airline/vim-airline-themes'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -123,8 +124,8 @@ set hidden
 " Some plugins look ugly without a popular color scheme
 set background=light
 set termguicolors
-colorscheme gruvbox
-hi Normal ctermbg=NONE guibg=NONE
+colorscheme solarized8
+let g:airline_theme='solarized'
 
 " Display extra whitespace
 set list listchars=tab:>·,trail:·,nbsp:·

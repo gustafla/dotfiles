@@ -6,10 +6,10 @@
 
 set $font 'monospace 13'
 set $menuargs --fn $font \
---nb=#ffffff --nf=#000000 \
---tb=#ffffff --tf=#000000 \
---fb=#d0d0d0 --ff=#000000 \
---hb=#b0b0b0 --hf=#000000 \
+--nb=#fdf6e3 --nf=#586e75 \
+--tb=#fdf6e3 --tf=#586e75 \
+--fb=#fdf6e3 --ff=#586e75 \
+--hb=#586e75 --hf=#fdf6e3 \
 --monitor=all
 
 ### Window aesthetics and rules
@@ -247,11 +247,11 @@ bar {
     status_command i3status
 
     colors {
-        statusline #000000
-        background #ffffff
-        inactive_workspace #ffffff #ffffff #000000
-        active_workspace #7f7f7f #7f7f7f #000000
-        focused_workspace #000000 #000000 #ffffff
+        statusline #586e75
+        background #fdf6e3
+        inactive_workspace #fdf6e3 #fdf6e3 #586e75
+        active_workspace #fdf6e3 #fdf6e3 #586e75
+        focused_workspace #586e75 #586e75 #fdf6e3
     }
 }
 

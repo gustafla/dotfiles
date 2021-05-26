@@ -23,6 +23,7 @@
 !.config/redshift.conf
 !.config/sway/bg.sh
 !.config/sway/config
+!.config/swaylock/config
 !.config/systemd/user/bg.service
 !.config/systemd/user/bg.timer
 !.config/topgrade.toml

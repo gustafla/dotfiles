@@ -1,4 +1,4 @@
-disable = ["cargo"]
+disable = ["cargo", "pip3"]
 
 # Additional git repositories to pull
 [git]

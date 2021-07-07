@@ -90,7 +90,7 @@ scrolling:
   multiplier: 10
 
 # Font configuration
-#font:
+font:
   # Normal (roman) font face
   #normal:
     # Font family
@@ -138,7 +138,7 @@ scrolling:
     #style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 8
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -162,12 +162,12 @@ scrolling:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (dotshare)
+# Colors (Solarized)
 colors:
   # Default colors
   primary:
-    background: '#000000'
-    foreground: '#ffffff'
+    background: '0xfdf6e3'
+    foreground: '0x586e75'
 
     # Bright and dim foreground colors
     #
@@ -223,25 +223,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x101010'
-    red:     '0xe84f4f'
-    green:   '0xb8d68c'
-    yellow:  '0xe1aa5d'
-    blue:    '0x7dc1cf'
-    magenta: '0x9b64fb'
-    cyan:    '0x6d878d'
-    white:   '0xdddddd'
+    black:   '0x002b36'
+    red:     '0xdc322f'
+    green:   '0x859900'
+    yellow:  '0xb58900'
+    blue:    '0x268bd2'
+    magenta: '0x6c71c4'
+    cyan:    '0x2aa198'
+    white:   '0x93a1a1'
 
   # Bright colors
   bright:
-    black:   '0x404040'
-    red:     '0xd23d3d'
-    green:   '0xa0cf5d'
-    yellow:  '0xf39d21'
-    blue:    '0x4e9fb1'
-    magenta: '0x8542ff'
-    cyan:    '0x42717b'
-    white:   '0xdddddd'
+    black:   '0x657b83'
+    red:     '0xdc322f'
+    green:   '0x859900'
+    yellow:  '0xb58900'
+    blue:    '0x268bd2'
+    magenta: '0x6c71c4'
+    cyan:    '0x2aa198'
+    white:   '0xfdf6e3'
 
 
   # Dim colors
@@ -257,7 +257,6 @@ colors:
   #  magenta: '#75617b'
   #  cyan:    '#5b7d78'
   #  white:   '#828482'
-
   # Indexed Colors
   #
   # The indexed colors include all colors from 16 to 256.
@@ -313,7 +312,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+background_opacity: 1.0
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

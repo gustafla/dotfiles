@@ -31,7 +31,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term footclient
+set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
@@ -49,9 +49,6 @@ exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f'
 
 ### Receive and display notifications with mako
 exec mako
-
-### Run foot terminal server
-exec foot --server
 
 ### Run gammastep for nighttime eye comfort
 exec gammastep -l 60.2:25 -t 6500:2700

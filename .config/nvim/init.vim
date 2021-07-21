@@ -45,7 +45,6 @@ local util = require'lspconfig/util'
 
 -- LSP Servers ----------------------------------------------------------------
 lspconfig.rust_analyzer.setup{}
-lspconfig.pyls.setup{}
 lspconfig.clangd.setup{}
 lspconfig.r_language_server.setup{}
 lspconfig.texlab.setup{

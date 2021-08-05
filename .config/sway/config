@@ -31,7 +31,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term footclient
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
@@ -43,6 +43,9 @@ include output
 
 ### Set wallpaper
 exec_always ~/.config/sway/bg.sh
+
+### Run foot terminal server
+exec foot --server
 
 ### Handle session locking with swayidle
 exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f'

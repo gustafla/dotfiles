@@ -5,46 +5,28 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline-themes'
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'simrat39/rust-tools.nvim'
+" Completion
+Plug 'hrsh7th/nvim-compe'
 " Misc
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
 Plug 'igankevich/mesonic'
-Plug 'rust-lang/rust.vim'
 Plug 'AndrewRadev/sideways.vim'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Leader key
 let mapleader=","
 
-" Configure completion-nvim
-let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp', 'path']},
-    \{'mode': '<c-p>'},
-    \{'mode': '<c-n>'}
-\]
+" Set completeopt to enable nvim-compe
+set completeopt=menuone,noselect
 
-" Set completeopt to have a better completion experience
-" :help completeopt
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing extra messages when using completion
-set shortmess+=c
-
-" Configure LSP
-" https://github.com/neovim/nvim-lspconfig
 lua <<EOF
 local lspconfig = require'lspconfig'
 local util = require'lspconfig/util'
 
 -- LSP Servers ----------------------------------------------------------------
-lspconfig.rust_analyzer.setup{}
+require('rust-tools').setup{}
 lspconfig.clangd.setup{}
 lspconfig.r_language_server.setup{}
 lspconfig.texlab.setup{
@@ -68,19 +50,23 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         update_in_insert = false,
     }
 )
-EOF
 
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
+-- Compe ----------------------------------------------------------------------
+require'compe'.setup{
+    enabled = true,
+    source = {
+        path = true,
+        buffer = true,
+        nvim_lsp = true,
+    },
+}
+EOF
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=300
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-" Show inlay hints in Rust projects
-autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua
-            \ require'lsp_extensions'.inlay_hints{ aligned=true }
 
 " Various lsp mappings
 nnoremap <silent> <leader>cp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>

@@ -12,7 +12,6 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
 Plug 'igankevich/mesonic'
-Plug 'AndrewRadev/sideways.vim'
 call plug#end()
 
 " Leader key
@@ -154,12 +153,12 @@ inoremap '      ''<Left>
 inoremap ''     '
 
 " Default behavior for building and running
-nnoremap <leader>m :!make<CR>
-nnoremap <leader>n :!make run<CR>
+nnoremap <leader>m <cmd>!make<CR>
+nnoremap <leader>n <cmd>!make run<CR>
 
 " Toggle :Lexplorer
-nnoremap <silent> <C-p> :20Lex<CR>
+nnoremap <silent> <C-p> <cmd>20Lex<CR>
 
-" Sideways
-noremap <silent> <C-h> :SidewaysLeft<CR>
-noremap <silent> <C-l> :SidewaysRight<CR>
+" Browse buffers
+noremap <silent> <C-h> <cmd>bnext<CR>
+noremap <silent> <C-l> <cmd>bprevious<CR>

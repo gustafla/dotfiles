@@ -28,6 +28,7 @@ local util = require'lspconfig/util'
 require('rust-tools').setup{}
 lspconfig.clangd.setup{}
 lspconfig.r_language_server.setup{}
+lspconfig.jedi_language_server.setup{}
 lspconfig.texlab.setup{
     settings = {
         latex = {

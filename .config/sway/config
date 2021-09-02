@@ -9,8 +9,7 @@ set $menuargs --fn $font \
 --nb=#fdf6e3 --nf=#586e75 \
 --tb=#fdf6e3 --tf=#586e75 \
 --fb=#fdf6e3 --ff=#586e75 \
---hb=#586e75 --hf=#fdf6e3 \
---monitor=all
+--hb=#586e75 --hf=#fdf6e3
 
 ### Window aesthetics and rules
 #

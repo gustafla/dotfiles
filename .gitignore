@@ -5,8 +5,12 @@
 !.bash_aliases
 !.bash_profile
 !.bashrc
+!.config/
 !.config/alacritty/alacritty.yml
 !.config/cmus/rc
+!.config/easyeffects/
+!.config/easyeffects/output/
+!.config/easyeffects/output/*
 !.config/fontconfig/fonts.conf
 !.config/foot/foot.ini
 !.config/gtk-3.0/settings.ini

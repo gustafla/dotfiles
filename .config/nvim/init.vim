@@ -11,6 +11,7 @@ Plug 'hrsh7th/nvim-compe'
 " Misc
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
+Plug 'neovimhaskell/haskell-vim'
 Plug 'igankevich/mesonic'
 call plug#end()
 

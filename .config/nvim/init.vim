@@ -109,7 +109,9 @@ set hidden
 
 " Enable custom colors in terminals.
 " Some plugins look ugly without a popular color scheme
-set background=light
+if $TERM != "linux"
+    set background=light
+endif
 set termguicolors
 colorscheme solarized8
 let g:airline_theme='solarized'

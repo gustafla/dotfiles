@@ -9,4 +9,4 @@ repos = [
 ]
 
 [commands]
-"Vdirsyncer" = "vdirsyncer sync"
+"Vdirsyncer" = "which vdirsyncer 2>/dev/null && vdirsyncer sync || echo Not installed"

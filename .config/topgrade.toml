@@ -1,4 +1,4 @@
-disable = ["cargo", "pip3"]
+disable = ["cargo", "pip3", "gnome_shell_extensions"]
 
 # Additional git repositories to pull
 [git]

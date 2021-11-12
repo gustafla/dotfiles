@@ -5,9 +5,14 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'vim-airline/vim-airline-themes'
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'simrat39/rust-tools.nvim'
 " Completion
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 " Misc
 Plug 'vim-airline/vim-airline'
 Plug 'tikhomirov/vim-glsl'
@@ -18,32 +23,84 @@ call plug#end()
 " Leader key
 let mapleader=","
 
-" Set completeopt to enable nvim-compe
-set completeopt=menuone,noselect
+" Completion
+set completeopt=menu,menuone,noselect
 
 lua <<EOF
+local cmp = require'cmp'
 local lspconfig = require'lspconfig'
 local util = require'lspconfig/util'
 
+-- Setup cmp ------------------------------------------------------------------
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  mapping = {
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+  }, {
+    { name = 'buffer' },
+    { name = 'path' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 -- LSP Servers ----------------------------------------------------------------
-require('rust-tools').setup{}
-lspconfig.clangd.setup{}
-lspconfig.r_language_server.setup{}
-lspconfig.jedi_language_server.setup{}
-lspconfig.hls.setup{}
+lspconfig.rust_analyzer.setup{capabilities=capabilities}
+lspconfig.clangd.setup{capabilities=capabilities}
+lspconfig.r_language_server.setup{capabilities=capabilities}
+lspconfig.jedi_language_server.setup{capabilities=capabilities}
+lspconfig.hls.setup{capabilities=capabilities}
 lspconfig.texlab.setup{
     settings = {
-        latex = {
+        texlab = {
             build = {
                 onSave = true,
             },
         },
     },
+    capabilities=capabilities
 }
 lspconfig.jdtls.setup{
     init_options = {
         workspace = util.path.join{vim.loop.os_homedir(), ".cache/jdtls"},
     },
+    capabilities=capabilities
 }
 
 -- LSP Settings ---------------------------------------------------------------
@@ -52,16 +109,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         update_in_insert = false,
     }
 )
-
--- Compe ----------------------------------------------------------------------
-require'compe'.setup{
-    enabled = true,
-    source = {
-        path = true,
-        buffer = true,
-        nvim_lsp = true,
-    },
-}
 EOF
 
 " Set updatetime for CursorHold

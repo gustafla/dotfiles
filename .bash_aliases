@@ -1,2 +1,6 @@
 alias ls="exa -l"
 alias ssh="TERM=xterm ssh"
+alias cargo="mold -run cargo"
+alias zig="mold -run zig"
+alias make="mold -run make"
+alias ninja="mold -run ninja"

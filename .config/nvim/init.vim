@@ -1,7 +1,7 @@
 " Plugins
 call plug#begin(stdpath('data') . '/plugged')
 " Color schemes
-Plug 'lifepillar/vim-solarized8'
+Plug 'shaunsingh/solarized.nvim'
 Plug 'vim-airline/vim-airline-themes'
 " LSP
 Plug 'neovim/nvim-lspconfig'
@@ -163,10 +163,10 @@ set hidden
 " Some plugins look ugly without a popular color scheme
 if $TERM != "linux"
     set background=light
+    set termguicolors
+    colorscheme solarized
+    let g:airline_theme='solarized'
 endif
-set termguicolors
-colorscheme solarized8
-let g:airline_theme='solarized'
 
 " Display extra whitespace
 set list listchars=tab:>·,trail:·,nbsp:·

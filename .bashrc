@@ -4,6 +4,9 @@ case $- in
     *) return ;;
 esac
 
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
 source /usr/share/git/git-prompt.sh
 PS1="\[\e[0;32m\]\w\[\e[0m\]\$(__git_ps1) \$ "
 

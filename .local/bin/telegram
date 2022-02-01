@@ -4,8 +4,8 @@ if [[ $(date +%H) -lt 18 ]]
 then
     if zenity --question --text "Are you sure?"
     then
-        exec /usr/bin/telegram-desktop
+        exec /usr/bin/firejail /usr/bin/telegram-desktop
     fi
 else
-    exec /usr/bin/telegram-desktop
+    exec /usr/bin/firejail /usr/bin/telegram-desktop
 fi

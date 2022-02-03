@@ -25,7 +25,7 @@ fi
 # Run zoxide
 eval "$(zoxide init --no-aliases bash)"
 
-z() {
+cd() {
     __zoxide_z "${1:-$HOME}" && exa -l
     echo "$PWD" > $XDG_RUNTIME_DIR/last_working_directory
 }
@@ -35,7 +35,3 @@ at_exit() {
 }
 
 trap at_exit EXIT
-
-cd() {
-    echo "Use z"
-}

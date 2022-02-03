@@ -5,6 +5,7 @@ Plug 'shaunsingh/solarized.nvim'
 Plug 'vim-airline/vim-airline-themes'
 " LSP
 Plug 'neovim/nvim-lspconfig'
+Plug 'simrat39/rust-tools.nvim'
 " Completion
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -13,6 +14,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'windwp/nvim-autopairs'
 " Misc
 Plug 'vim-airline/vim-airline'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -25,9 +27,10 @@ let mapleader=","
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
-local cmp = require'cmp'
-local lspconfig = require'lspconfig'
-local util = require'lspconfig/util'
+local cmp = require('cmp')
+local autopairs = require('nvim-autopairs')
+local lspconfig = require('lspconfig')
+local util = require('lspconfig/util')
 
 -- Setup cmp ------------------------------------------------------------------
 cmp.setup({
@@ -78,7 +81,7 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- LSP Servers ----------------------------------------------------------------
-lspconfig.rust_analyzer.setup{capabilities=capabilities}
+require('rust-tools').setup{}
 lspconfig.zls.setup{capabilities=capabilities}
 lspconfig.clangd.setup{capabilities=capabilities}
 lspconfig.r_language_server.setup{capabilities=capabilities}
@@ -109,7 +112,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 
 -- Treesitter -----------------------------------------------------------------
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true,
     },
@@ -117,6 +120,12 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
     },
 }
+
+-- Autopairs ------------------------------------------------------------------
+autopairs.setup{}
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
 EOF
 
 " Set updatetime for CursorHold
@@ -187,27 +196,6 @@ map <Down> <nop>
 
 " Disable command window which I often open accidentally
 nnoremap q: <Nop>
-
-" Auto pairing
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR><CR>}<Up><Tab>
-inoremap {{     {
-inoremap {}     {}
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR><CR>)<Up><Tab>
-inoremap ((     (
-inoremap ()     ()
-inoremap [      []<Left>
-inoremap [<CR>  [<CR><CR>]<Up><Tab>
-inoremap [[     [
-inoremap []     []
-inoremap <      <><Left>
-inoremap <<     <
-inoremap <>     <>
-inoremap "      ""<Left>
-inoremap ""     "
-inoremap '      ''<Left>
-inoremap ''     '
 
 " Default behavior for building and running
 nnoremap <leader>m <cmd>!make<CR>

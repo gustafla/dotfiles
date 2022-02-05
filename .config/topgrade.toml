@@ -3,7 +3,6 @@ disable = ["cargo", "pip3", "gnome_shell_extensions"]
 # Additional git repositories to pull
 [git]
 repos = [
-    "~/code/*/",
     "~/.password-store/",
     "~/misc/gitolite-admin/"
 ]

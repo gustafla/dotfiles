@@ -18,6 +18,7 @@ default_border none
 for_window [app_id="mehustin"] floating enable
 for_window [app_id="demo"] floating enable
 for_window [app_id="mpv"] floating enable
+for_window [title="Firefox.*Sharing Indicator"] floating enable
 font $font
 
 ### Variables

@@ -134,6 +134,9 @@ set updatetime=300
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.diagnostic.open_float({focus = false})
 
+" Git add on exit (as I won't remember myself)
+autocmd BufWritePost * silent !git add %
+
 " Various lsp mappings
 nnoremap <silent> <leader>cp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> <leader>cn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>

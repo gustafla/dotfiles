@@ -16,7 +16,7 @@ bgdir="$HOME/pictures/wallpapers"
 
 # Determine which set of bgs will be used
 mood=cold
-hour=$(date +%H)
+hour=$(date +%-H)
 if [[ $hour -gt 17 ]] || [[ $hour -lt 7 ]]; then
     mood=warm
 fi

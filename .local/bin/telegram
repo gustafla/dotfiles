@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $(date +%H) -lt 18 ]]
+if [[ $(date +%-H) -lt 18 ]]
 then
     if zenity --question --text "Are you sure?"
     then

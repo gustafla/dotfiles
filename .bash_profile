@@ -48,7 +48,6 @@ fi
 
 # Start a graphical shell
 if [ "$XDG_SESSION_TYPE" = "tty" ] && [ $XDG_VTNR -eq 1 ]; then
-    export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     exec sway
 else

@@ -4,6 +4,6 @@ if !filereadable(".clang-format")
 endif
 nnoremap <silent> <leader>f <cmd>w<CR><cmd>silent execute '!clang-format -i ' . clangfmtargs . ' %'<CR><cmd>e<CR>
 if filereadable("build/build.ninja")
-    nnoremap <silent> <leader>m <cmd>!cd build; ninja; ninja -t compdb > ../compile_commands.json<CR>
+    nnoremap <silent> <leader>m <cmd>!cd build; samu; samu -t compdb c_COMPILER > ../compile_commands.json<CR>
 endif
 

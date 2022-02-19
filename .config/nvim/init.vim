@@ -222,3 +222,4 @@ command Columns normal <cmd>set noscrollbind<CR>
     \<cmd>winc h<CR>
 nnoremap <silent> <leader><space> <cmd>Columns<CR>
 autocmd VimEnter * Columns
+nnoremap <silent> ZZ <cmd>wqa<CR>

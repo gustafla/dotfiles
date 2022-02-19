@@ -134,6 +134,11 @@ set updatetime=300
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.diagnostic.open_float({focus = false})
 
+" tree-sitter Folding
+set nofoldenable
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 " Git add on exit (as I won't remember myself)
 autocmd BufWritePost * silent !git add %
 
@@ -213,13 +218,15 @@ noremap <silent> <C-l> <cmd>bprevious<CR>
 
 " Split current view into colums
 command Columns normal <cmd>set noscrollbind<CR>
-    \gg
-    \<cmd>winc v<CR>
-    \<cmd>set scrollbind<CR>
-    \<cmd>winc l<CR>
-    \Lzt
-    \<cmd>set scrollbind<CR>
-    \<cmd>winc h<CR>
+            \gg
+            \<cmd>winc v<CR>
+            \<cmd>set scrollbind<CR>
+            \<cmd>winc l<CR>
+            \Lzt
+            \<cmd>set scrollbind<CR>
+            \<cmd>winc h<CR>
 nnoremap <silent> <leader><space> <cmd>Columns<CR>
-autocmd VimEnter * Columns
+autocmd VimEnter * if line('$') > winheight('%') * 1.5
+            \ && &textwidth * 2 + 4 < winwidth('%')
+            \ | execute 'Columns' | endif
 nnoremap <silent> ZZ <cmd>wqa<CR>

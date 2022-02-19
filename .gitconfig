@@ -6,8 +6,8 @@
 [pull]
     rebase = false
 [core]
-	pager = nvim -R
+    pager = nvim -R
 [color]
-	pager = no
+    pager = no
 [includeIf "gitdir:~/tuxera/"]
     path = .gitconfig_tuxera

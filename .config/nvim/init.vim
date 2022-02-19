@@ -210,3 +210,15 @@ nnoremap <silent> <C-p> <cmd>20Lex<CR>
 " Browse buffers
 noremap <silent> <C-h> <cmd>bnext<CR>
 noremap <silent> <C-l> <cmd>bprevious<CR>
+
+" Split current view into colums
+command Columns normal <cmd>set noscrollbind<CR>
+    \gg
+    \<cmd>winc v<CR>
+    \<cmd>set scrollbind<CR>
+    \<cmd>winc l<CR>
+    \Lzt
+    \<cmd>set scrollbind<CR>
+    \<cmd>winc h<CR>
+nnoremap <silent> <leader><space> <cmd>Columns<CR>
+autocmd VimEnter * Columns

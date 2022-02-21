@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-set $font 'Liberation Mono 16'
+set $font 'monospace 16'
 set $menuargs --fn $font \
 --nb=#fdf6e3 --nf=#586e75 \
 --tb=#fdf6e3 --tf=#586e75 \

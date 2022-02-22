@@ -6,6 +6,3 @@ repos = [
     "~/.password-store/",
     "~/misc/gitolite-admin/"
 ]
-
-[commands]
-"Vdirsyncer" = "which vdirsyncer 2>/dev/null && vdirsyncer sync || echo Not installed"

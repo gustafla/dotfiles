@@ -11,14 +11,11 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
 
 # Configure libraries and applications to use wayland
-export QT_QPA_PLATFORM=wayland-egl
+export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
-export KITTY_ENABLE_WAYLAND=1
 export MOZ_ENABLE_WAYLAND=1
-export ECORE_EVAS_ENGINE=wayland_egl
-export ELM_ENGINE=wayland_egl
 export BEMENU_BACKEND=wayland
 
 # Sway cursor size and style

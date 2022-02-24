@@ -24,6 +24,7 @@
 !.config/swaylock/config
 !.config/systemd/user/bg.service
 !.config/systemd/user/bg.timer
+!.config/systemd/user/home-gustafla-mnt-elite.mount
 !.config/todoman/config.py
 !.config/topgrade.toml
 !.config/user-dirs.dirs

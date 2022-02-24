@@ -1,0 +1,12 @@
+[Unit]
+Description=gustafla.space with sshfs
+
+[Mount]
+What=%u@gustafla.space:.
+Where=%h/mnt/elite
+Type=fuse.sshfs
+Options=_netdev,user,x-systemd.automount,uid=%U,gid=%G,umask=177
+TimeoutSec=60
+
+[Install]
+WantedBy=default.target

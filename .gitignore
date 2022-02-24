@@ -14,17 +14,11 @@
 !.config/fontconfig/fonts.conf
 !.config/foot/foot.ini
 !.config/gtk-3.0/settings.ini
-!.config/i3/config
-!.config/i3/move-cursor-window-center
 !.config/i3status/config
 !.config/khal/config
-!.config/kitty/kitty.conf
-!.config/lxterminal/lxterminal.conf
 !.config/mimeapps.list
 !.config/mpv/mpv.conf
 !.config/nvim/**
-!.config/PulseEffects/**
-!.config/redshift.conf
 !.config/sway/bg.sh
 !.config/sway/config
 !.config/swaylock/config
@@ -42,7 +36,6 @@
 !.local/bin/documenu
 !.local/bin/encode_music.sh
 !.local/bin/passmenu
-!.local/bin/system_setup.sh
 !.local/share/applications/editor.desktop
 !.local/share/applications/jar.desktop
 !.local/share/nvim/site/pack/git-plugins/start/**
@@ -50,5 +43,5 @@
 !.local/src/st/config.h
 !.local/src/wterm/include/config.h
 !.npmrc
-!.pam_environment
+!.profile
 !.vice/sdl-vicerc

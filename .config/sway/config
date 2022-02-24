@@ -53,7 +53,10 @@ exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f'
 ### Receive and display notifications with mako
 exec mako
 
-### Run gammastep for nighttime eye comfort
+### Get power notifications with poweralertd
+exec poweralertd
+
+### Run wlsunset for nighttime eye comfort
 exec wlsunset -S 8:00 -s 19:00 -t 1000 -T 3500
 
 ### Import variables for xdg-desktop-portal-wlr support
@@ -61,10 +64,6 @@ exec dbus-update-activation-environment --systemd --all WAYLAND_DISPLAY XDG_CURR
 
 ### XDG Autostart using dex
 exec dex -a
-
-# This will turn off your displays after another 300 seconds, and turn your
-# screens back on when resumed. It will also lock your screen before your
-# computer goes to sleep.
 
 ### Input configuration
 #

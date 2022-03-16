@@ -226,7 +226,7 @@ command Columns normal <cmd>set noscrollbind<CR>
             \<cmd>set scrollbind<CR>
             \<cmd>winc h<CR>
 nnoremap <silent> <leader><space> <cmd>Columns<CR>
-autocmd VimEnter * if line('$') > winheight('%') * 1.5
-            \ && &textwidth * 2 + 4 < winwidth('%')
-            \ | execute 'Columns' | endif
+"autocmd VimEnter * if line('$') > winheight('%') * 1.5
+"            \ && &textwidth * 2 + 4 < winwidth('%')
+"            \ | execute 'Columns' | endif
 nnoremap <silent> ZZ <cmd>wqa!<CR>

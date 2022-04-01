@@ -5,8 +5,8 @@ Description=gustafla.space with sshfs
 What=%u@gustafla.space:.
 Where=%h/mnt/elite
 Type=fuse.sshfs
-Options=_netdev,user,x-systemd.automount,uid=%U,gid=%G
-TimeoutSec=60
+Options=_netdev,user,reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,uid=%U,gid=%G
+TimeoutSec=20
 
 [Install]
 WantedBy=default.target

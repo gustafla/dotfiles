@@ -5,8 +5,6 @@
     default = matching
 [pull]
     rebase = false
-[core]
-    pager = nvim -R
 [color]
     pager = no
 [includeIf "gitdir:~/tuxera/"]

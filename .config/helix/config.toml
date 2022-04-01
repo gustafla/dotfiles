@@ -3,3 +3,6 @@ theme = "solarized_light"
 [editor]
 mouse = false
 idle-timeout = 200
+cursor-shape.normal = "block"
+cursor-shape.insert = "bar"
+cursor-shape.select = "underline"

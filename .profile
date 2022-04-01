@@ -3,8 +3,8 @@ export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
 
 # Application vars
-export VISUAL=helix
-export EDITOR=helix
+export VISUAL=hx
+export EDITOR=hx
 
 # Fix netbeans font antialiasing
 export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'

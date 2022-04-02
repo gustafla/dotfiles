@@ -6,6 +6,8 @@
 [pull]
     rebase = false
 [color]
-    pager = no
+    diff = auto
+    ui = true
+    pager = true
 [includeIf "gitdir:~/tuxera/"]
     path = .gitconfig_tuxera

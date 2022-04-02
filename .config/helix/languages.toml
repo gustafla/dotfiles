@@ -11,6 +11,5 @@ indent = { tab-width = 4, unit = "    " }
 [[language]]
 name = "latex"
 indent = { tab-width = 4, unit = "    "}
-language-server = { command = "texlab" }
 [language.config]
 texlab.build.onSave = true

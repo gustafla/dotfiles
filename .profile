@@ -17,7 +17,7 @@ export XCURSOR_THEME=Adwaita
 export XCURSOR_SIZE=16
 
 # Rust libraries debugging vars
-export RUST_BACKTRACE=1
+export RUST_BACKTRACE=full
 
 # Git ceiling directories
 export GIT_CEILING_DIRECTORIES="$HOME/code"

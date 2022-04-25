@@ -27,7 +27,7 @@ bgpath="$bgdir/$mood/$background"
 
 # Blur all pictures
 tmpfile=$(mktemp --tmpdir $tmpprefix-XXXXXXXXXXXX)
-magick "$bgpath" -resize 10% -blur x40 $tmpfile
+magick "$bgpath" -resize 10% -blur x40 png:$tmpfile
 bgpath=$tmpfile
 
 # Set it

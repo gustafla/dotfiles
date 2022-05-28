@@ -2,7 +2,8 @@ theme = "solarized_light"
 
 [editor]
 mouse = false
-idle-timeout = 200
+idle-timeout = 100
 cursor-shape.normal = "block"
 cursor-shape.insert = "bar"
 cursor-shape.select = "underline"
+rulers = [50, 72, 80, 120]

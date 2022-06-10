@@ -19,6 +19,7 @@ for_window [app_id="mehustin"] floating enable
 for_window [app_id="demo"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [title="Firefox.*Sharing Indicator"] floating enable
+for_window [class="ffxiv_dx11.exe"] fullscreen enable
 font $font
 
 ### Variables

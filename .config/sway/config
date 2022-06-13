@@ -58,7 +58,7 @@ exec mako --default-timeout 5000
 exec poweralertd
 
 ### Run wlsunset for nighttime eye comfort
-exec wlsunset -S 8:00 -s 20:00 -t 1000
+exec wlsunset -S 8:00 -s 22:00 -t 1000
 
 ### Import variables for xdg-desktop-portal-wlr support
 exec dbus-update-activation-environment --systemd --all WAYLAND_DISPLAY XDG_CURRENT_DESKTOP

@@ -119,6 +119,7 @@ input * {
         bindsym Return mode "default"; exec systemctl suspend
         bindsym s mode "default"; exec systemctl suspend
         bindsym l mode "default"; exec swaylock
+        bindsym Shift+l mode "default"; exec swaylock -c 00000000
         bindsym p mode "default"; exec systemctl poweroff
         bindsym r mode "default"; exec systemctl reboot
     }

@@ -15,6 +15,7 @@ set $menuargs --fn $font \
 #
 default_floating_border pixel 1
 default_border none
+gaps inner 6
 for_window [app_id="mehustin"] floating enable
 for_window [app_id="demo"] floating enable
 for_window [app_id="mpv"] floating enable

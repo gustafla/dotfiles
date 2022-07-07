@@ -36,3 +36,4 @@ application/java-archive=jar.desktop;
 text/html=firefox.desktop;
 image/jpeg=imv.desktop;
 image/png=imv.desktop;
+image/gif=mpv.desktop;

@@ -26,9 +26,10 @@ background=$(ls "$bgdir/$mood" | shuf -n 1)
 bgpath="$bgdir/$mood/$background"
 
 # Blur all pictures
-tmpfile=$(mktemp --tmpdir $tmpprefix-XXXXXXXXXXXX)
-magick "$bgpath" -resize 10% -blur x40 png:$tmpfile
-bgpath=$tmpfile
+#tmpfile=$(mktemp --tmpdir $tmpprefix-XXXXXXXXXXXX)
+#magick "$bgpath" -resize 10% -blur x40 png:$tmpfile
+#bgpath=$tmpfile
 
 # Set it
-swaymsg output '*' bg $bgpath fill
+#swaymsg output '*' bg $bgpath fill
+swaymsg output '*' bg $bgpath tile

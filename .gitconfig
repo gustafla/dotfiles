@@ -11,3 +11,5 @@
     pager = true
 [includeIf "gitdir:~/tuxera/"]
     path = .gitconfig_tuxera
+[init]
+	defaultBranch = main

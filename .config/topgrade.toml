@@ -6,3 +6,6 @@ repos = [
     "~/.password-store/",
     "~/misc/gitolite-admin/"
 ]
+
+[commands]
+"Podman Prune" = "podman container prune && podman image prune"

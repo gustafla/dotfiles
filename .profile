@@ -25,5 +25,5 @@ export GIT_CEILING_DIRECTORIES="$HOME/code"
 # R libraries path
 export R_LIBS_USER="$HOME/.local/share/R_libs"
 
-eval $(gnome-keyring-daemon --start)
-export SSH_AUTH_SOCK
+# Use GnuPG SSH daemon
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

@@ -22,9 +22,7 @@ unset HISTFILE
 export HISTCONTROL=ignoredups
 
 # Load aliases
-if [[ -f ~/.bash_aliases ]]; then
-    . ~/.bash_aliases
-fi
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 # Run zoxide
 eval "$(zoxide init --no-aliases bash)"

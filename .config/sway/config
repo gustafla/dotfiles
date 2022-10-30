@@ -114,7 +114,7 @@ input * {
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png
 
     # suspend the machine, etc
-    set $awaymode "Going away? (Esc = no, S/Return = suspend, L = lock, P = poweroff, R = reboot)"
+    set $awaymode "Going away? (Esc = no, S/Return = suspend, L = lock, P = poweroff, R = reboot, E = logout)"
     mode $awaymode {
         bindsym Escape mode "default"
         bindsym Return mode "default"; exec systemctl suspend
@@ -123,6 +123,7 @@ input * {
         bindsym Shift+l mode "default"; exec swaylock -c 00000000
         bindsym p mode "default"; exec systemctl poweroff
         bindsym r mode "default"; exec systemctl reboot
+        bindsym e mode "default"; exit
     }
     bindsym $mod+Escape mode $awaymode
 
@@ -135,9 +136,6 @@ input * {
 
     # reload the configuration file
     bindsym $mod+Shift+c reload
-
-    # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -f $font -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #

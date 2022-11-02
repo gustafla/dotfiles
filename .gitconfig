@@ -9,7 +9,9 @@
     diff = auto
     ui = true
     pager = true
-[includeIf "gitdir:~/tuxera/"]
-    path = .gitconfig_tuxera
 [init]
 	defaultBranch = main
+[commit]
+    verbose = true
+[includeIf "gitdir:~/tuxera/"]
+    path = .gitconfig_tuxera

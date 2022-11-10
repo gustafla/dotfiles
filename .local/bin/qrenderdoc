@@ -1,0 +1,4 @@
+#!/bin/bash
+export QT_QPA_PLATFORM=xcb
+export WINIT_UNIX_BACKEND=x11
+/usr/bin/qrenderdoc

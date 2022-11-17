@@ -110,6 +110,9 @@ input * {
     # find a document and open it
     bindsym $mod+Control+Shift+d exec documenu $menuargs
 
+    # open my default browser
+    bindsym $mod+Shift+b exec xdg-open about:newtab
+
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png
 

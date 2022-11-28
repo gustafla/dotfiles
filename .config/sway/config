@@ -42,6 +42,8 @@ set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 #
 # Load from config/output
 include output
+# Start wdisplays
+bindsym $mod+o exec wdisplays
 
 ### Set wallpaper
 exec_always ~/.config/sway/bg.sh

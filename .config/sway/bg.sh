@@ -31,5 +31,5 @@ bgpath="$bgdir/$mood/$background"
 #bgpath=$tmpfile
 
 # Set it
-#swaymsg output '*' bg $bgpath fill
-swaymsg output '*' bg $bgpath tile
+swaymsg output '*' bg $bgpath fill
+#swaymsg output '*' bg $bgpath tile

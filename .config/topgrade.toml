@@ -8,4 +8,4 @@ repos = [
 ]
 
 [commands]
-"Podman Prune" = "podman container prune && podman image prune"
+"Podman Prune" = "podman container prune -f && podman image prune -f"

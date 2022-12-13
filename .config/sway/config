@@ -71,6 +71,9 @@ exec dbus-update-activation-environment --systemd --all WAYLAND_DISPLAY XDG_CURR
 ### XDG Autostart using dex
 exec dex -a
 
+### Automatically mount pluggable media
+exec udiskie
+
 ### Play a startup sound :)
 exec mpv --no-video ~/.config/sway/startup_sound
 

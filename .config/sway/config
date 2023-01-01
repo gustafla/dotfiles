@@ -124,7 +124,7 @@ input * {
     bindsym $mod+Shift+f exec xdg-open ~
 
     # take a screenshot
-    bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%s).png | wl-copy -t image/png
+    bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%F-%T).png | wl-copy -t image/png
 
     # suspend the machine, etc
     set $awaymode "Going away? (Esc = no, S/Return = suspend, L = lock, P = poweroff, R = reboot, E = logout)"

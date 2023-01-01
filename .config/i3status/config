@@ -16,6 +16,8 @@ order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
 order += "tztime local"
+order += "memory"
+order += "disk /"
 
 wireless _first_ {
 	format_up = "\t%quality \"%essid\" %ip"
@@ -34,13 +36,18 @@ battery all {
 }
 
 tztime local {
-	format = "\t%Y-%m-%d %H:%M:%S"
+	format = "\t%Y-%m-%d\t%H:%M:%S"
 }
 
 load {
-	format = "%1min"
+	format = "\t%1min"
+}
+
+memory {
+	memory_used_method = "classical"
+	format = "\t%percentage_used memory used"
 }
 
 disk "/" {
-	format = "%avail"
+	format = "\t%avail disk free"
 }

@@ -1,6 +1,3 @@
 alias sudo='sudo '
-alias ls='exa -l '
-alias zig='mold -run zig '
 alias time='"time" '
 alias vi='echo "Use hx"'
-alias hx='HELIX_RUNTIME=/usr/lib/helix/runtime /usr/lib/helix/hx '

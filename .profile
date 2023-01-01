@@ -25,5 +25,8 @@ export GIT_CEILING_DIRECTORIES="$HOME/code"
 # R libraries path
 export R_LIBS_USER="$HOME/.local/share/R_libs"
 
+# pass dir
+export PASSWORD_STORE_DIR="$HOME/.pass"
+
 # Use GnuPG SSH daemon
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

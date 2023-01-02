@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd ~/.password-store/
+cd $PASSWORD_STORE_DIR
 selected=$(find . -type f -not -path '*/.git/*' -printf '%P\n' | bemenu "$@")
 [ -z "$selected" ] && exit
 old="$(wl-paste)"

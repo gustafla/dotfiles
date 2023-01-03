@@ -1,0 +1,5 @@
+[Unit]
+Description=Run autostart generator
+Requires=default.target
+After=default.target
+Wants=xdg-desktop-autostart.target

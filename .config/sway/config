@@ -68,8 +68,8 @@ exec wlsunset -S 7:00 -s 21:00 -t 1000
 ### Import variables for xdg-desktop-portal-wlr support
 exec dbus-update-activation-environment --systemd --all WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-### XDG Autostart using systemd
-exec systemctl --user start autostart.target
+### XDG Autostart using dex
+exec dex -a
 
 ### Automatically mount pluggable media
 exec udiskie

@@ -85,6 +85,7 @@ input * {
     xkb_options "caps:escape,grp:lwin_toggle"
     repeat_delay 250
     repeat_rate 50
+    tap enabled
 }
 # Example configuration:
 #

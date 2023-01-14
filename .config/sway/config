@@ -127,9 +127,17 @@ input * {
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%F-%T).png | wl-copy -t image/png
 
-    # lock sway
-    bindsym $mod+Escape exec swaylock
-    bindsym $mod+Shift+Escape exec swaylock -c 00000000
+    # lock sway etc
+    mode "away" {
+        bindsym Escape mode "default"
+        bindsym p exec systemctl poweroff
+        bindsym r exec systemctl reboot
+        bindsym s mode "default"; exec systemctl suspend
+        bindsym e exit
+        bindsym Return mode "default"; exec swaylock
+        bindsym Shift+Return mode "default"; exec swaylock -c 00000000
+    }
+    bindsym $mod+Escape mode "away"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

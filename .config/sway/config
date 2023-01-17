@@ -62,9 +62,6 @@ exec mako --default-timeout 5000
 ### Get power notifications with poweralertd
 exec poweralertd
 
-### Run wlsunset for nighttime eye comfort
-exec wlsunset -S 7:00 -s 21:00 -t 1000
-
 ### Run polkit agent to get password prompts
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 

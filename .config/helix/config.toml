@@ -1,4 +1,4 @@
-#theme = "solarized_dark"
+theme = "dark_high_contrast"
 
 [editor]
 mouse = false

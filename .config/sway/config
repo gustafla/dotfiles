@@ -54,7 +54,7 @@ exec_always ~/.config/sway/bg.sh
 exec foot --server
 
 ### Handle session locking with swayidle
-exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f'
+exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f' timeout 300 'swaylock -f'
 
 ### Receive and display notifications with mako
 exec mako --default-timeout 5000

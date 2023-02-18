@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Edit in terminal
-Exec=alacritty -e nvim %F
+Name=Edit in Helix
+Exec=footclient hx %F
 Keywords=Text;editor;
 Categories=Utility;TextEditor;
 StartupNotify=false

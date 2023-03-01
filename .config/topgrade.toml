@@ -1,11 +1,9 @@
 disable = ["cargo", "pip3", "gnome_shell_extensions"]
+display_preamble = false
 
 # Additional git repositories to pull
 [git]
-repos = [
-    "~/.pass/",
-    "~/misc/gitolite-admin/"
-]
+repos = ["~/.pass/", "~/misc/gitolite-admin/"]
 
 [commands]
 "Podman Prune" = "podman container prune -f && podman image prune -f"

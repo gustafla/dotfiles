@@ -23,6 +23,7 @@ for_window [title="Firefox.*Sharing Indicator"] floating enable
 for_window [class="ffxiv_dx11.exe"] fullscreen enable
 for_window [title="Save File"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="pcmanfm"] floating enable
 font $font
 
 ### Variables

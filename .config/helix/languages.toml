@@ -13,7 +13,8 @@ name = "latex"
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
 config.texlab.rootDirectory = "."
-config.texlab.build.onSave = true
+config.texlab.build.onSave = false
+config.texlab.build.args = ["-pdf", "%f"]
 config.texlab.chktex.onEdit = true
 formatter = { command = "latexindent", args = ["-y", "defaultIndent:'  '"] }
 

@@ -7,6 +7,7 @@ cursor-shape.normal = "block"
 cursor-shape.insert = "bar"
 cursor-shape.select = "underline"
 cursorline = true
+auto-save = true
 color-modes = true
 rulers = [80, 120]
 bufferline = "multiple"

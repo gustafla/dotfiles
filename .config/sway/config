@@ -163,6 +163,8 @@ input * {
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
+
+    mouse_warping container
 #
 # Workspaces:
 #
@@ -191,10 +193,10 @@ input * {
 #
 # Monitor stuff:
 #
-    bindsym $mod+Period focus output right
-    bindsym $mod+Comma focus output left
-    bindsym $mod+Shift+Period move workspace to output right
-    bindsym $mod+Shift+Comma move workspace to output left
+    bindsym $mod+Period focus output right; focus output up
+    bindsym $mod+Comma focus output left; focus output down
+    bindsym $mod+Shift+Period move workspace to output right;  move workspace to output up
+    bindsym $mod+Shift+Comma move workspace to output left; move workspace to output down
 #
 # Layout stuff:
 #

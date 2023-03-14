@@ -1,4 +1,4 @@
-disable = ["cargo", "pip3", "gnome_shell_extensions"]
+disable = ["cargo", "pip3", "gnome_shell_extensions", "containers"]
 display_preamble = false
 
 # Additional git repositories to pull
@@ -6,4 +6,4 @@ display_preamble = false
 repos = ["~/.pass/", "~/misc/gitolite-admin/"]
 
 [commands]
-"Podman Prune" = "podman container prune -f && podman image prune -f"
+"Helix chmod fix" = "sudo chmod a+r /var/lib/helix/runtime/grammars/*"

@@ -1,4 +1,6 @@
 alias sudo='sudo '
+alias ls='ls --color=auto'
+alias ll='ls --color=auto -l'
 alias time='"time" '
 alias vi='echo "Use hx"'
 alias npm='pnpm '

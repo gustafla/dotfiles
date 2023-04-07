@@ -11,3 +11,16 @@ auto-save = true
 color-modes = true
 rulers = [80, 120]
 bufferline = "multiple"
+soft-wrap.enable = true
+lsp.display-inlay-hints = true
+lsp.display-messages = true
+
+[editor.statusline]
+left = ["mode", "spinner", "diagnostics"]
+center = [
+  "file-name",
+  "file-modification-indicator",
+  "spacer",
+  "version-control",
+]
+right = ["position", "selections", "primary-selection-length"]

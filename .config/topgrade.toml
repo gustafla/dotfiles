@@ -1,9 +1,6 @@
-disable = ["cargo", "pip3", "gnome_shell_extensions", "containers"]
+disable = ["cargo", "pip3", "gnome_shell_extensions", "containers", "helix"]
 display_preamble = false
 
 # Additional git repositories to pull
 [git]
 repos = ["~/.pass/", "~/misc/gitolite-admin/"]
-
-[commands]
-"Helix chmod fix" = "sudo chmod a+r /var/lib/helix/runtime/grammars/*"

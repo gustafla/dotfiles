@@ -1,5 +1,5 @@
 # Set paths
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin/:$HOME/.local/bin:$PATH"
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
 
 # Application vars

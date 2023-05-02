@@ -1,5 +1,6 @@
 disable = ["cargo", "pip3", "gnome_shell_extensions", "containers", "helix"]
 display_preamble = false
+no_self_update = true
 
 # Additional git repositories to pull
 [git]

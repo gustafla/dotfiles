@@ -1,0 +1,7 @@
+#!/bin/sh
+export QT_QPA_PLATFORM=xcb
+rsync -a ~/ren/backup/switch/yuzu_nand_user_save/save ~/.local/share/yuzu/nand/user && notify-send 'Yuzu saves' 'synced from server'
+/usr/bin/yuzu $@
+sleep 1
+rsync -a ~/.local/share/yuzu/nand/user/save ~/ren/backup/switch/yuzu_nand_user_save && notify-send 'Yuzu saves' 'synced to server'
+git restore ~/.config/mimeapps.list

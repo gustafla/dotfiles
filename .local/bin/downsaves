@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -a ~/ren/backup/switch/yuzu_nand_user_save/save ~/.local/share/yuzu/nand/user

@@ -128,7 +128,7 @@ input * {
     bindsym $mod+Shift+f exec xdg-open ~
 
     # open mail client
-    bindsym $mod+Shift+m exec xdg-open mailto:
+    bindsym $mod+Shift+m exec thunderbird
 
     # take a screenshot
     bindsym $mod+p exec grim -g "$(slurp)" -t png - | tee ~/pictures/screenshots/$(date +%F-%T).png | wl-copy -t image/png

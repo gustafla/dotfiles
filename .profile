@@ -25,6 +25,10 @@ export GIT_CEILING_DIRECTORIES="$HOME/code"
 # R libraries path
 export R_LIBS_USER="$HOME/.local/share/R_libs"
 
+# Set CMake generator to ninja and export compile_commands.json for clangd
+export CMAKE_GENERATOR=Ninja
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
 # pass dir
 export PASSWORD_STORE_DIR="$HOME/.pass"
 

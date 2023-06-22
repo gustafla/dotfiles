@@ -1,4 +1,4 @@
-theme = "dark_high_contrast"
+theme = "base16_transparent"
 
 [editor]
 mouse = false

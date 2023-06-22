@@ -32,5 +32,8 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 # pass dir
 export PASSWORD_STORE_DIR="$HOME/.pass"
 
+# This is here to get PanVk to run. I know what I'm doing.
+export PAN_I_WANT_A_BROKEN_VULKAN_DRIVER=1
+
 # Use GnuPG SSH daemon
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

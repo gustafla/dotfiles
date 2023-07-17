@@ -4,6 +4,11 @@ case $- in
     *) return ;;
 esac
 
+function cd {
+    command cd $@
+    ls --color=auto -lth
+}
+
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1

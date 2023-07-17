@@ -5,8 +5,7 @@ case $- in
 esac
 
 function cd {
-    command cd $@
-    ls --color=auto -lth
+    command cd $@ && ls --color=always -t
 }
 
 GIT_PS1_SHOWDIRTYSTATE=1

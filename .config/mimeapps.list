@@ -37,3 +37,5 @@ application/java-archive=jar.desktop;
 image/jpeg=imv-dir.desktop;
 image/png=imv-dir.desktop;
 image/gif=imv-dir.desktop;
+application/vnd.microsoft.portable-executable=wine.desktop;
+application/x-ms-dos-executable=wine.desktop;

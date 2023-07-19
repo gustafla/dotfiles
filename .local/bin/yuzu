@@ -1,5 +1,5 @@
 #!/bin/sh
 export QT_QPA_PLATFORM=xcb
-/usr/bin/yuzu $@ &
+gamemoderun /usr/bin/yuzu $@ &
 sleep 3
 git restore ~/.config/mimeapps.list

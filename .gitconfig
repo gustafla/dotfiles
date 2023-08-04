@@ -1,5 +1,5 @@
 [user]
-    email = me@gustafla.space
+    email = lauri.gustafsson@iki.fi
     name = Lauri Gustafsson
 [includeIf "gitdir:~/tuxera/"]
     path = .gitconfig_tuxera

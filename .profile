@@ -1,6 +1,5 @@
 # Set paths
-export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin/:$HOME/.local/bin:$PATH"
-export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Application vars
 export VISUAL=hx
@@ -18,12 +17,6 @@ export XCURSOR_SIZE=16
 
 # Rust libraries debugging vars
 export RUST_BACKTRACE=full
-
-# Git ceiling directories
-export GIT_CEILING_DIRECTORIES="$HOME/code"
-
-# R libraries path
-export R_LIBS_USER="$HOME/.local/share/R_libs"
 
 # Set CMake generator to ninja and export compile_commands.json for clangd
 export CMAKE_GENERATOR=Ninja

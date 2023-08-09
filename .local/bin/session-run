@@ -1,0 +1,13 @@
+#!/bin/sh
+
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+export MOZ_ENABLE_WAYLAND=1
+export _JAVA_AWT_WM_NONREPARENTING=1
+export TERMINAL=footclient
+
+#export WLR_RENDERER=vulkan
+
+exec systemd-cat --identifier=sway sway $@

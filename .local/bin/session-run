@@ -16,5 +16,5 @@ export NO_AT_BRIDGE=1
 
 #export WLR_RENDERER=vulkan
 
-#exec systemd-cat --identifier=sway sway $@
-exec systemd-cat --identifier=wayfire wayfire $@
+exec systemd-cat --identifier=sway sway $@
+#exec systemd-cat --identifier=wayfire wayfire $@

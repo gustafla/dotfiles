@@ -8,6 +8,11 @@ function cd {
     command cd "$@" && ls --color=always -t
 }
 
+function tere {
+    local result=$(command tere "$@")
+    [ -n "$result" ] && cd -- "$result"
+}
+
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1

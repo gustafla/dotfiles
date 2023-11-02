@@ -45,4 +45,5 @@ auto-format = true
 
 [[language]]
 name = "glsl"
+auto-format = true
 language-servers = [ "glsl_analyzer" ]

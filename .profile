@@ -18,8 +18,7 @@ export XCURSOR_SIZE=16
 # Rust libraries debugging vars
 export RUST_BACKTRACE=full
 
-# Set CMake generator to ninja and export compile_commands.json for clangd
-export CMAKE_GENERATOR=Ninja
+# Set CMake to export compile_commands.json for clangd
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 # pass dir

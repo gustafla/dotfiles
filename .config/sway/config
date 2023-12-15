@@ -125,6 +125,9 @@ input * {
     # open my default browser
     bindsym $mod+Shift+b exec xdg-open about:newtab
 
+    # open bluetooth client GUI
+    bindsym $mod+Control+Shift+b exec overskride
+
     # open default file manager
     bindsym $mod+Shift+f exec xdg-open ~
 

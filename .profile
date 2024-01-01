@@ -29,3 +29,9 @@ export PAN_I_WANT_A_BROKEN_VULKAN_DRIVER=1
 
 # Use GnuPG SSH daemon
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+export XKB_DEFAULT_LAYOUT="us,fi"
+export XKB_DEFAULT_OPTIONS="caps:escape,grp:lwin_toggle"
+
+[[ -z "$WAYLAND_DISPLAY" ]] && [[ "$XDG_VTNR" -eq 2 ]] && exec \
+gamescope --immediate-flips -O DP-1 -r 165 -e -- steam

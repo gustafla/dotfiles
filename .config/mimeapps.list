@@ -46,3 +46,4 @@ x-scheme-handler/webcal=thunderbird.desktop
 text/calendar=thunderbird.desktop
 application/x-extension-ics=thunderbird.desktop
 x-scheme-handler/webcals=thunderbird.desktop
+audio/vnd.wave=mpv.desktop

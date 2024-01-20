@@ -2,10 +2,8 @@
 command = "glsl_analyzer"
 
 [language-server.texlab]
-config.texlab.rootDirectory = "."
 config.texlab.build.onSave = true
 config.texlab.build.args = ["-pdf", "%f"]
-config.texlab.chktex.onEdit = true
 
 [[language]]
 name = "c"

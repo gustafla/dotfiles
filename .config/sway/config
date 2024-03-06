@@ -126,7 +126,7 @@ input * {
     bindsym $mod+Shift+b exec xdg-open about:newtab
 
     # open bluetooth client GUI
-    bindsym $mod+Control+Shift+b exec overskride
+    bindsym $mod+Control+Shift+b exec blueberry
 
     # open default file manager
     bindsym $mod+Shift+f exec xdg-open ~

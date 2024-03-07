@@ -1,7 +1,7 @@
 theme = "base16_transparent"
 
 [editor]
-mouse = false
+mouse = true
 idle-timeout = 100
 cursor-shape.normal = "block"
 cursor-shape.insert = "bar"

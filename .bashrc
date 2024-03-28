@@ -26,8 +26,7 @@ set -o vi
 # Set stricter umask (u=rwx,g=,o=)
 umask 077
 
-# Disable .bash_history and don't record duplicates
-unset HISTFILE
+# Don't record duplicates in history
 export HISTCONTROL=ignoredups
 
 # Load aliases

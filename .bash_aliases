@@ -10,3 +10,7 @@ alias win32='WINEARCH=win32 WINEPREFIX=~/.wine32 '
 function archvm-kbuild {
   make -j$(nproc) -C ~/archvm/mnt/kernelbuild/linux-6.6.25 M=$PWD "$@"
 }
+
+function archvm-gen-compile-commands {
+  $HOME/archvm/mnt/kernelbuild/linux-6.6.25/scripts/clang-tools/gen_compile_commands.py -d $HOME/archvm/mnt/kernelbuild/linux-6.6.25 $PWD
+}

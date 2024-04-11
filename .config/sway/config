@@ -32,7 +32,7 @@ font $font
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -86,7 +86,7 @@ exec mpv --no-video ~/.config/sway/startup_sound
 # Keyboard
 input * {
     xkb_layout "us,fi"
-    xkb_options "caps:escape,grp:lwin_toggle"
+    xkb_options "caps:escape,grp:win_space_toggle"
     repeat_delay 250
     repeat_rate 50
     tap enabled

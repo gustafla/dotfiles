@@ -6,3 +6,7 @@ alias time='"time" '
 alias vi='echo "Use hx"'
 alias ssh='TERM=xterm-256color ssh'
 alias win32='WINEARCH=win32 WINEPREFIX=~/.wine32 '
+
+function archvm-kbuild {
+  make -j$(nproc) -C ~/archvm/mnt/kernelbuild/linux-6.6.25 M=$PWD "$@"
+}

@@ -13,5 +13,6 @@ export NO_AT_BRIDGE=1
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
-exec systemd-cat --identifier=sway sway $@
+#exec systemd-cat --identifier=sway sway $@
 #exec systemd-cat --identifier=wayfire wayfire $@
+exec systemd-cat --identifier=plasma startplasma-wayland $@

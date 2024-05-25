@@ -1,5 +1,0 @@
-gtk-font-name = "Noto Sans Display 10"
-gtk-cursor-theme-name = Adwaita
-gtk-enable-event-sounds = true
-gtk-enable-input-feedback-sounds = true
-gtk-sound-theme-name = freedesktop

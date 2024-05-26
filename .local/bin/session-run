@@ -11,8 +11,7 @@ export ELM_ENGINE=wayland_egl
 export NO_AT_BRIDGE=1
 
 export XDG_SESSION_TYPE=wayland
+[[ "$HOSTNAME" == "lamer" ]] && exec systemd-cat --identifier=plasma startplasma-wayland $@
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
-#exec systemd-cat --identifier=sway sway $@
-#exec systemd-cat --identifier=wayfire wayfire $@
-exec systemd-cat --identifier=plasma startplasma-wayland $@
+exec systemd-cat --identifier=sway sway $@

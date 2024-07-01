@@ -46,8 +46,8 @@ set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 
 ### Output configuration
 #
-# Load from config/output
-include output
+# Autoconfigure with shikane
+exec shikane
 # Start wdisplays
 bindsym $mod+o exec wdisplays
 
@@ -70,16 +70,13 @@ exec poweralertd
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 ### Import variables for xdg-desktop-portal-wlr support
-exec dbus-update-activation-environment --systemd --all WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 ### XDG Autostart using dex
 exec dex -a
 
 ### Automatically mount pluggable media
 exec udiskie
-
-### Play a startup sound :)
-exec mpv --no-video ~/.config/sway/startup_sound
 
 ### Input configuration
 #

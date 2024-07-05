@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 cd $PASSWORD_STORE_DIR
+
 selected=$(find . -type f -not -path '*/.git/*' -printf '%P\n' | bemenu "$@")
 [ -z "$selected" ] && exit
+
 old="$(wl-paste)"
-pass ${selected%%.gpg} | wl-copy
+
+cleartext=$(pass show "${selected%%.gpg}")
+case "$cleartext" in 
+  otpauth://*)
+    pass otp "${selected%%.gpg}" | wl-copy;;
+  *)
+    echo "$cleartext" | wl-copy;;
+esac
+
 sleep 15
 wl-copy "$old"
-

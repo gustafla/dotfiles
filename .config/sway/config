@@ -50,13 +50,10 @@ set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 #
 # Autoconfigure with shikane
 exec shikane
-# Set default wallpaper
-output * bg ~/pictures/wallpaper fill
 # Keybind for wdisplays
 bindsym $mod+o exec wdisplays
-
-### Set wallpaper
-exec_always ~/.config/sway/bg.sh
+# Set wallpaper
+output * bg ~/pictures/wallpaper fill
 
 ### Run foot terminal server
 exec foot --server

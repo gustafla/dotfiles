@@ -1,8 +1,10 @@
+#!/usr/bin/python
+import sys
 import json
 import urllib
 from urllib.parse import urlencode, quote
 
-with open("otp.json") as f:
+with open(sys.argv[1]) as f:
     accounts = json.load(f)
 
 for acc in accounts:

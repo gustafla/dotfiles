@@ -1,5 +1,5 @@
 # Set paths
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 # Application vars
 export VISUAL=hx

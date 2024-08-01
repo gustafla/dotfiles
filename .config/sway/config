@@ -13,7 +13,7 @@ set $menuargs --fn $font \
 
 ### Window aesthetics and rules
 #
-seat * xcursor_theme default
+seat * xcursor_theme pixelfun3
 # Remeber: gsettings set org.gnome.desktop.interface cursor-theme cursor_theme
 # and install xdg-desktop-portal-gtk
 default_floating_border pixel 1

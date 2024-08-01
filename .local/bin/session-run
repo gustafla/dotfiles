@@ -13,5 +13,5 @@ export NO_AT_BRIDGE=1
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
-export XCURSOR_THEME=default
+export XCURSOR_THEME=pixelfun3
 exec systemd-cat --identifier=sway sway $@

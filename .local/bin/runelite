@@ -1,0 +1,4 @@
+#!/bin/sh
+gamemoderun runelite $@ &
+sleep 3
+git restore ~/.config/mimeapps.list

@@ -137,7 +137,7 @@ input * {
         bindsym Escape mode "default"
         bindsym p exec systemctl poweroff
         bindsym r exec systemctl reboot
-        bindsym s mode "default"; exec systemctl hibernate
+        bindsym s mode "default"; exec sh -c '[ `uname -r | grep -o -e "[A-Za-z]*$"` = "hardened" ] && systemctl suspend || systemctl hibernate'
         bindsym e exit
         bindsym Return mode "default"; exec swaylock
         bindsym Shift+Return mode "default"; exec swaylock -c 00000000

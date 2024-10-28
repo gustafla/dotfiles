@@ -113,3 +113,6 @@ x-scheme-handler/mid=thunderbird.desktop;
 x-scheme-handler/unknown=firefox.desktop;
 x-scheme-handler/webcals=thunderbird.desktop;
 x-scheme-handler/webcal=thunderbird.desktop;
+
+[Added Associations]
+image/gif=mpv.desktop;

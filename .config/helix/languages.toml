@@ -45,3 +45,9 @@ auto-format = true
 name = "glsl"
 auto-format = true
 language-servers = [ "glsl_analyzer" ]
+
+[[language]]
+name = "text"
+scope = "text.txt"
+file-types = ["txt"]
+indent = { tab-width = 4, unit = "    " }

@@ -2,6 +2,7 @@ alias sudo='sudo '
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -l'
 alias diff='diff --color=auto'
+alias togprade="topgrade"
 alias time='"time" '
 alias vi='echo "Use hx"'
 alias ssh='TERM=xterm-256color ssh'

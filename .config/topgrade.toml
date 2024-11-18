@@ -1,5 +1,12 @@
 [misc]
-disable = ["cargo", "pip3", "gnome_shell_extensions", "containers", "helix"]
+disable = [
+  "cargo",
+  "pip3",
+  "gnome_shell_extensions",
+  "containers",
+  "helix",
+  "stack",
+]
 no_self_update = true
 
 # Additional git repositories to pull

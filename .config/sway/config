@@ -62,7 +62,7 @@ exec foot --server
 exec swayidle -w before-sleep 'swaylock -f' lock 'swaylock -f' timeout 300 'swaylock -f'
 
 ### Receive and display notifications with mako
-exec mako --default-timeout 5000 --font $font
+exec mako --default-timeout 5000 --font 'Terminus 8'
 
 ### Get power notifications with poweralertd
 exec poweralertd

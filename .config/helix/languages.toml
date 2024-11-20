@@ -51,3 +51,7 @@ name = "text"
 scope = "text.txt"
 file-types = ["txt"]
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "haskell"
+auto-format = true

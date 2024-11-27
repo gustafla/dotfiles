@@ -84,6 +84,7 @@ exec udiskie
 # Keyboard
 input * {
     xkb_layout "us,fi"
+    xkb_variant "euro"
     xkb_options "caps:escape,grp:win_space_toggle"
     repeat_delay 250
     repeat_rate 50

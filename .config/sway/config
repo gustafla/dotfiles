@@ -54,6 +54,8 @@ exec shikane
 bindsym $mod+o exec nwg-displays
 # Set wallpaper
 output * bg ~/pictures/wallpaper fill
+# Allow tearing on all displays
+output * allow_tearing yes
 
 ### Run foot terminal server
 exec foot --server

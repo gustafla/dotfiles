@@ -5,6 +5,9 @@ command = "glsl_analyzer"
 config.texlab.build.onSave = true
 config.texlab.build.args = ["-pdf", "%f"]
 
+[language-server.rust-analyzer]
+config.rust-analyzer.check.command = "clippy"
+
 [[language]]
 name = "c"
 auto-format = true
@@ -44,7 +47,7 @@ auto-format = true
 [[language]]
 name = "glsl"
 auto-format = true
-language-servers = [ "glsl_analyzer" ]
+language-servers = ["glsl_analyzer"]
 
 [[language]]
 name = "text"

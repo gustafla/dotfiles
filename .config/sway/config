@@ -19,17 +19,28 @@ seat * xcursor_theme pixelfun3
 default_floating_border pixel 1
 default_border none
 gaps inner 6
-for_window [app_id="mehustin"] floating enable
-for_window [app_id="demo"] floating enable
-for_window [app_id="mpv"] floating enable
-for_window [title="Firefox.*Sharing Indicator"] floating enable
-for_window [title="Save File"] floating enable
-for_window [app_id="org.gnome.Nautilus"] floating enable
-for_window [app_id="pcmanfm"] floating enable
-for_window [app_id="thunar"] floating enable
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="imv"] floating enable
 font $font
+
+for_window {    
+    [app_id="gamescope"] allow_tearing yes
+    [shell="xwayland"] allow_tearing yes
+    [title="Counter-Strike 2"] allow_tearing yes
+    [title="FINAL FANTASY XIV"] fullscreen enable, allow_tearing yes
+    [class="ffxiv_dx11.exe"] fullscreen enable, allow_tearing yes
+    [window_role="pop-up"] floating enable
+    [window_role="bubble"] floating enable
+    [window_role="dialog"] floating enable
+    [window_type="dialog"] floating enable
+    [app_id="demo"] floating enable
+    [app_id="mpv"] floating enable
+    [title="Firefox.*Sharing Indicator"] floating enable
+    [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1030 height 710
+    [app_id="org.gnome.Nautilus"] floating enable
+    [app_id="pcmanfm"] floating enable
+    [app_id="thunar"] floating enable
+    [app_id="pavucontrol"] floating enable
+    [app_id="imv"] floating enable
+}
 
 ### Variables
 #

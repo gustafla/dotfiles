@@ -25,8 +25,8 @@ for_window {
     [app_id="gamescope"] allow_tearing yes
     [shell="xwayland"] allow_tearing yes
     [title="Counter-Strike 2"] allow_tearing yes
-    [title="FINAL FANTASY XIV"] fullscreen enable, allow_tearing yes
-    [class="ffxiv_dx11.exe"] fullscreen enable, allow_tearing yes
+    [title="FINAL FANTASY XIV"] fullscreen enable, allow_tearing no
+    [class="ffxiv_dx11.exe"] fullscreen enable, allow_tearing no
     [window_role="pop-up"] floating enable
     [window_role="bubble"] floating enable
     [window_role="dialog"] floating enable

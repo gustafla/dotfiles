@@ -43,7 +43,7 @@ audio/x-vorbis+ogg=mpv.desktop;
 audio/x-wav=mpv.desktop;
 image/avif=imv-dir.desktop;
 image/bmp=imv-dir.desktop;
-image/gif=imv-dir.desktop;
+image/gif=mpv.desktop;
 image/heif=imv-dir.desktop;
 image/jpeg=imv-dir.desktop;
 image/png=imv-dir.desktop;
@@ -113,6 +113,3 @@ x-scheme-handler/mid=thunderbird.desktop;
 x-scheme-handler/unknown=firefox.desktop;
 x-scheme-handler/webcals=thunderbird.desktop;
 x-scheme-handler/webcal=thunderbird.desktop;
-
-[Added Associations]
-image/gif=mpv.desktop;

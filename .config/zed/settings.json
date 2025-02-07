@@ -7,6 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.0-flash-exp"
+    },
+    "version": "2"
+  },
   "theme": "Gruvbox Dark Hard",
   "vim_mode": true,
   "show_completions_on_input": true,

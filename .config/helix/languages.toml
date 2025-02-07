@@ -1,3 +1,38 @@
+[language-server.lsp-ai]
+command = "lsp-ai"
+
+[language-server.lsp-ai.config.memory]
+file_store = {}
+
+[language-server.lsp-ai.config.models.gemini2]
+type = "gemini"
+completions_endpoint = "https://generativelanguage.googleapis.com/v1beta/models/"
+chat_endpoint = "https://generativelanguage.googleapis.com/v1beta/models/"
+model = "gemini-2.0-flash-001"
+auth_token_env_var_name = "GOOGLE_AI_API_KEY"
+
+[language-server.lsp-ai.config.completion]
+model = "gemini2"
+parameters = { contents = [
+  { role = "user", parts = [
+    { text = "{CONTEXT} and {CODE}" },
+  ] },
+], systemInstruction = { role = "system", parts = [
+  { text = "You're giving the user input completion for code in his editor" },
+] } }
+
+[[language-server.lsp-ai.config.chat]]
+trigger = "!C"
+action_display_name = "Chat"
+model = "gemini2"
+parameters = { max_context = 4096, max_tokens = 1024, system = "You are a code assistant chatbot. The user will ask you for assistance coding and you will do your best to answer succinctly and accurately" }
+
+[[language-server.lsp-ai.config.chat]]
+trigger = "!CC"
+action_display_name = "Chat with context"
+model = "gemini2"
+parameters = { max_context = 4096, max_tokens = 1024, system = "You are a code assistant chatbot. The user will ask you for assistance coding and you will do your best to answer succinctly and accurately given the code context:\n\n{CONTEXT}" }
+
 [language-server.glsl_analyzer]
 command = "glsl_analyzer"
 
@@ -10,6 +45,10 @@ command = "ltex-ls-plus"
 
 [language-server.rust-analyzer]
 config.rust-analyzer.check.command = "clippy"
+
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer", "lsp-ai"]
 
 [[language]]
 name = "c"
@@ -58,6 +97,10 @@ name = "text"
 scope = "text.txt"
 file-types = ["txt"]
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "lsp-ai"]
 
 [[language]]
 name = "haskell"

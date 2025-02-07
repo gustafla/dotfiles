@@ -1,0 +1,3 @@
+#!/bin/bash
+export GOOGLE_AI_API_KEY=$(pass show aistudio.google.com/apikey)
+/usr/bin/helix $@

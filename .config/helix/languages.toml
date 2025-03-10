@@ -1,6 +1,9 @@
 [language-server.glsl_analyzer]
 command = "glsl_analyzer"
 
+[language-server.wgsl-analyzer]
+command = "wgsl-analyzer"
+
 [language-server.texlab]
 config.texlab.build.onSave = true
 config.texlab.build.args = ["-pdf", "%f"]
@@ -53,6 +56,11 @@ auto-format = true
 name = "glsl"
 auto-format = true
 language-servers = ["glsl_analyzer"]
+
+[[language]]
+name = "wgsl"
+auto-format = true
+language-servers = ["wgsl-analyzer"]
 
 [[language]]
 name = "text"

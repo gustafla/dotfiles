@@ -59,14 +59,15 @@ set $menu bemenu-run --no-exec $menuargs | xargs swaymsg exec --
 
 ### Output configuration
 #
-# Autoconfigure with shikane
-exec shikane
 # Keybind for configuring displays
 bindsym $mod+o exec nwg-displays
 # Set wallpaper
 output * bg ~/pictures/wallpaper fill
 # Allow tearing on all displays
 output * allow_tearing yes
+
+### Run output autoconfiguration daemon
+exec kanshi
 
 ### Run foot terminal server
 exec foot --server

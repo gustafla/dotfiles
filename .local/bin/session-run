@@ -14,4 +14,5 @@ export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
 export XCURSOR_THEME=pixelfun3
-exec systemd-cat --identifier=sway sway $@
+export WLR_RENDERER=vulkan
+exec systemd-cat --identifier=sway sway -d $@

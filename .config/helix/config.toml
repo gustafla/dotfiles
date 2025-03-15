@@ -1,4 +1,5 @@
-theme = "base16_transparent"
+#theme = "term16_dark"
+theme = "rose_pine_moon"
 
 [editor]
 mouse = true

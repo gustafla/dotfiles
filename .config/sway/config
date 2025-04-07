@@ -15,6 +15,9 @@ set $menuargs --fn $font \
 #
 seat * xcursor_theme Adwaita
 # Remeber: gsettings set org.gnome.desktop.interface cursor-theme cursor_theme
+# Remeber: gsettings set org.gnome.desktop.interface font-name font_name
+# Remeber: gsettings set org.gnome.desktop.interface monospace-font-name font_name
+# Remeber: gsettings set org.gnome.desktop.interface icon-theme icon_theme
 # and install xdg-desktop-portal-gtk
 default_floating_border pixel 1
 default_border none

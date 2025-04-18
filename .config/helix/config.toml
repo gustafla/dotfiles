@@ -13,7 +13,7 @@ color-modes = true
 rulers = [80, 120]
 bufferline = "multiple"
 soft-wrap.enable = true
-lsp.display-inlay-hints = true
+lsp.display-inlay-hints = false
 lsp.display-messages = true
 end-of-line-diagnostics = "hint"
 

@@ -25,12 +25,13 @@ gaps inner 6
 font $font
 
 for_window {    
+    [shell=".*"] inhibit_idle fullscreen 
     [app_id="gamescope"] allow_tearing yes
     [shell="xwayland"] allow_tearing yes
     [title="Counter-Strike 2"] allow_tearing yes
     [title="FINAL FANTASY XIV"] fullscreen enable, allow_tearing no
-    [title="Unreal Tournament 2004"] fullscreen enable, allow_tearing yes
     [class="ffxiv_dx11.exe"] fullscreen enable, allow_tearing no
+    [title="Unreal Tournament 2004"] fullscreen enable, allow_tearing yes
     [window_role="pop-up"] floating enable
     [window_role="bubble"] floating enable
     [window_role="dialog"] floating enable

@@ -18,6 +18,7 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 source /usr/share/git/git-prompt.sh
+PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "\[\e[0;32m\]\w\[\e[0m\]" " \$ "'
 #eval "$(starship init bash)"
 

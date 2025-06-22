@@ -1,0 +1,15 @@
+- [ ] Create cheatsheet
+- [ ] Improve mapping
+    - [ ] Lazy: cmd, ft and keys
+- [X] Which-key
+    - [ ] Improve config
+- [X] Surround
+- [X] Trailing whitespace and tabs
+- [X] Indendation preference
+- [X] LSP go to definition
+- [X] LSP completion
+- [X] File path completion
+- [X] Commad completion
+- [X] LSP diagnostics picker
+- [X] Auto-format on save
+- [X] Better highlighting color scheme

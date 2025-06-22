@@ -13,6 +13,7 @@ function tere {
     [ -n "$result" ] && cd -- "$result"
 }
 
+# Configure prompt
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -20,7 +21,6 @@ GIT_PS1_SHOWUPSTREAM="auto"
 source /usr/share/git/git-prompt.sh
 PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "\[\e[0;32m\]\w\[\e[0m\]" " \$ "'
-#eval "$(starship init bash)"
 
 # Set vi controls
 set -o vi
@@ -29,7 +29,7 @@ set -o vi
 umask 077
 
 # Don't record duplicates in history
-export HISTCONTROL=ignoredups
+HISTCONTROL=ignoredups
 
 # Load aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases

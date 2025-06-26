@@ -1,6 +1,5 @@
 - [ ] Create cheatsheet
-- [ ] Improve mapping
-    - [ ] Lazy: cmd, ft and keys
+- [ ] Improve key mapping
 - [X] Which-key
     - [ ] Improve config
 - [X] Surround

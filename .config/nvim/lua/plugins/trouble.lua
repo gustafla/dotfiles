@@ -1,12 +1,9 @@
 return {
     "folke/trouble.nvim",
     opts = {
-        -- Your custom configuration goes here
-        -- or leave it empty to use the default settings
         auto_close = true,
         use_diagnostic_signs = true,
     },
-    -- Add some keymaps to make it easy to use
     keys = {
         {
             "<leader>xx",

@@ -5,8 +5,12 @@ return {
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
     end,
-    config = function()
-        require("nvim-tree").setup({})
-        vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle File Tree" })
-    end,
+    keys = {
+        {
+            "<leader>e",
+            "<cmd>NvimTreeToggle<cr>",
+            desc = "Toggle File Tree",
+        },
+    },
+    opts = {},
 }

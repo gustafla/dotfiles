@@ -33,3 +33,4 @@
 ```
 - `s`: Change one character
 - `cw`, `c2w`, ...: Change word
+- `gc`, `gcc`: Toggle line comment

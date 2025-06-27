@@ -47,3 +47,6 @@ end, { desc = "Go to definition" })
 vim.keymap.set("n", "<leader>/", function()
     require("telescope.builtin").live_grep()
 end, { desc = "Live grep (telescope)" })
+vim.keymap.set("n", "<F3>", function()
+    vim.o.spell = not vim.o.spell
+end, { desc = "Toggle spell checking" })

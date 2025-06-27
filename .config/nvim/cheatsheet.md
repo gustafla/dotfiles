@@ -37,3 +37,9 @@
 - `s`: Change one character
 - `cw`, `c2w`, ...: Change word
 - `gc`, `gcc`: Toggle line comment
+
+## Spell checker
+
+- `<F3>`: Toggle spell check
+- `zg`: Add word
+- `z=`: Suggestions

@@ -18,5 +18,12 @@ return {
                 },
             },
         })
+        vim.lsp.config("texlab", {
+            texlab = {
+                build = {
+                    onSave = true,
+                },
+            },
+        })
     end,
 }

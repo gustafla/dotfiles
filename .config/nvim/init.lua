@@ -4,12 +4,15 @@ vim.lsp.enable({
     "bashls",
     "clangd",
     "cmake",
-    -- rust-analyzer omitted due to rustaceanvim
+    "glsl_analyzer",
+    -- rust_analyzer omitted due to rustaceanvim
     "lua_ls",
+    "wgsl_analyzer",
+    "zls",
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "c", "cpp", "lua", "python", "rust" },
+    pattern = { "c", "cpp", "glsl", "lua", "python", "rust", "wgsl", "zig" },
     callback = function()
         vim.treesitter.start()
     end,

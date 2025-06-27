@@ -14,21 +14,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.list = true
-vim.o.listchars = "tab:>·,trail:·"
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.spellfile = vim.fn.stdpath("config") .. "/words.utf-8.add"
-
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {

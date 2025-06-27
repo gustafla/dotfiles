@@ -1,7 +1,5 @@
-- [ ] Create cheatsheet
-- [ ] Improve key mapping
+- [X] Create cheatsheet
 - [X] Which-key
-    - [ ] Improve config
 - [X] Surround
 - [X] Trailing whitespace and tabs
 - [X] Indendation preference

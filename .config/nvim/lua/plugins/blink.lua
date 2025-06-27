@@ -2,7 +2,7 @@ return {
     "saghen/blink.cmp",
     version = "1.*",
     opts = {
-        keymap = { preset = "super-tab" },
+        keymap = { preset = "enter" },
         appearance = {
             -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
             nerd_font_variant = "mono",

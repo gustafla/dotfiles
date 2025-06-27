@@ -1,6 +1,7 @@
 require("config.lazy")
 
 vim.lsp.enable({
+    "bash-language-server",
     "clangd",
     -- rust-analyzer omitted due to rustaceanvim
     "lua-language-server",

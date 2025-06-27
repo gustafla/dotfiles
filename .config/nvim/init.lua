@@ -6,7 +6,6 @@ vim.lsp.enable({
     "cmake",
     "glsl_analyzer",
     -- rust_analyzer omitted due to rustaceanvim
-    "ltex_plus",
     "lua_ls",
     "texlab",
     "wgsl_analyzer",

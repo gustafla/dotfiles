@@ -21,9 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.keymap.set("n", "<leader>h", "<cmd>edit ~/.config/nvim/cheatsheet.md<cr>", { desc = "Open cheatsheet" })
-vim.keymap.set("n", "<leader>a", function()
-    vim.lsp.buf.code_action()
-end, { desc = "Code action" })
+-- vim.keymap.set("n", "<leader>a", function()
+--     vim.lsp.buf.code_action()
+-- end, { desc = "Code action" })
 vim.keymap.set("n", "<leader>d", function()
     vim.diagnostic.open_float()
 end, { desc = "Show diagnostic" })

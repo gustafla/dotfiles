@@ -19,11 +19,16 @@ return {
             },
         })
         vim.lsp.config("texlab", {
-            texlab = {
-                build = {
-                    onSave = true,
+            settings = {
+                texlab = {
+                    build = {
+                        onSave = true,
+                    },
                 },
             },
+        })
+        vim.lsp.config("ltex_plus", {
+            filetypes = { "tex" },
         })
     end,
 }

@@ -1,10 +1,11 @@
 require("config.lazy")
 
 vim.lsp.enable({
-    "bash-language-server",
+    "bashls",
     "clangd",
+    "cmake",
     -- rust-analyzer omitted due to rustaceanvim
-    "lua-language-server",
+    "lua_ls",
 })
 
 vim.api.nvim_create_autocmd("FileType", {

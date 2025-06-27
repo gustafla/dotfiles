@@ -1,5 +1,6 @@
 ## Navigation
 
+- `]]`, `[[`: Next section, previous section
 - `]b` `[b`: Next buffer, previous buffer
 - `^d`, `^u`: Scroll down, scroll up
 - `<space>f`: Telescope
@@ -16,9 +17,11 @@
 - `<space>d`: Hover diagnostic
 - `K`: Hover
 - `^s`: Signature help
+- `grr`: References
 
 ## Editing
 
+- `*`: Highlight search (search under cursor)
 - Surround
 ```
     Old text                    Command         New text

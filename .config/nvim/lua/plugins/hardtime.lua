@@ -10,7 +10,13 @@ return {
     lazy = false,
     dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
+        {
+            "rcarriga/nvim-notify",
+            opts = {
+                stages = "fade",
+                background_colour = "#000000",
+            },
+        },
     },
     init = function()
         vim.keymap.set("n", "A<CR>", function()

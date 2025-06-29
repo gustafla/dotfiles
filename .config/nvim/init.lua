@@ -33,7 +33,19 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+local close = function()
+    if #vim.fn.getbufinfo({ buflisted = 1 }) <= 1 then
+        vim.cmd("silent q")
+    else
+        vim.cmd("silent bd")
+    end
+end
 vim.keymap.set("n", "<leader>h", "<CMD>edit ~/.config/nvim/cheatsheet.md<CR>", { desc = "Open cheatsheet" })
+vim.keymap.set("n", "<leader>c", close, { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>C", function()
+    vim.cmd("w")
+    close()
+end, { desc = "Write and close buffer" })
 -- vim.keymap.set("n", "<leader>a", function()
 --     vim.lsp.buf.code_action()
 -- end, { desc = "Code action" })
@@ -46,9 +58,6 @@ end, { desc = "Go to declaration" })
 vim.keymap.set("n", "gd", function()
     vim.lsp.buf.definition()
 end, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>/", function()
-    require("telescope.builtin").live_grep()
-end, { desc = "Live grep (telescope)" })
 vim.keymap.set("n", "<F3>", function()
     vim.o.spell = not vim.o.spell
 end, { desc = "Toggle spell checking" })

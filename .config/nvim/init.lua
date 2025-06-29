@@ -9,6 +9,7 @@ vim.o.listchars = "tab:>·,trail:·"
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.spellfile = vim.fn.stdpath("config") .. "/words.utf-8.add"
+vim.o.showmode = false
 
 require("config.lazy")
 

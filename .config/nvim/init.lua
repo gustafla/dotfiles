@@ -10,6 +10,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.spellfile = vim.fn.stdpath("config") .. "/words.utf-8.add"
 vim.o.showmode = false
+vim.o.termguicolors = true
 
 require("config.lazy")
 
@@ -32,7 +33,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.keymap.set("n", "<leader>h", "<cmd>edit ~/.config/nvim/cheatsheet.md<cr>", { desc = "Open cheatsheet" })
+vim.keymap.set("n", "<leader>h", "<CMD>edit ~/.config/nvim/cheatsheet.md<CR>", { desc = "Open cheatsheet" })
 -- vim.keymap.set("n", "<leader>a", function()
 --     vim.lsp.buf.code_action()
 -- end, { desc = "Code action" })

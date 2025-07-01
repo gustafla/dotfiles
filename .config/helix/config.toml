@@ -1,6 +1,7 @@
 theme = "catppuccin_mocha"
 
 [editor]
+line-number = "relative"
 mouse = false
 idle-timeout = 100
 cursor-shape.normal = "block"

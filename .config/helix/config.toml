@@ -4,18 +4,22 @@ theme = "catppuccin_mocha"
 line-number = "relative"
 mouse = false
 idle-timeout = 100
-cursor-shape.normal = "block"
-cursor-shape.insert = "bar"
-cursor-shape.select = "underline"
 cursorline = true
 auto-save = true
 color-modes = true
 rulers = [80, 120]
 bufferline = "multiple"
 soft-wrap.enable = true
-lsp.display-inlay-hints = false
-lsp.display-messages = true
 end-of-line-diagnostics = "hint"
+
+[editor.lsp]
+display-inlay-hints = false
+display-messages = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
 
 [editor.inline-diagnostics]
 cursor-line = "warning"

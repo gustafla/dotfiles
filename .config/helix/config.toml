@@ -34,3 +34,6 @@ center = [
   "version-control",
 ]
 right = ["position", "selections", "primary-selection-length"]
+
+[keys.normal]
+space = { H = ":edit ~/.config/helix/cheatsheet.md" }

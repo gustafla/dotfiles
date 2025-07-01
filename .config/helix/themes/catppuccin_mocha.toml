@@ -1,0 +1,5 @@
+inherits = "catppuccin_mocha"
+
+# This unsets bg, enabling fallback to transparent/black
+["ui.background"]
+fg = "text"

@@ -1,8 +1,7 @@
-#theme = "term16_dark"
-theme = "rose_pine_moon"
+theme = "catppuccin_mocha"
 
 [editor]
-mouse = true
+mouse = false
 idle-timeout = 100
 cursor-shape.normal = "block"
 cursor-shape.insert = "bar"

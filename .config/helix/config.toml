@@ -10,7 +10,7 @@ color-modes = true
 rulers = [80, 120]
 bufferline = "multiple"
 soft-wrap.enable = true
-end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "disable"
 
 [editor.lsp]
 display-inlay-hints = false
@@ -22,8 +22,8 @@ insert = "bar"
 select = "underline"
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
-other-lines = "error"
+cursor-line = "disable"
+other-lines = "disable"
 
 [editor.statusline]
 left = ["mode", "spinner", "diagnostics"]

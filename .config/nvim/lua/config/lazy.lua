@@ -23,6 +23,6 @@ require("lazy").setup({
     -- Configure any other settings here. See the documentation for more details.
     install = {},
     -- automatically check for plugin updates
-    checker = { enabled = true },
+    checker = { enabled = false },
     rocks = { enabled = false },
 })

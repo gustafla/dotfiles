@@ -37,3 +37,4 @@ right = ["position", "selections", "primary-selection-length"]
 
 [keys.normal]
 space = { H = ":edit ~/.config/helix/cheatsheet.md" }
+X = "select_line_above"

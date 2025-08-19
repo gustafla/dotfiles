@@ -1,11 +1,14 @@
 [misc]
 disable = [
   "cargo",
-  "pip3",
-  "gnome_shell_extensions",
   "containers",
+  "gnome_shell_extensions",
   "helix",
+  "lensfun",
+  "node",
+  "pip3",
   "stack",
+  "vim",
 ]
 no_self_update = true
 

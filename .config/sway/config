@@ -144,7 +144,7 @@ input * {
     bindsym $mod+Shift+b exec xdg-open about:newtab
 
     # open bluetooth client GUI
-    bindsym $mod+Control+Shift+b exec blueberry
+    bindsym $mod+Control+Shift+b exec $term bluetui
 
     # open default file manager
     bindsym $mod+Shift+f exec xdg-open ~

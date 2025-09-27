@@ -14,11 +14,16 @@ config.preview.background.enabled = true
 config.preview.background.args = [
   "--data-plane-host=127.0.0.1:23635",
   "--invert-colors=never",
-  "--open",
 ]
 
 [language-server.ltex-ls-plus]
 command = "ltex-ls-plus"
+
+[language-server.typst-languagetool]
+command = "typst-languagetool-lsp"
+config = { backend = "bundle", dictionary.en-GB = [
+    "Heljanko",
+]}
 
 [language-server.rust-analyzer]
 config.rust-analyzer.check.command = "clippy"
@@ -40,6 +45,11 @@ auto-format = true
 indent = { tab-width = 2, unit = "  " }
 formatter = { command = "latexindent", args = ["-y", "defaultIndent:'  '"] }
 language-servers = ["texlab", "ltex-ls-plus"]
+
+[[language]]
+name = "typst"
+auto-format = true
+language-servers = ["tinymist", "typst-languagetool"]
 
 [[language]]
 name = "javascript"

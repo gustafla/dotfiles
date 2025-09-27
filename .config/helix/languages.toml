@@ -23,6 +23,7 @@ command = "ltex-ls-plus"
 command = "typst-languagetool-lsp"
 config = { backend = "bundle", dictionary.en-GB = [
     "Heljanko",
+    "VideoCore",
 ], languages = { en = "en-GB" }}
 
 [language-server.rust-analyzer]

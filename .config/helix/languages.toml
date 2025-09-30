@@ -23,7 +23,19 @@ command = "ltex-ls-plus"
 command = "typst-languagetool-lsp"
 config = { backend = "bundle", dictionary.en-GB = [
     "Heljanko",
+    "Kawase",
     "VideoCore",
+    "Vulkan",
+    "bytecode",
+    "SPIR-V",
+    "shaderc",
+    "Ryzen",
+    "Rockchip",
+    "amdgpu",
+    "radv",
+    "v3dv",
+    "pseudorandom",
+    "gaussian",
 ], languages = { en = "en-GB" }}
 
 [language-server.rust-analyzer]

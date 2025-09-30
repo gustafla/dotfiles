@@ -36,5 +36,5 @@ center = [
 right = ["position", "selections", "primary-selection-length"]
 
 [keys.normal]
-space = { H = ":edit ~/.config/helix/cheatsheet.md" }
+space = { H = ":open ~/.config/helix/cheatsheet.md", M = ":lsp-workspace-command tinymist.pinMain \"%sh{realpath %{buffer_name}}\"" }
 X = "select_line_above"

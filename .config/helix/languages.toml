@@ -19,25 +19,6 @@ config.preview.background.args = [
 [language-server.ltex-ls-plus]
 command = "ltex-ls-plus"
 
-[language-server.typst-languagetool]
-command = "typst-languagetool-lsp"
-config = { backend = "bundle", dictionary.en-GB = [
-    "Heljanko",
-    "Kawase",
-    "VideoCore",
-    "Vulkan",
-    "bytecode",
-    "SPIR-V",
-    "shaderc",
-    "Ryzen",
-    "Rockchip",
-    "amdgpu",
-    "radv",
-    "v3dv",
-    "pseudorandom",
-    "gaussian",
-], languages = { en = "en-GB" }}
-
 [language-server.rust-analyzer]
 config.rust-analyzer.check.command = "clippy"
 config.rust-analyzer.cargo.allFeatures = true
@@ -62,7 +43,7 @@ language-servers = ["texlab", "ltex-ls-plus"]
 [[language]]
 name = "typst"
 auto-format = true
-language-servers = ["tinymist", "typst-languagetool"]
+language-servers = ["tinymist", "ltex-ls-plus"]
 
 [[language]]
 name = "javascript"

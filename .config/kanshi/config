@@ -1,0 +1,113 @@
+# ------------------ OUTPUTS --------------------------------------------------
+
+output "eDP-1" {
+    adaptive_sync on
+    position 0,0
+    alias $INTERNAL
+}
+
+output "Lenovo Group Limited LEN P27h-10 0x01010101" {
+    position 0,0
+    alias $CAMPUS_1
+}
+
+output "Lenovo Group Limited T27h-30 V5KFY042" {
+    position 0,0
+    alias $CAMPUS_2
+}
+
+output "Lenovo Group Limited T27QD-40 VNAC1AXD" {
+    position 0,0
+    alias $CAMPUS_3
+}
+
+output "Invalid Vendor Codename - RTK TYPEC L56051794302" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1600@144.003Hz
+    alias $PORTABLE
+}
+
+output "ASUSTek COMPUTER INC VG27A L7LMQS174015" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@164.999Hz
+    alias $GAMING_1
+}
+
+output "Lenovo Group Limited G27q-20 U63331DF" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@164.847Hz
+    alias $GAMING_2
+}
+
+output "Ancor Communications Inc ASUS PB278 DALMTF269252" {
+    alias $WORK_EXTRA
+}
+
+# ------------------ PROFILES -------------------------------------------------
+
+profile standalone {
+    output $INTERNAL enable
+}
+
+profile work {
+    output $INTERNAL enable position 640,1940
+    output $GAMING_2 enable position 0,500
+    output $WORK_EXTRA enable position 2560,0 transform 90
+}
+
+profile hp {
+    output $INTERNAL enable position 320,1440
+    output "Hewlett Packard HP Z24nq CN46270RJN" enable position 0,0
+}
+
+profile party_g {
+    output $INTERNAL enable position 320,1440
+    output $GAMING_1 enable 
+}
+
+profile party_p {
+    output $INTERNAL enable position 320,1600
+    output $PORTABLE enable
+}
+
+profile party_g_p {
+    output $INTERNAL enable position 640,1440
+    output $GAMING_1 enable 
+    output $PORTABLE enable position 2560,0 transform 270
+}
+
+profile campus_1 {
+    output $INTERNAL enable position 320,1440
+    output $CAMPUS_1 enable
+}
+
+profile campus_1_p {
+    output $INTERNAL enable position 640,1440
+    output $CAMPUS_1 enable
+    output $PORTABLE enable position 2560,0 transform 270
+}
+
+profile campus_2 {
+    output $INTERNAL enable position 320,1440
+    output $CAMPUS_2 enable
+}
+
+profile campus_2_p {
+    output $INTERNAL enable position 640,1440
+    output $CAMPUS_2 enable
+    output $PORTABLE enable position 2560,0 transform 270
+}
+
+profile campus_3 {
+    output $INTERNAL enable position 320,1440
+    output $CAMPUS_3 enable
+}
+
+profile campus_3_p {
+    output $INTERNAL enable position 640,1440
+    output $CAMPUS_3 enable
+    output $PORTABLE enable position 2560,0 transform 270
+}

@@ -35,11 +35,25 @@ output "ASUSTek COMPUTER INC VG27A L7LMQS174015" {
     alias $GAMING_1
 }
 
+output "ASUSTek COMPUTER INC VG27A M1LMQS086268" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@164.999Hz
+    alias $GAMING_2
+}
+
+output "ASUSTek COMPUTER INC XG27AQDMG T1LMRS012318" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@239.972Hz
+    alias $GAMING_3
+}
+
 output "Lenovo Group Limited G27q-20 U63331DF" {
     adaptive_sync on
     position 0,0
     mode 2560x1440@164.847Hz
-    alias $GAMING_2
+    alias $WORK_GAMING
 }
 
 output "Ancor Communications Inc ASUS PB278 DALMTF269252" {
@@ -48,13 +62,30 @@ output "Ancor Communications Inc ASUS PB278 DALMTF269252" {
 
 # ------------------ PROFILES -------------------------------------------------
 
-profile standalone {
+profile laptop {
     output $INTERNAL enable
+}
+
+profile desktop_1 {
+    output $GAMING_3 enable
+}
+
+profile desktop_2 {
+    output $GAMING_2 enable
+    output $GAMING_3 enable position 0,1440
+}
+
+profile desktop_3 {
+    output $GAMING_2 enable
+}
+
+profile desktop_4 {
+    output $GAMING_1 enable transform 90
 }
 
 profile work {
     output $INTERNAL enable position 640,1940
-    output $GAMING_2 enable position 0,500
+    output $WORK_GAMING enable position 0,500
     output $WORK_EXTRA enable position 2560,0 transform 90
 }
 

@@ -21,3 +21,5 @@
     branch = auto
     interactive = auto
     status = auto
+[help]
+	autocorrect = 10

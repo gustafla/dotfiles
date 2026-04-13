@@ -67,7 +67,7 @@ profile laptop {
 }
 
 profile desktop_1 {
-    output $GAMING_1 enable transform 270 mode 2560x1440@144.006Hz
+    output $GAMING_1 enable transform 270 mode 2560x1440@59.951Hz
 }
 
 profile desktop_2 {
@@ -79,12 +79,12 @@ profile desktop_3 {
 }
 
 profile desktop_4 {
-    output $GAMING_1 enable transform 270 position 2560,590 mode 2560x1440@144.006Hz
+    output $GAMING_1 enable transform 270 position 2560,590 mode 2560x1440@59.951Hz
     output $GAMING_2 enable
 }
 
 profile desktop_5 {
-    output $GAMING_1 enable transform 270 position 2560,590 mode 2560x1440@144.006Hz
+    output $GAMING_1 enable transform 270 position 2560,590 mode 2560x1440@59.951Hz
     output $GAMING_3 enable position 0,1440
 }
 
@@ -94,7 +94,7 @@ profile desktop_6 {
 }
 
 profile desktop_7 {
-    output $GAMING_1 enable transform 270 position 2560,590 mode 2560x1440@144.006Hz
+    output $GAMING_1 enable transform 270 position 2560,590 mode 2560x1440@59.951Hz
     output $GAMING_2 enable
     output $GAMING_3 enable position 0,1440
 }

@@ -23,6 +23,9 @@ command = "ltex-ls-plus"
 config.rust-analyzer.check.command = "clippy"
 config.rust-analyzer.cargo.allFeatures = true
 
+[language-server.zls]
+config.enable_snippets = false
+
 [[language]]
 name = "c"
 auto-format = true

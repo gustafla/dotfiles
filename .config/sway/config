@@ -70,6 +70,8 @@ bindsym $mod+o exec nwg-displays
 output * bg ~/pictures/wallpaper fill
 # Allow tearing on all displays
 output * allow_tearing yes
+# Don't use HDR by default
+output * hdr off
 
 ### Run output autoconfiguration daemon
 exec kanshi
@@ -215,7 +217,7 @@ input * {
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
-# Monitor stuff:
+# Output stuff:
 #
     bindsym $mod+Period focus output right; focus output up
     bindsym $mod+Comma focus output left; focus output down
@@ -264,10 +266,6 @@ input * {
 # Resizing containers:
 #
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px

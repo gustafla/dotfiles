@@ -66,6 +66,11 @@ profile laptop {
     output $INTERNAL enable
 }
 
+profile orangepi {
+    output HDMI-A-2 enable mode 2560x1440@144.006Hz
+    output HDMI-A-1 enable position 0,1440 mode 2560x1440@143.985Hz
+}
+
 profile desktop_1 {
     output $GAMING_1 enable transform 270 mode 2560x1440@144.006Hz
 }

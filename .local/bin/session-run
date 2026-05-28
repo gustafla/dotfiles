@@ -13,5 +13,7 @@ export NO_AT_BRIDGE=1
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=sway
 export XDG_CURRENT_DESKTOP=sway
-#export WLR_RENDERER=vulkan
+if [[ $(uname -m) = "x86_64" ]]; then
+  export WLR_RENDERER=vulkan
+fi
 exec systemd-cat --identifier=sway sway $@

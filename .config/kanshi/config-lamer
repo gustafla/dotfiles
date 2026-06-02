@@ -1,0 +1,58 @@
+# ------------------ OUTPUTS --------------------------------------------------
+
+output "ASUSTek COMPUTER INC VG27A L7LMQS174015" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@164.999Hz
+	transform 270
+    alias $GAMING_1
+}
+
+output "ASUSTek COMPUTER INC VG27A M1LMQS086268" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@144.006Hz
+    alias $GAMING_2
+}
+
+output "ASUSTek COMPUTER INC XG27AQDMG T1LMRS012318" {
+    adaptive_sync on
+    position 0,0
+    mode 2560x1440@239.972Hz
+    alias $GAMING_3
+}
+
+# ------------------ PROFILES -------------------------------------------------
+
+profile desktop_1 {
+    output $GAMING_1 enable
+}
+
+profile desktop_2 {
+    output $GAMING_2 enable
+}
+
+profile desktop_3 {
+    output $GAMING_3 enable
+}
+
+profile desktop_4 {
+    output $GAMING_1 enable position 2560,590
+    output $GAMING_2 enable
+}
+
+profile desktop_5 {
+    output $GAMING_1 enable position 2560,590
+    output $GAMING_3 enable position 0,1440
+}
+
+profile desktop_6 {
+    output $GAMING_2 enable
+    output $GAMING_3 enable position 0,1440
+}
+
+profile desktop_7 {
+    output $GAMING_1 enable position 2560,590
+    output $GAMING_2 enable
+    output $GAMING_3 enable position 0,1440
+}

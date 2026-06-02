@@ -74,7 +74,7 @@ output * allow_tearing yes
 output * hdr off
 
 ### Run output autoconfiguration daemon
-exec kanshi
+exec kanshi -c ~/.config/kanshi/config-$(hostname)
 
 ### Run foot terminal server
 exec foot --server

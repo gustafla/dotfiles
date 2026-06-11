@@ -9,7 +9,7 @@ output "ASUSTek COMPUTER INC VG27A L7LMQS174015" {
 }
 
 output "ASUSTek COMPUTER INC VG27A M1LMQS086268" {
-    adaptive_sync on
+    adaptive_sync off
     position 0,0
     mode 2560x1440@144.006Hz
     alias $GAMING_2

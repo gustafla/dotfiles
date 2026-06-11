@@ -163,7 +163,7 @@ input * {
         bindsym Escape mode "default"
         bindsym p exec systemctl poweroff
         bindsym r exec systemctl reboot
-        bindsym s mode "default"; exec systemctl suspend
+        bindsym --release s mode "default"; exec systemctl suspend
         bindsym e exit
         bindsym Return mode "default"; exec loginctl lock-session
         bindsym Shift+Return mode "default"; exec swaylock -c 00000000

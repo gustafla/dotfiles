@@ -81,10 +81,10 @@ exec foot --server
 
 ### Handle session locking with swayidle
 exec swayidle -w \
-    before-sleep "loginctl lock-session" \
-    lock "swayidle timeout 10 \"swaymsg 'output * power off'\" resume \"swaymsg 'output * power on'\" & dpms_pid=\$!; swaylock; loginctl unlock-session; kill \$dpms_pid" \
+    before-sleep "pgrep -x -u \$UID swaylock >/dev/null || loginctl lock-session" \
+    lock "swayidle timeout 10 \"swaymsg 'output * power off'\" resume \"swaymsg 'output * power on'\" & dpms_pid=\$!; swaylock; kill \$dpms_pid; loginctl unlock-session" \
     unlock "swaymsg 'output * power on'" \
-    timeout 300 "loginctl lock-session"
+    timeout 300 "pgrep -x -u \$UID swaylock >/dev/null || loginctl lock-session"
 
 ### Receive and display notifications with mako
 exec mako --default-timeout 5000 --font "Terminus 8"

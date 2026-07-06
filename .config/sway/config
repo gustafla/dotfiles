@@ -81,8 +81,8 @@ exec foot --server
 
 ### Handle session locking with swayidle
 exec swayidle -w \
-    before-sleep "pgrep -x -u \$UID swaylock >/dev/null || loginctl lock-session" \
-    lock "swayidle timeout 10 \"swaymsg 'output * power off'\" resume \"swaymsg 'output * power on'\" & dpms_pid=\$!; swaylock; kill \$dpms_pid; loginctl unlock-session" \
+    before-sleep "pgrep -x -u \$UID swaylock >/dev/null || { loginctl lock-session; while ! pgrep -x -u \$UID swaylock >/dev/null; do sleep 0.1; done; sleep 0.2; }" \
+    lock "pgrep -x -u \$UID swaylock >/dev/null || ( swayidle timeout 10 \"swaymsg 'output * power off'\" resume \"swaymsg 'output * power on'\" & dpms_pid=\$!; swaylock; kill \$dpms_pid; loginctl unlock-session ) &" \
     unlock "swaymsg 'output * power on'" \
     timeout 300 "pgrep -x -u \$UID swaylock >/dev/null || loginctl lock-session"
 

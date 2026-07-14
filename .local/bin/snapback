@@ -1,0 +1,77 @@
+#!/bin/bash
+set -e
+
+[[ -z $1 ]] || [[ -z $2 ]] && { echo "usage: $0 [[user@]host] [disk]..."; exit 1; }
+HOST=$1
+shift
+
+if ! mountpoint -q /mnt; then
+  echo "=== Unlocking Storage Drives ==="
+  read -s -p "Enter LUKS Password: " PASSWORD
+  echo
+
+  for DISK in "$@"; do
+    echo -n "$PASSWORD" | sudo cryptsetup open "$DISK" backup-$(basename "$DISK") -
+  done
+  echo "Drives unlocked"
+  echo "Mounting filesystem..."
+  sudo mount -o compress=zstd /dev/mapper/backup-$(basename "$1") /mnt
+else
+  read -p "Mountpoint /mnt is already mounted. Continue? [y/n]: " YN
+  case $YN in
+    [Yy]*) ;;  
+    [Nn]*) exit 1 ;;
+  esac
+fi
+
+echo "Creating new snapshot on $HOST..."
+ssh $HOST 'btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)'
+REMOTE_SNAPS=$(ssh $HOST "sudo btrfs subvolume list -s -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list -s -o /mnt/snapshots | awk -F 'path snapshots/' '{print $2}' | sort)
+
+if [[ -z $REMOTE_SNAPS ]]; then
+  echo "Remote appears to have no snapshots. This is a bug."
+  exit 1
+fi
+
+# Find the newest snapshot that exists on both machines
+LATEST_COMMON=$(comm -12 <(echo "$LOCAL_SNAPS") <(echo "$REMOTE_SNAPS") | tail -n 1)
+
+if [[ -z $LATEST_COMMON ]]; then
+  read -p "No common snapshots found. Initiate full transfer? [y/n]: " YN
+  case $YN in
+    [Yy]*) ;;  
+    [Nn]*) exit 1 ;;
+  esac
+
+  FIRST=$(echo "$REMOTE_SNAPS" | head -n 1)
+  echo "Transferring $FIRST..."
+  systemd-inhibit --what=shutdown:sleep --who="Backup" --why="Btrfs Sync" ssh "$HOST" "sudo btrfs send /srv/storage/snapshots/$FIRST" | sudo btrfs receive /mnt/snapshots
+  LATEST_COMMON=$FIRST
+fi
+
+# Sync forward anything newer than the latest common snapshot
+SYNC_FLAG=0
+for SNAP in $REMOTE_SNAPS; do
+  if [[ "$SNAP" == "$LATEST_COMMON" ]]; then
+    SYNC_FLAG=1
+    continue
+  fi
+  
+  if (( SYNC_FLAG == 1 )); then
+    echo "Transferring $SNAP (parent: $LATEST_COMMON)..."
+    systemd-inhibit --what=shutdown:sleep --who="Backup" --why="Btrfs Sync" ssh "$HOST" "sudo btrfs send -p /srv/storage/snapshots/$LATEST_COMMON /srv/storage/snapshots/$SNAP" | sudo btrfs receive /mnt/snapshots
+    LATEST_COMMON=$SNAP
+  fi
+done
+
+read -p "Backup complete. Unmount /mnt? [y/n]: " YN
+case $YN in
+  [Yy]*) ;;
+  [Nn]*) exit 0 ;;
+esac
+
+sudo umount /mnt
+for DISK in "$@"; do
+  sudo cryptsetup close backup-$(basename "$DISK")
+done

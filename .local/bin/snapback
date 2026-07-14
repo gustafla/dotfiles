@@ -32,41 +32,38 @@ sudo mkdir -p /mnt/snapshots /mnt/rootfs-snapshots
 # ==========================================
 echo -e "\n=== Starting Storage Backup ==="
 echo "Creating new snapshot on $HOST..."
-if ssh "$HOST" 'sudo btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)'; then
-  REMOTE_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
-  LOCAL_SNAPS=$(sudo btrfs subvolume list -o /mnt/snapshots | awk -F 'path snapshots/' '{print $2}' | sort)
+ssh "$HOST" 'sudo btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)' || echo "Could not create a new snapshot on $HOST."
+REMOTE_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list -o /mnt/snapshots | awk -F 'path snapshots/' '{print $2}' | sort)
 
-  if [[ -z $REMOTE_SNAPS ]]; then
-    echo "Remote storage appears to have no snapshots. This is a bug."
-    exit 1
-  fi
-
-  LATEST_COMMON=$(comm -12 <(echo "$LOCAL_SNAPS") <(echo "$REMOTE_SNAPS") | tail -n 1)
-
-  if [[ -z $LATEST_COMMON ]]; then
-    echo "No common storage snapshots found. Initiating full transfer..."
-    FIRST=$(echo "$REMOTE_SNAPS" | head -n 1)
-    echo "Transferring $FIRST..."
-    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /srv/storage/snapshots/$FIRST" | sudo btrfs receive /mnt/snapshots
-    LATEST_COMMON=$FIRST
-  fi
-
-  SYNC_FLAG=0
-  for SNAP in $REMOTE_SNAPS; do
-    if [[ "$SNAP" == "$LATEST_COMMON" ]]; then
-      SYNC_FLAG=1
-      continue
-    fi
-  
-    if (( SYNC_FLAG == 1 )); then
-      echo "Transferring $SNAP (parent: $LATEST_COMMON)..."
-      systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send -p /srv/storage/snapshots/$LATEST_COMMON /srv/storage/snapshots/$SNAP" | sudo btrfs receive /mnt/snapshots
-      LATEST_COMMON=$SNAP
-    fi
-  done
-else  
-  echo "Could not create a new snapshot on $HOST."
+if [[ -z $REMOTE_SNAPS ]]; then
+  echo "Remote storage appears to have no snapshots. This is a bug."
+  exit 1
 fi
+
+LATEST_COMMON=$(comm -12 <(echo "$LOCAL_SNAPS") <(echo "$REMOTE_SNAPS") | tail -n 1)
+
+if [[ -z $LATEST_COMMON ]]; then
+  echo "No common storage snapshots found. Initiating full transfer..."
+  FIRST=$(echo "$REMOTE_SNAPS" | head -n 1)
+  echo "Transferring $FIRST..."
+  systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /srv/storage/snapshots/$FIRST" | sudo btrfs receive /mnt/snapshots
+  LATEST_COMMON=$FIRST
+fi
+
+SYNC_FLAG=0
+for SNAP in $REMOTE_SNAPS; do
+  if [[ "$SNAP" == "$LATEST_COMMON" ]]; then
+    SYNC_FLAG=1
+    continue
+  fi
+
+  if (( SYNC_FLAG == 1 )); then
+    echo "Transferring $SNAP (parent: $LATEST_COMMON)..."
+    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send -p /srv/storage/snapshots/$LATEST_COMMON /srv/storage/snapshots/$SNAP" | sudo btrfs receive /mnt/snapshots
+    LATEST_COMMON=$SNAP
+  fi
+done
 
 # ==========================================
 # RootFS backup (snapper)

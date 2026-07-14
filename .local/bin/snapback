@@ -25,9 +25,9 @@ else
 fi
 
 echo "Creating new snapshot on $HOST..."
-ssh $HOST 'btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)'
-REMOTE_SNAPS=$(ssh $HOST "sudo btrfs subvolume list -s -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
-LOCAL_SNAPS=$(sudo btrfs subvolume list -s -o /mnt/snapshots | awk -F 'path snapshots/' '{print $2}' | sort)
+ssh $HOST 'sudo btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)'
+REMOTE_SNAPS=$(ssh $HOST "sudo btrfs subvolume list -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list -o /mnt/snapshots | awk -F 'path snapshots/' '{print $2}' | sort)
 
 if [[ -z $REMOTE_SNAPS ]]; then
   echo "Remote appears to have no snapshots. This is a bug."

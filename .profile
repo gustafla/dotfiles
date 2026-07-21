@@ -2,8 +2,8 @@
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 # Application vars
-export VISUAL=helix
-export EDITOR=helix
+export VISUAL=flow
+export EDITOR=flow
 
 # Remove QT Window decoration
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1

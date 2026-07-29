@@ -1,11 +1,13 @@
 #!/bin/bash
 set -e
 
-[[ -z $1 ]] || [[ -z $2 ]] && { echo "usage: $0 [[user@]host] [disk]..."; exit 1; }
-HOST=$1
+[[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] && { echo "usage: $0 [[user@]host] [mountpoint] [disk]..."; exit 1; }
+HOST="$1"
+shift
+MNT="$1"
 shift
 
-if ! mountpoint -q /mnt; then
+if ! mountpoint -q "$MNT"; then
   echo "=== Unlocking Storage Drives ==="
   read -s -p "Enter LUKS Password: " PASSWORD
   echo
@@ -15,9 +17,10 @@ if ! mountpoint -q /mnt; then
   done
   echo "Drives unlocked"
   echo "Mounting filesystem..."
-  sudo mount -o compress=zstd /dev/mapper/backup-$(basename "$1") /mnt
+  sudo mkdir -p "$MNT"
+  sudo mount -o compress=zstd /dev/mapper/backup-$(basename "$1") "$MNT"
 else
-  read -p "Mountpoint /mnt is already mounted. Continue? [y/n]: " YN
+  read -p "Mountpoint $MNT is already mounted. Continue? [y/n]: " YN
   case $YN in
     [Yy]*) ;;  
     [Nn]*) exit 1 ;;
@@ -25,7 +28,7 @@ else
 fi
 
 # Ensure destination directories exist
-sudo mkdir -p /mnt/snapshots /mnt/rootfs-snapshots
+sudo mkdir -p "$MNT/snapshots" "$MNT/rootfs-snapshots"
 
 # ==========================================
 # Storage backup (/srv/storage)
@@ -34,7 +37,7 @@ echo -e "\n=== Starting Storage Backup ==="
 echo "Creating new snapshot on $HOST..."
 ssh "$HOST" 'sudo btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)' || echo "Could not create a new snapshot on $HOST."
 REMOTE_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
-LOCAL_SNAPS=$(sudo btrfs subvolume list -o /mnt/snapshots | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list -o "$MNT/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
 
 if [[ -z $REMOTE_SNAPS ]]; then
   echo "Remote storage appears to have no snapshots. This is a bug."
@@ -47,7 +50,7 @@ if [[ -z $LATEST_COMMON ]]; then
   echo "No common storage snapshots found. Initiating full transfer..."
   FIRST=$(echo "$REMOTE_SNAPS" | head -n 1)
   echo "Transferring $FIRST..."
-  systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /srv/storage/snapshots/$FIRST" | sudo btrfs receive /mnt/snapshots
+  systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /srv/storage/snapshots/$FIRST" | sudo btrfs receive "$MNT/snapshots"
   LATEST_COMMON=$FIRST
 fi
 
@@ -60,7 +63,7 @@ for SNAP in $REMOTE_SNAPS; do
 
   if (( SYNC_FLAG == 1 )); then
     echo "Transferring $SNAP (parent: $LATEST_COMMON)..."
-    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send -p /srv/storage/snapshots/$LATEST_COMMON /srv/storage/snapshots/$SNAP" | sudo btrfs receive /mnt/snapshots
+    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send -p /srv/storage/snapshots/$LATEST_COMMON /srv/storage/snapshots/$SNAP" | sudo btrfs receive "$MNT/snapshots"
     LATEST_COMMON=$SNAP
   fi
 done
@@ -71,14 +74,14 @@ done
 echo -e "\n=== Starting RootFS Backup ==="
 
 # Clean up dangling snapshot from a previous interrupted transfer
-if sudo btrfs subvolume show /mnt/rootfs-snapshots/snapshot &>/dev/null; then
+if sudo btrfs subvolume show "$MNT/rootfs-snapshots/snapshot" &>/dev/null; then
   echo "Cleaning up dangling incomplete rootfs snapshot..."
-  sudo btrfs subvolume delete /mnt/rootfs-snapshots/snapshot
+  sudo btrfs subvolume delete "$MNT/rootfs-snapshots/snapshot"
 fi
 
 # Extract just the numerical ID from snapper's path structure, sort LEXICALLY
 REMOTE_ROOT_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list -o /.snapshots" | grep 'snapshot$' | awk -F '.snapshots/' '{print $2}' | cut -d/ -f1 | sort)
-LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list -o /mnt/rootfs-snapshots | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
+LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list -o "$MNT/rootfs-snapshots" | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
 
 if [[ -z $REMOTE_ROOT_SNAPS ]]; then
   echo "Remote rootfs has no snapper snapshots."
@@ -91,8 +94,8 @@ else
     # Start the chain with the oldest numerical snapshot
     FIRST_ROOT=$(echo "$REMOTE_ROOT_SNAPS" | sort -n | head -n 1)
     echo "No common rootfs snapshots found. Transferring initial full snapshot ($FIRST_ROOT)..."
-    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /.snapshots/$FIRST_ROOT/snapshot" | sudo btrfs receive /mnt/rootfs-snapshots
-    sudo mv /mnt/rootfs-snapshots/snapshot /mnt/rootfs-snapshots/$FIRST_ROOT
+    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /.snapshots/$FIRST_ROOT/snapshot" | sudo btrfs receive "$MNT/rootfs-snapshots"
+    sudo mv "$MNT/rootfs-snapshots/snapshot" "$MNT/rootfs-snapshots/$FIRST_ROOT"
     LATEST_COMMON_ROOT=$FIRST_ROOT
   fi
 
@@ -106,23 +109,26 @@ else
     
     if (( SYNC_FLAG == 1 )); then
       echo "Transferring rootfs snapshot $SNAP (parent: $LATEST_COMMON_ROOT)..."
-      systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send -p /.snapshots/$LATEST_COMMON_ROOT/snapshot /.snapshots/$SNAP/snapshot" | sudo btrfs receive /mnt/rootfs-snapshots
+      systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send -p /.snapshots/$LATEST_COMMON_ROOT/snapshot /.snapshots/$SNAP/snapshot" | sudo btrfs receive "$MNT/rootfs-snapshots"
       
       # Rename to its snapper id
-      sudo mv /mnt/rootfs-snapshots/snapshot /mnt/rootfs-snapshots/$SNAP
+      sudo mv "$MNT/rootfs-snapshots/snapshot" "$MNT/rootfs-snapshots/$SNAP"
       LATEST_COMMON_ROOT=$SNAP
     fi
   done
 fi
 
+# ==========================================
+# Cleanup
+# ==========================================
 echo -e "\nAll backups complete."
-read -p "Unmount /mnt? [y/n]: " YN
+read -p "Unmount $MNT? [y/n]: " YN
 case $YN in
   [Yy]*) ;;
   [Nn]*) exit 0 ;;
 esac
 
-sudo umount /mnt
+sudo umount "$MNT"
 for DISK in "$@"; do
   sudo cryptsetup close backup-$(basename "$DISK")
 done

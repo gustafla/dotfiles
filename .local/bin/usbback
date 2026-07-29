@@ -1,0 +1,123 @@
+#!/bin/bash
+set -e
+
+[[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] && { echo "usage: $0 [source] [mountpoint] [disk]..."; exit 1; }
+SRC="$1"
+shift
+MNT="$1"
+shift
+
+if ! mountpoint -q "$MNT"; then
+  echo "=== Unlocking Storage Drives ==="
+  read -s -p "Enter LUKS Password: " PASSWORD
+  echo
+
+  for DISK in "$@"; do
+    echo -n "$PASSWORD" | sudo cryptsetup open "$DISK" usb-$(basename "$DISK") -
+  done
+  echo "Drives unlocked"
+  echo "Mounting filesystem..."
+  sudo mkdir -p "$MNT"
+  sudo mount -o compress=zstd /dev/mapper/usb-$(basename "$1") "$MNT"
+else
+  read -p "Mountpoint $MNT is already mounted. Continue? [y/n]: " YN
+  case $YN in
+    [Yy]*) ;;  
+    [Nn]*) exit 1 ;;
+  esac
+fi
+
+# Ensure destination directories exist
+sudo mkdir -p "$MNT/snapshots" "$MNT/rootfs-snapshots"
+
+# ==========================================
+# Storage backup
+# ==========================================
+echo -e "\n=== Syncing Storage Backup to USB ==="
+
+SRC_SNAPS=$(sudo btrfs subvolume list -o "$SRC/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list -o "$MNT/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+
+LATEST_COMMON=$(comm -12 <(echo "$LOCAL_SNAPS") <(echo "$SRC_SNAPS") | tail -n 1)
+
+if [[ -z $LATEST_COMMON ]]; then
+  FIRST=$(echo "$SRC_SNAPS" | head -n 1)
+  echo "Initiating full transfer: $FIRST"
+  systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" sudo btrfs send "$SRC/snapshots/$FIRST" | sudo btrfs receive "$MNT/snapshots"
+  LATEST_COMMON=$FIRST
+fi
+
+SYNC_FLAG=0
+for SNAP in $SRC_SNAPS; do
+  if [[ "$SNAP" == "$LATEST_COMMON" ]]; then
+    SYNC_FLAG=1
+    continue
+  fi
+
+  if (( SYNC_FLAG == 1 )); then
+    echo "Transferring $SNAP (parent: $LATEST_COMMON)..."
+    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" sudo btrfs send -p "$SRC/snapshots/$LATEST_COMMON" "$SRC/snapshots/$SNAP" | sudo btrfs receive "$MNT/snapshots"
+    LATEST_COMMON=$SNAP
+  fi
+done
+
+
+# ==========================================
+# RootFS backup
+# ==========================================
+echo -e "\n=== Syncing RootFS Backup to USB ==="
+
+# Clean up dangling snapshot from a previous interrupted transfer
+if sudo btrfs subvolume show "$MNT/rootfs-snapshots/snapshot" &>/dev/null; then
+  echo "Cleaning up dangling incomplete rootfs snapshot..."
+  sudo btrfs subvolume delete "$MNT/rootfs-snapshots/snapshot"
+fi
+
+# Lexical sort
+SRC_ROOT_SNAPS=$(sudo btrfs subvolume list -o "$SRC/rootfs-snapshots" | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
+LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list -o "$MNT/rootfs-snapshots" | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
+
+if [[ -z $SRC_ROOT_SNAPS ]]; then
+  echo "Source rootfs has no snapshots to transfer."
+else
+  # Sort numerically AFTER the lexical comm intersection
+  COMMON_ROOT_SNAPS=$(comm -12 <(echo "$LOCAL_ROOT_SNAPS") <(echo "$SRC_ROOT_SNAPS") | sort -n)
+  LATEST_COMMON_ROOT=$(echo "$COMMON_ROOT_SNAPS" | tail -n 1)
+
+  if [[ -z $LATEST_COMMON_ROOT ]]; then
+    # Start the chain with the oldest numerical snapshot
+    FIRST_ROOT=$(echo "$SRC_ROOT_SNAPS" | head -n 1)
+    echo "No common rootfs snapshots found. Transferring initial full snapshot ($FIRST_ROOT)..."
+    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" sudo btrfs send "$SRC/rootfs-snapshots/$FIRST_ROOT" | sudo btrfs receive "$MNT/rootfs-snapshots"
+    LATEST_COMMON_ROOT=$FIRST_ROOT
+  fi
+
+  SYNC_FLAG=0
+  for SNAP in $SRC_ROOT_SNAPS; do
+    if [[ "$SNAP" == "$LATEST_COMMON_ROOT" ]]; then
+      SYNC_FLAG=1
+      continue
+    fi
+    
+    if (( SYNC_FLAG == 1 )); then
+      echo "Transferring rootfs snapshot $SNAP (parent: $LATEST_COMMON_ROOT)..."
+      systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" sudo btrfs send -p "$SRC/rootfs-snapshots/$LATEST_COMMON_ROOT" "$SRC/rootfs-snapshots/$SNAP" | sudo btrfs receive "$MNT/rootfs-snapshots"
+      LATEST_COMMON_ROOT=$SNAP
+    fi
+  done
+fi
+
+# ==========================================
+# Cleanup
+# ==========================================
+echo -e "\nAll backups complete."
+read -p "Unmount $MNT? [y/n]: " YN
+case $YN in
+  [Yy]*) ;;
+  [Nn]*) exit 0 ;;
+esac
+
+sudo umount "$MNT"
+for DISK in "$@"; do
+  sudo cryptsetup close usb-$(basename "$DISK")
+done

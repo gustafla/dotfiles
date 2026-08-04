@@ -35,16 +35,21 @@ sudo mkdir -p "$MNT/snapshots" "$MNT/rootfs-snapshots"
 # ==========================================
 echo -e "\n=== Syncing Storage Backup to USB ==="
 
-SRC_SNAPS=$(sudo btrfs subvolume list -o "$SRC/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
-LOCAL_SNAPS=$(sudo btrfs subvolume list -o "$MNT/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+SRC_SNAPS=$(sudo btrfs subvolume list "$SRC" | grep ' path snapshots/' | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list "$MNT" | grep ' path snapshots/' | awk -F 'path snapshots/' '{print $2}' | sort)
 
 LATEST_COMMON=$(comm -12 <(echo "$LOCAL_SNAPS") <(echo "$SRC_SNAPS") | tail -n 1)
 
 if [[ -z $LATEST_COMMON ]]; then
   FIRST=$(echo "$SRC_SNAPS" | head -n 1)
-  echo "Initiating full transfer: $FIRST"
-  systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" sudo btrfs send "$SRC/snapshots/$FIRST" | sudo btrfs receive "$MNT/snapshots"
-  LATEST_COMMON=$FIRST
+  
+  if [[ -z $FIRST ]]; then
+    echo "Source has no snapshots to transfer."
+  else
+    echo "Initiating full transfer: $FIRST"
+    systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" sudo btrfs send "$SRC/snapshots/$FIRST" | sudo btrfs receive "$MNT/snapshots"
+    LATEST_COMMON=$FIRST
+  fi
 fi
 
 SYNC_FLAG=0
@@ -73,15 +78,15 @@ if sudo btrfs subvolume show "$MNT/rootfs-snapshots/snapshot" &>/dev/null; then
   sudo btrfs subvolume delete "$MNT/rootfs-snapshots/snapshot"
 fi
 
-# Lexical sort
-SRC_ROOT_SNAPS=$(sudo btrfs subvolume list -o "$SRC/rootfs-snapshots" | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
-LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list -o "$MNT/rootfs-snapshots" | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
+# Must be sorted numerically so the 'for' loop iterates chronologically
+SRC_ROOT_SNAPS=$(sudo btrfs subvolume list "$SRC" | grep ' path rootfs-snapshots/' | awk -F 'rootfs-snapshots/' '{print $2}' | sort -n)
+LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list "$MNT" | grep ' path rootfs-snapshots/' | awk -F 'rootfs-snapshots/' '{print $2}' | sort -n)
 
 if [[ -z $SRC_ROOT_SNAPS ]]; then
   echo "Source rootfs has no snapshots to transfer."
 else
-  # Sort numerically AFTER the lexical comm intersection
-  COMMON_ROOT_SNAPS=$(comm -12 <(echo "$LOCAL_ROOT_SNAPS") <(echo "$SRC_ROOT_SNAPS") | sort -n)
+  # Sort lexically inline for comm to work, then sort the intersection numerically
+  COMMON_ROOT_SNAPS=$(comm -12 <(echo "$LOCAL_ROOT_SNAPS" | sort) <(echo "$SRC_ROOT_SNAPS" | sort) | sort -n)
   LATEST_COMMON_ROOT=$(echo "$COMMON_ROOT_SNAPS" | tail -n 1)
 
   if [[ -z $LATEST_COMMON_ROOT ]]; then

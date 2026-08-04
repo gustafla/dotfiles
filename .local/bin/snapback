@@ -36,8 +36,9 @@ sudo mkdir -p "$MNT/snapshots" "$MNT/rootfs-snapshots"
 echo -e "\n=== Starting Storage Backup ==="
 echo "Creating new snapshot on $HOST..."
 ssh "$HOST" 'sudo btrfs subvolume snapshot -r /srv/storage /srv/storage/snapshots/$(date -I)' || echo "Could not create a new snapshot on $HOST."
-REMOTE_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list -o /srv/storage/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
-LOCAL_SNAPS=$(sudo btrfs subvolume list -o "$MNT/snapshots" | awk -F 'path snapshots/' '{print $2}' | sort)
+
+REMOTE_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list /srv/storage" | grep ' path snapshots/' | awk -F 'path snapshots/' '{print $2}' | sort)
+LOCAL_SNAPS=$(sudo btrfs subvolume list "$MNT" | grep ' path snapshots/' | awk -F 'path snapshots/' '{print $2}' | sort)
 
 if [[ -z $REMOTE_SNAPS ]]; then
   echo "Remote storage appears to have no snapshots. This is a bug."
@@ -79,20 +80,19 @@ if sudo btrfs subvolume show "$MNT/rootfs-snapshots/snapshot" &>/dev/null; then
   sudo btrfs subvolume delete "$MNT/rootfs-snapshots/snapshot"
 fi
 
-# Extract just the numerical ID from snapper's path structure, sort LEXICALLY
-REMOTE_ROOT_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list -o /.snapshots" | grep 'snapshot$' | awk -F '.snapshots/' '{print $2}' | cut -d/ -f1 | sort)
-LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list -o "$MNT/rootfs-snapshots" | awk -F 'rootfs-snapshots/' '{print $2}' | sort)
+REMOTE_ROOT_SNAPS=$(ssh "$HOST" "sudo btrfs subvolume list /" | grep ' path \.snapshots/' | grep 'snapshot$' | awk -F '.snapshots/' '{print $2}' | cut -d/ -f1 | sort -n)
+LOCAL_ROOT_SNAPS=$(sudo btrfs subvolume list "$MNT" | grep ' path rootfs-snapshots/' | awk -F 'rootfs-snapshots/' '{print $2}' | sort -n)
 
 if [[ -z $REMOTE_ROOT_SNAPS ]]; then
   echo "Remote rootfs has no snapper snapshots."
 else
-  # Sort numerically AFTER the lexical comm intersection
-  COMMON_ROOT_SNAPS=$(comm -12 <(echo "$LOCAL_ROOT_SNAPS") <(echo "$REMOTE_ROOT_SNAPS") | sort -n)
+  # Sort lexically inline for comm to work, then sort the intersection numerically
+  COMMON_ROOT_SNAPS=$(comm -12 <(echo "$LOCAL_ROOT_SNAPS" | sort) <(echo "$REMOTE_ROOT_SNAPS" | sort) | sort -n)
   LATEST_COMMON_ROOT=$(echo "$COMMON_ROOT_SNAPS" | tail -n 1)
 
   if [[ -z $LATEST_COMMON_ROOT ]]; then
     # Start the chain with the oldest numerical snapshot
-    FIRST_ROOT=$(echo "$REMOTE_ROOT_SNAPS" | sort -n | head -n 1)
+    FIRST_ROOT=$(echo "$REMOTE_ROOT_SNAPS" | head -n 1)
     echo "No common rootfs snapshots found. Transferring initial full snapshot ($FIRST_ROOT)..."
     systemd-inhibit --what=shutdown:sleep --who="backup" --why="btrfs sync" ssh "$HOST" "sudo btrfs send /.snapshots/$FIRST_ROOT/snapshot" | sudo btrfs receive "$MNT/rootfs-snapshots"
     sudo mv "$MNT/rootfs-snapshots/snapshot" "$MNT/rootfs-snapshots/$FIRST_ROOT"
@@ -100,8 +100,7 @@ else
   fi
 
   SYNC_FLAG=0
-  # Ensure chronological iteration by sorting numerically
-  for SNAP in $(echo "$REMOTE_ROOT_SNAPS" | sort -n); do
+  for SNAP in $REMOTE_ROOT_SNAPS; do
     if [[ "$SNAP" == "$LATEST_COMMON_ROOT" ]]; then
       SYNC_FLAG=1
       continue

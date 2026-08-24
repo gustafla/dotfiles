@@ -118,11 +118,22 @@ fi
 echo -e "\nAll backups complete."
 read -p "Unmount $MNT? [y/n]: " YN
 case $YN in
-  [Yy]*) ;;
-  [Nn]*) exit 0 ;;
+  [Yy]*)
+    sudo umount "$MNT"
+    for DISK in "$@"; do
+      sudo cryptsetup close usb-$(basename "$DISK")
+    done
+    ;;
+  [Nn]*) ;;
 esac
 
-sudo umount "$MNT"
-for DISK in "$@"; do
-  sudo cryptsetup close usb-$(basename "$DISK")
-done
+read -p "Unmount $SRC? [y/n]: " YN
+case $YN in
+  [Yy]*)
+    sudo umount "$SRC"
+    for df in /dev/mapper/backup-*; do
+      sudo cryptsetup close $(basename "$df")
+    done
+    ;;
+  [Nn]*) ;;
+esac

@@ -9,6 +9,7 @@ disable = [
   "pip3",
   "stack",
   "vim",
+  "antigravity",
 ]
 no_self_update = true
 

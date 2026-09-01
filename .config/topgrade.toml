@@ -10,6 +10,8 @@ disable = [
   "stack",
   "vim",
   "antigravity",
+  "claude_code",
+  "claude_code_plugins",
 ]
 no_self_update = true
 

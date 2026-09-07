@@ -80,11 +80,15 @@ exec kanshi -c ~/.config/kanshi/config-$(hostname)
 exec foot --server
 
 ### Handle session locking with swayidle
+#
+# lock.sh is the single entry point: it is idempotent, blanks the outputs while
+# locked, and returns only once the lock surface is actually up.
+set $lock $HOME/.config/sway/lock.sh
 exec swayidle -w \
-    before-sleep "pgrep -x -u \$UID swaylock >/dev/null || { loginctl lock-session; while ! pgrep -x -u \$UID swaylock >/dev/null; do sleep 0.1; done; sleep 0.2; }" \
-    lock "pgrep -x -u \$UID swaylock >/dev/null || ( swayidle timeout 10 \"swaymsg 'output * power off'\" resume \"swaymsg 'output * power on'\" & dpms_pid=\$!; swaylock; kill \$dpms_pid; loginctl unlock-session ) &" \
+    before-sleep "$lock && loginctl lock-session" \
+    lock "$lock" \
     unlock "swaymsg 'output * power on'" \
-    timeout 300 "pgrep -x -u \$UID swaylock >/dev/null || loginctl lock-session"
+    timeout 300 "$lock && loginctl lock-session"
 
 ### Receive and display notifications with mako
 exec mako --default-timeout 5000 --font "Terminus 8"

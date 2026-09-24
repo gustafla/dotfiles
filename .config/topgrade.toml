@@ -1,6 +1,9 @@
 [misc]
 disable = [
+  "antigravity",
   "cargo",
+  "claude_code",
+  "claude_code_plugins",
   "containers",
   "gnome_shell_extensions",
   "helix",
@@ -9,9 +12,7 @@ disable = [
   "pip3",
   "stack",
   "vim",
-  "antigravity",
-  "claude_code",
-  "claude_code_plugins",
+  "zed",
 ]
 no_self_update = true
 

@@ -1,8 +1,6 @@
 [user]
     email = lauri.gustafsson@iki.fi
     name = Lauri Gustafsson
-[includeIf "gitdir:~/tuxera/"]
-    path = .gitconfig_tuxera
 [push]
     default = matching
 [pull]

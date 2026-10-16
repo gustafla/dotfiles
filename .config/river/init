@@ -1,1 +1,2 @@
-../../.local/bin/kwm
+#!/bin/sh
+i3status | kwm

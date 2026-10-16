@@ -33,3 +33,6 @@ HISTCONTROL=ignoredups
 
 # Load aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+
+# fastfetch
+fastfetch

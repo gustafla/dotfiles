@@ -1,2 +1,3 @@
 #!/bin/sh
-i3status | kwm
+mkdir -p "$HOME/.local/state"
+i3status | kwm > "$HOME/.local/state/kwm.log" 2>&1

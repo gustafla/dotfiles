@@ -213,7 +213,7 @@
 
     // window border
     .border = .{
-        .width = 5,
+        .width = 2,
         .color = .{
             .focus = 0xffc777ff,
             .unfocus = 0x828bb8ff,
@@ -233,8 +233,8 @@
         .tile = .{
             .nmaster = 1,
             .mfact = 0.55,
-            .inner_gap = 12,
-            .outer_gap = 9,
+            .inner_gap = 0,
+            .outer_gap = 0,
 
             // .left
             // .right
@@ -243,21 +243,21 @@
             .master_location = .left,
         },
         .grid = .{
-            .outer_gap = 9,
-            .inner_gap = 12,
+            .outer_gap = 0,
+            .inner_gap = 0,
 
             // .horizontal
             // .vertical
             .direction = .horizontal,
         },
         .monocle = .{
-            .gap = 9,
+            .gap = 0,
         },
         .deck = .{
             .nmaster = 1,
             .mfact = 0.55,
-            .inner_gap = 12,
-            .outer_gap = 9,
+            .inner_gap = 0,
+            .outer_gap = 0,
 
             // .left
             // .right
@@ -267,14 +267,14 @@
         },
         .scroller = .{
             .mfact = 0.5,
-            .inner_gap = 16,
-            .outer_gap = 9,
+            .inner_gap = 0,
+            .outer_gap = 0,
         },
         .centered_master = .{
             .nmaster = 1,
             .mfact = 0.55,
-            .inner_gap = 12,
-            .outer_gap = 9,
+            .inner_gap = 0,
+            .outer_gap = 0,
 
             // .horizontal
             // .vertical

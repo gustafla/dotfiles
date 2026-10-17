@@ -1,7 +1,9 @@
 #!/bin/sh
-export XKB_DEFAULT_LAYOUT="us,fi"
-export XKB_DEFAULT_VARIANT="euro"
-export XKB_DEFAULT_OPTIONS="caps:escape,grp:win_space_toggle"
+export XDG_CURRENT_DESKTOP=river
+export XDG_SESSION_DESKTOP=river
+export XDG_SESSION_TYPE=wayland
+
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
 
 mkdir -p "$HOME/.local/state"
-i3status | kwm > "$HOME/.local/state/kwm.log" 2>&1
+i3status | systemd-cat --identifier=kwm kwm

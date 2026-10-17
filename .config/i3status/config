@@ -15,7 +15,6 @@ general {
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
-order += "battery pbp"
 order += "tztime localdate"
 order += "tztime localtime"
 order += "disk /"
@@ -34,12 +33,6 @@ ethernet _first_ {
 battery all {
 	format = "%status %consumption %percentage %remaining"
 	format_down = "no bat"
-}
-
-battery pbp {
-	format = "%status %consumption %percentage %remaining"
-	format_down = ""
-	path = "/sys/class/power_supply/cw2015-battery/uevent"
 }
 
 tztime localdate {

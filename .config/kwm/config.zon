@@ -2,7 +2,6 @@
     // environment variables
     // used by processes spawned by kwm
     .env = .{
-        // .{ "key", "value" },
         .{ "MOZ_ENABLE_WAYLAND", "1" },
         .{ "_JAVA_AWT_WM_NONREPARENTING", "1" },
         .{ "TERMINAL", "footclient" },
@@ -12,9 +11,6 @@
         .{ "ECORE_EVAS_ENGINE", "wayland-egl" },
         .{ "ELM_ENGINE", "wayland_egl" },
         .{ "NO_AT_BRIDGE", "1" },
-        .{ "XDG_SESSION_TYPE", "wayland" },
-        .{ "XDG_SESSION_DESKTOP", "river" },
-        .{ "XDG_CURRENT_DESKTOP", "river" },
     },
 
     // working direction of processes spawned by kwm
@@ -22,6 +18,8 @@
 
     .startup_cmds = .{
         .{ "foot", "--server" },
+        .{ "mako", "--default-timeout", "5000", "--font", "Terminus 10" },
+        .{"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"},
 
         // @if(hostname=lamer)
         .{ "kanshi", "-c", ".config/kanshi/config-lamer" },
@@ -34,6 +32,7 @@
         // @endif
 
         .{"poweralertd"},
+        .{ "dex", "-a" },
     },
 
     // .{ .name = []const u8, .size = u32 } or null
@@ -1073,6 +1072,62 @@
                     .click = .{
                         .pressed = .{
                             .spawn = .{ .argv = .{ "xdg-open", "about:newtab" } },
+                        },
+                    },
+                },
+            },
+            // Brightness and volume control
+            .{
+                .keysym = "XF86MonBrightnessDown",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "brightnessctl", "set", "5%-" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86MonBrightnessUp",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "brightnessctl", "set", "5%+" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioLowerVolume",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioRaiseVolume",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "XF86AudioMute",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle" } },
                         },
                     },
                 },

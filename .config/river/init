@@ -1,3 +1,7 @@
 #!/bin/sh
+export XKB_DEFAULT_LAYOUT="us,fi"
+export XKB_DEFAULT_VARIANT="euro"
+export XKB_DEFAULT_OPTIONS="caps:escape,grp:win_space_toggle"
+
 mkdir -p "$HOME/.local/state"
 i3status | kwm > "$HOME/.local/state/kwm.log" 2>&1

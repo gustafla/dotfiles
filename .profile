@@ -19,3 +19,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 
 # Use GnuPG SSH daemon
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+# XKB defaults
+export XKB_DEFAULT_LAYOUT="us,fi"
+export XKB_DEFAULT_VARIANT="euro"
+export XKB_DEFAULT_OPTIONS="caps:escape,grp:win_space_toggle"

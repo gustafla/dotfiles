@@ -511,8 +511,7 @@
                                 .exit_session = true,
                                 // command to run before quit
                                 // will quit only when the process exit with zero status
-                                // e.g. .{ "sh", "-c", "~/cleanup.sh" }
-                                .hook = null,
+                                .hook = .{ "sh", "-c", "echo Yes, end the session | wmenu -l 1 -f 'Terminus bold 20'" },
                             },
                         },
                     },

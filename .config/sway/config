@@ -81,9 +81,7 @@ exec foot --server
 
 ### Handle session locking with swayidle
 #
-# lock.sh is the single entry point: it is idempotent, blanks the outputs while
-# locked, and returns only once the lock surface is actually up.
-set $lock $HOME/.config/sway/lock.sh
+set $lock session-lock
 exec swayidle -w \
     before-sleep "$lock && loginctl lock-session" \
     lock "$lock" \

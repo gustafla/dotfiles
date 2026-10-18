@@ -33,6 +33,16 @@
 
         .{"poweralertd"},
         .{ "dex", "-a" },
+
+        // swayidle
+        .{
+            "swayidle",                              "-w",
+            "before-sleep",                          "session-lock && loginctl lock-session",
+            "lock",                                  "session-lock",
+            "unlock",                                "wlopm --on '*'",
+            "timeout",                               "300",
+            "session-lock && loginctl lock-session",
+        },
     },
 
     // .{ .name = []const u8, .size = u32 } or null
@@ -1077,6 +1087,17 @@
                 },
             },
             .{
+                .keysym = "b",
+                .modifiers = .{ .ctrl = true, .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "footclient", "bluetui" } },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "d",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
@@ -1127,7 +1148,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-2%" } },
+                            .spawn = .{ .argv = .{ "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "2%-" } },
                         },
                     },
                 },
@@ -1138,7 +1159,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+2%" } },
+                            .spawn = .{ .argv = .{ "wpctl", "set-volume", "@DEFAULT_AUDIO_SINK@", "2%+" } },
                         },
                     },
                 },
@@ -1149,7 +1170,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle" } },
+                            .spawn = .{ .argv = .{ "wpctl", "set-mute", "@DEFAULT_AUDIO_SINK@", "toggle" } },
                         },
                     },
                 },

@@ -1049,7 +1049,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "wmenu-run", "-f", "Terminus bold 10" } },
+                            .spawn = .{ .argv = .{ "wmenu-run", "-l", "32", "-f", "Terminus bold 10" } },
                         },
                     },
                 },
@@ -1072,6 +1072,28 @@
                     .click = .{
                         .pressed = .{
                             .spawn = .{ .argv = .{ "xdg-open", "about:newtab" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "d",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "passmenu", "-l", "32", "-f", "Terminus bold 10" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "d",
+                .modifiers = .{ .ctrl = true, .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "documenu", "-l", "32", "-f", "Terminus bold 10" } },
                         },
                     },
                 },

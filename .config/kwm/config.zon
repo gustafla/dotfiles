@@ -43,6 +43,7 @@
             "timeout",                               "300",
             "session-lock && loginctl lock-session",
         },
+        .{"wayland-pipewire-idle-inhibit"},
     },
 
     // .{ .name = []const u8, .size = u32 } or null
@@ -95,6 +96,7 @@
                 .{ "default", "" }, // hide mode tag in default mode
                 .{ "passthrough", "P" }, // only show "P" on bar in passthrough mode
                 .{ "floating", "F" }, // only show "F" on bar in floating mode
+                .{ "away", "AWAY" },
             },
 
             .click = .{
@@ -145,7 +147,9 @@
             .data = .stdin,
 
             .click = .{
+                .left = .{ .spawn = .{ .argv = .{"wdisplays"} } },
                 .middle = .{ .spawn = .{ .argv = .{"footclient"} } },
+                .right = .{ .spawn = .{ .argv = .{"pavucontrol"} } },
             },
         },
 
@@ -354,6 +358,89 @@
                     .click = .{
                         .pressed = .{
                             .switch_mode = .{ .mode = "default" },
+                        },
+                    },
+                },
+            },
+
+            // away
+            .{
+                .keysym = "Escape",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .switch_mode = .{ .mode = "away" },
+                        },
+                    },
+                },
+            },
+            .{
+                .mode = "away",
+                .keysym = "Escape",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .switch_mode = .{ .mode = "default" },
+                        },
+                    },
+                },
+            },
+            .{
+                .mode = "away",
+                .keysym = "p",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "systemctl", "poweroff" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .mode = "away",
+                .keysym = "r",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "systemctl", "reboot" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .mode = "away",
+                .keysym = "s",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .group = .{
+                                .actions = .{
+                                    .{ .switch_mode = .{ .mode = "default" } },
+                                    .{ .spawn = .{ .argv = .{ "systemctl", "suspend" } } },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+            .{
+                .mode = "away",
+                .keysym = "Return",
+                .modifiers = .{},
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .group = .{
+                                .actions = .{
+                                    .{ .switch_mode = .{ .mode = "default" } },
+                                    .{ .spawn = .{ .argv = .{ "loginctl", "lock-session" } } },
+                                },
+                            },
                         },
                     },
                 },
@@ -1075,12 +1162,45 @@
                 },
             },
             .{
+                .keysym = "o",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{"wdisplays"} },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "v",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{"pavucontrol"} },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "e",
+                .modifiers = .{ .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{"thunar"} },
+                        },
+                    },
+                },
+            },
+            .{
                 .keysym = "b",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "xdg-open", "about:newtab" } },
+                            .spawn = .{ .argv = .{"firefox"} },
                         },
                     },
                 },
@@ -1174,6 +1294,34 @@
                     },
                 },
             },
+            .{
+                .keysym = "p",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{ .cmd = "grim -g \"$(slurp)\" -t png - | tee ~/pictures/screenshots/$(date +%F-%T).png | wl-copy -t image/png" },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "s",
+                .modifiers = .{ .mod4 = true, .shift = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn_shell = .{
+                                // @if(hostname=lamer)
+                                .cmd = "grim -o DP-1 -t png - | tee ~/pictures/screenshots/$(date +%F-%T).png | wl-copy -t image/png",
+                                // @else
+                                .cmd = "grim -t png - | tee ~/pictures/screenshots/$(date +%F-%T).png | wl-copy -t image/png",
+                                // @endif
+                            },
+                        },
+                    },
+                },
+            },
         },
 
         // list of pointer bindings
@@ -1250,6 +1398,9 @@
         .{ .app_id = .{ .str = "zenity" }, .floating = true },
         .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
+        .{ .app_id = .{ .str = "wdisplays" }, .floating = true },
+        .{ .app_id = .{ .str = "thunar" }, .floating = true },
+        .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
         .{ .app_id = .{ .str = "footclient" }, .is_terminal = true },
     },
 

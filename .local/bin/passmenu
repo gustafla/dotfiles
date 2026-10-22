@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+DMENU=${DMENU:=wmenu}
+cd ${PASSWORD_STORE_DIR:=$HOME/.password-store}
+
+selected=$(find . -type f -not -path '*/.git*' -not -path '*/.gpg*' -printf '%P\n' | sed 's/.gpg$//' | $DMENU "$@")
+[ -z "$selected" ] && exit
+
+old="$(wl-paste)"
+
+cleartext=$(pass show "$selected")
+case "$cleartext" in 
+  otpauth://*)
+    pass otp "$selected" | wl-copy;;
+  *)
+    wl-copy <<< "$cleartext";;
+esac
+
+sleep 20
+wl-copy <<< "$old"

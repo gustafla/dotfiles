@@ -1,7 +1,5 @@
 const std = @import("std");
 const Environ = std.process.Environ;
-const Io = std.Io;
-const json = std.json;
 
 const FlatpackPackageInfo = struct {
     name: []const u8,
@@ -44,7 +42,7 @@ pub fn main(init: std.process.Init) !void {
     std.log.debug("Getting menu program name from $DMENU", .{});
     const dmenu = if (init.minimal.environ.getAlloc(arena, "DMENU")) |value|
         value
-    else |err| if (err == std.process.Environ.GetAllocError.EnvironmentVariableMissing)
+    else |err| if (err == Environ.GetAllocError.EnvironmentVariableMissing)
         "wmenu"
     else
         return err;

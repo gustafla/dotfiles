@@ -1,6 +1,8 @@
 const std = @import("std");
 const Environ = std.process.Environ;
 
+const build_meta = @import("build_meta");
+
 const FlatpackPackageInfo = struct {
     name: []const u8,
     application_id: []const u8,
@@ -48,6 +50,13 @@ pub fn main(init: std.process.Init) !void {
     std.log.debug("Initializing program arguments", .{});
     const argv = try init.minimal.args.toSlice(arena);
     @constCast(argv)[0] = dmenu;
+
+    for (argv[1..]) |arg| {
+        if (std.mem.eql(u8, arg, "--version") or std.mem.eql(u8, arg, "-v")) {
+            std.debug.print("{s} {s}\n", .{ build_meta.name, build_meta.version });
+            return;
+        }
+    }
 
     std.log.debug("Listing flatpak packages", .{});
     const listing = try std.process.run(arena, io, .{ .argv = &.{ "flatpak", "list", "--json", "--app" } });

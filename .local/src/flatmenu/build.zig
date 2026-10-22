@@ -1,8 +1,14 @@
 const std = @import("std");
 
+const build_zon = @import("build.zig.zon");
+
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
+
+    const meta_options = b.addOptions();
+    meta_options.addOption([]const u8, "name", @tagName(build_zon.name));
+    meta_options.addOption([]const u8, "version", build_zon.version);
 
     const exe = b.addExecutable(.{
         .name = "flatmenu",
@@ -10,7 +16,9 @@ pub fn build(b: *std.Build) void {
             .root_source_file = b.path("src/main.zig"),
             .target = target,
             .optimize = optimize,
-            .imports = &.{},
+            .imports = &.{
+                .{ .name = "build_meta", .module = meta_options.createModule() },
+            },
         }),
     });
 

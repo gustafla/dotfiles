@@ -34,18 +34,20 @@ fn deduplicatePackageNames(packages: []FlatpackPackageInfo) void {
 
 pub fn main(init: std.process.Init) !void {
     const io = init.io;
-    const arena: std.mem.Allocator = init.arena.allocator();
+    const arena = init.arena.allocator();
+    const environ = init.minimal.environ;
 
-    std.log.debug("Collecting CLI arguments", .{});
-    const args = try init.minimal.args.toSlice(arena);
-
-    std.log.debug("Getting menu program name from $DMENU", .{});
-    const dmenu = if (init.minimal.environ.getAlloc(arena, "DMENU")) |value|
+    // Get menu program name
+    const dmenu = if (environ.getPosix("DMENU")) |value|
         value
-    else |err| if (err == Environ.GetAllocError.EnvironmentVariableMissing)
+    else if (environ.containsUnemptyConstant("WAYLAND_DISPLAY"))
         "wmenu"
     else
-        return err;
+        "dmenu";
+
+    std.log.debug("Initializing program arguments", .{});
+    const argv = try init.minimal.args.toSlice(arena);
+    @constCast(argv)[0] = dmenu;
 
     std.log.debug("Listing flatpak packages", .{});
     const listing = try std.process.run(arena, io, .{ .argv = &.{ "flatpak", "list", "--json", "--app" } });
@@ -55,16 +57,15 @@ pub fn main(init: std.process.Init) !void {
     }
 
     std.log.debug("Parsing the flatpak listing", .{});
-    const packages = try std.json.parseFromSlice(
-        []const FlatpackPackageInfo,
+    const packages = try std.json.parseFromSliceLeaky(
+        []FlatpackPackageInfo,
         arena,
         listing.stdout,
         .{ .ignore_unknown_fields = true },
     );
-    deduplicatePackageNames(@constCast(packages.value));
+    deduplicatePackageNames(packages);
 
     std.log.debug("Spawning {s}", .{dmenu});
-    const argv = try std.mem.concat(arena, []const u8, &.{ &.{dmenu}, args[1..] });
     var dmenu_process = try std.process.spawn(io, .{
         .argv = argv,
         .stdin = .pipe,
@@ -72,7 +73,7 @@ pub fn main(init: std.process.Init) !void {
     });
 
     var stdin = dmenu_process.stdin.?.writer(io, &writer_buffer);
-    for (packages.value) |package| {
+    for (packages) |package| {
         stdin.interface.writeAll(package.name) catch return stdin.err.?;
         stdin.interface.writeByte('\n') catch return stdin.err.?;
     }
@@ -81,9 +82,13 @@ pub fn main(init: std.process.Init) !void {
     dmenu_process.stdin = null;
 
     std.log.debug("Receiving the selection from {s}", .{dmenu});
-    var stdout = dmenu_process.stdout.?.readerStreaming(io, &reader_buffer);
-    const selection_name_raw = try stdout.interface.allocRemaining(arena, .limited(4096));
-    const selection_name = std.mem.trim(u8, selection_name_raw, " \t\n\r");
+    var cursor: usize = 0;
+    while (true) {
+        cursor += dmenu_process.stdout.?.readStreaming(io, &.{reader_buffer[cursor..]}) catch |err|
+            if (err == error.EndOfStream) break else return err;
+        if (cursor >= reader_buffer.len) return error.PackageNameTooLong;
+    }
+    const selection_name = std.mem.trim(u8, reader_buffer[0..cursor], " \t\n\r");
 
     std.log.debug("Waiting for {s}", .{dmenu});
     const dmenu_result = try dmenu_process.wait(io);
@@ -93,7 +98,7 @@ pub fn main(init: std.process.Init) !void {
     }
 
     std.log.debug("Mapping {s} to package id", .{selection_name});
-    const selection_id = mapPackageNameToId(packages.value, selection_name) orelse
+    const selection_id = mapPackageNameToId(packages, selection_name) orelse
         return error.InvalidPackageName;
 
     std.log.debug("Spawning {s}", .{selection_id});

@@ -59,9 +59,17 @@ pub fn main(init: std.process.Init) !void {
     }
 
     std.log.debug("Listing flatpak packages", .{});
-    const listing = try std.process.run(arena, io, .{ .argv = &.{ "flatpak", "list", "--json", "--app" } });
+    const listing = std.process.run(arena, io, .{
+        .argv = &.{ "flatpak", "list", "--json", "--app" },
+    }) catch |err| {
+        switch (err) {
+            std.process.SpawnError.FileNotFound => std.log.err("flatpak not found. Is flatpak installed?", .{}),
+            else => {},
+        }
+        return err;
+    };
     if (!listing.term.success()) {
-        std.log.err("Cannot list flatpak packages: {f}", .{listing.term});
+        std.log.err("Cannot list flatpak packages. stderr: {s}", .{listing.stderr});
         return error.FlatpakListFailed;
     }
 
@@ -75,11 +83,17 @@ pub fn main(init: std.process.Init) !void {
     deduplicatePackageNames(packages);
 
     std.log.debug("Spawning {s}", .{dmenu});
-    var dmenu_process = try std.process.spawn(io, .{
+    var dmenu_process = std.process.spawn(io, .{
         .argv = argv,
         .stdin = .pipe,
         .stdout = .pipe,
-    });
+    }) catch |err| {
+        switch (err) {
+            std.process.SpawnError.FileNotFound => std.log.err("{s} not found. Use $DMENU to configure.", .{dmenu}),
+            else => {},
+        }
+        return err;
+    };
 
     var stdin = dmenu_process.stdin.?.writer(io, &writer_buffer);
     for (packages) |package| {

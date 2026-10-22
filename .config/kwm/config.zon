@@ -1152,7 +1152,7 @@
             },
             .{
                 .keysym = "p",
-                .modifiers = .{ .ctrl = true, .mod4 = true },
+                .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{
@@ -1306,7 +1306,7 @@
                 },
             },
             .{
-                .keysym = "p",
+                .keysym = "s",
                 .modifiers = .{ .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
@@ -1318,7 +1318,7 @@
             },
             .{
                 .keysym = "s",
-                .modifiers = .{ .mod4 = true, .shift = true },
+                .modifiers = .{ .ctrl = true, .mod4 = true, .shift = true },
                 .event = .{
                     .click = .{
                         .pressed = .{

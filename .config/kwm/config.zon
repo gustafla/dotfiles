@@ -1145,7 +1145,18 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "wmenu-run", "-l", "32", "-f", "Terminus bold 10" } },
+                            .spawn = .{ .argv = .{ "wmenu-run", "-i", "-l", "32", "-f", "Terminus bold 10" } },
+                        },
+                    },
+                },
+            },
+            .{
+                .keysym = "p",
+                .modifiers = .{ .ctrl = true, .mod4 = true },
+                .event = .{
+                    .click = .{
+                        .pressed = .{
+                            .spawn = .{ .argv = .{ "flatmenu", "-i", "-l", "32", "-f", "Terminus bold 10" } },
                         },
                     },
                 },
@@ -1222,7 +1233,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "passmenu", "-l", "32", "-f", "Terminus bold 10" } },
+                            .spawn = .{ .argv = .{ "passmenu", "-i", "-l", "32", "-f", "Terminus bold 10" } },
                         },
                     },
                 },
@@ -1233,7 +1244,7 @@
                 .event = .{
                     .click = .{
                         .pressed = .{
-                            .spawn = .{ .argv = .{ "documenu", "-l", "32", "-f", "Terminus bold 10" } },
+                            .spawn = .{ .argv = .{ "documenu", "-i", "-l", "32", "-f", "Terminus bold 10" } },
                         },
                     },
                 },

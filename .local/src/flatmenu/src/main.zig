@@ -102,7 +102,7 @@ pub fn main(init: std.process.Init) !void {
     std.log.debug("Waiting for {s}", .{dmenu});
     const dmenu_result = try dmenu_process.wait(io);
     if (!dmenu_result.success()) {
-        std.log.err("{s} exited unsuccessfully: {f}", .{ dmenu, listing.term });
+        std.log.err("{s} {f}", .{ dmenu, dmenu_result });
         return error.MenuSelectionFailed;
     }
 
@@ -114,4 +114,17 @@ pub fn main(init: std.process.Init) !void {
     _ = try std.process.spawn(io, .{
         .argv = &.{ "flatpak", "run", selection_id },
     });
+}
+
+pub const std_options: std.Options = .{
+    .logFn = programLog,
+};
+
+fn programLog(
+    comptime level: std.log.Level,
+    comptime scope: @EnumLiteral(),
+    comptime format: []const u8,
+    args: anytype,
+) void {
+    std.log.defaultLog(level, scope, build_meta.name ++ ": " ++ format, args);
 }

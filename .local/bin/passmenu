@@ -4,15 +4,9 @@ DMENU=${DMENU:=wmenu}
 selected=$(find ${PASSWORD_STORE_DIR:=$HOME/.password-store} -type f -path '*/*.gpg' -printf '%P\n' | sed 's/.gpg$//' | $DMENU "$@")
 [ -z "$selected" ] && exit
 
-old="$(wl-paste)"
-
-cleartext=$(pass show "$selected")
-case "$cleartext" in 
+case $(pass show "$selected") in 
   otpauth://*)
-    pass otp "$selected" | wl-copy;;
+    pass otp -c "$selected";;
   *)
-    wl-copy <<< "$cleartext";;
+    pass -c "$selected";;
 esac
-
-sleep 20
-wl-copy <<< "$old"

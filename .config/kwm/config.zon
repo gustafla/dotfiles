@@ -598,7 +598,7 @@
                                 .exit_session = true,
                                 // command to run before quit
                                 // will quit only when the process exit with zero status
-                                .hook = .{ "sh", "-c", "echo Yes, end the session | wmenu -l 1 -f 'Terminus bold 20'" },
+                                .hook = .{ "sh", "-c", "echo Yes | wmenu -p 'Quit the river session?' -f 'Terminus bold 20'" },
                             },
                         },
                     },

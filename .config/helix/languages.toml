@@ -87,3 +87,7 @@ indent = { tab-width = 4, unit = "    " }
 [[language]]
 name = "haskell"
 auto-format = true
+
+[[language]]
+name = "nasm"
+file-types = ["s", "asm"]

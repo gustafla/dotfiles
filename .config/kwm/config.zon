@@ -1410,7 +1410,6 @@
         .{ .app_id = .{ .str = "DesktopEditors" }, .floating = true },
         .{ .app_id = .{ .str = "xdg-desktop-portal-gtk" }, .floating = true },
         .{ .app_id = .{ .str = "wdisplays" }, .floating = true },
-        .{ .app_id = .{ .str = "thunar" }, .floating = true },
         .{ .app_id = .{ .str = "pavucontrol" }, .floating = true },
         .{ .app_id = .{ .str = "footclient" }, .is_terminal = true },
     },
